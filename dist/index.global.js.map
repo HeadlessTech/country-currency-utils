@@ -1,1 +1,0 @@
-{"version":3,"sources":["../src/add.ts","../src/subtract.ts"],"sourcesContent":["export function add(a: number, b: number): number {\n  return a + b;\n}\n","export function subtract(a: number, b: number): number {\n  return a - b;\n}\n"],"mappings":";;;AAAO,WAAS,IAAI,GAAW,GAAmB;AAChD,WAAO,IAAI;AAAA,EACb;;;ACFO,WAAS,SAAS,GAAW,GAAmB;AACrD,WAAO,IAAI;AAAA,EACb;","names":[]}
