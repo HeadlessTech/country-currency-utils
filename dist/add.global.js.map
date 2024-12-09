@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/add.ts"],"sourcesContent":["export function add(a: number, b: number): number {\n  return a + b;\n}\n"],"mappings":";;;AAAO,WAAS,IAAI,GAAW,GAAmB;AAChD,WAAO,IAAI;AAAA,EACb;","names":[]}
