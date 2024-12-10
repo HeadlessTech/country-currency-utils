@@ -1475,6 +1475,7 @@ export const dialCodes = COUNTRIES_DATA.map((c) => c.dialCode) as TDialCode[];
 export const currencyCodes = COUNTRIES_DATA.map(
   (c) => c.currencyCode
 ) as TCurrencyCode[];
+export const countryFlags = COUNTRIES_DATA.map((c) => c.flagEmoji) as string[];
 
 export type TCountryData = {
   name: string;

@@ -11,6 +11,7 @@ export type TCurrencyData = {
   minorSingle: string;
   minorPlural: string;
   decimals: number;
+  decimalsCompact: number;
   digitGrouping: 2 | 3;
 };
 
@@ -26,6 +27,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Fils",
     minorPlural: "Fils",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   AFN: {
@@ -39,6 +41,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Pul",
     minorPlural: "Pul",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   ALL: {
@@ -52,6 +55,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Qindarka",
     minorPlural: "Qindarka",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   AMD: {
@@ -65,6 +69,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Luma",
     minorPlural: "Luma",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   AOA: {
@@ -78,6 +83,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centimo",
     minorPlural: "Centimos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   ARS: {
@@ -91,6 +97,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centavo",
     minorPlural: "Centavos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   AUD: {
@@ -104,6 +111,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   AWG: {
@@ -117,6 +125,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   AZN: {
@@ -130,6 +139,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Qapik",
     minorPlural: "Qapik",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   BAM: {
@@ -143,6 +153,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Fening",
     minorPlural: "Fening",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   BBD: {
@@ -156,6 +167,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   BDT: {
@@ -169,6 +181,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Poisha",
     minorPlural: "Poisha",
     decimals: 2,
+    decimalsCompact: 0,
     digitGrouping: 2,
   },
   BGN: {
@@ -182,6 +195,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Stotinka",
     minorPlural: "Stotinki",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   BHD: {
@@ -195,6 +209,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Fils",
     minorPlural: "Fils",
     decimals: 3,
+    decimalsCompact: 3,
     digitGrouping: 3,
   },
   BIF: {
@@ -208,6 +223,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centime",
     minorPlural: "Centimes",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   BMD: {
@@ -221,6 +237,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   BND: {
@@ -234,6 +251,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   BOB: {
@@ -247,6 +265,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centavo",
     minorPlural: "Centavos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   BRL: {
@@ -260,6 +279,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centavo",
     minorPlural: "Centavos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   BSD: {
@@ -273,6 +293,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   BTN: {
@@ -286,6 +307,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Chetrum",
     minorPlural: "Chetrums",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   BWP: {
@@ -299,6 +321,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Thebe",
     minorPlural: "Thebe",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   BYR: {
@@ -312,6 +335,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Kapeyka",
     minorPlural: "Kapeyka",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   BZD: {
@@ -325,6 +349,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   CAD: {
@@ -338,6 +363,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   CDF: {
@@ -351,6 +377,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centime",
     minorPlural: "Centimes",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   CHF: {
@@ -364,6 +391,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centime",
     minorPlural: "Centimes",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   CLP: {
@@ -377,6 +405,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centavo",
     minorPlural: "Centavos",
     decimals: 0,
+    decimalsCompact: 0,
     digitGrouping: 3,
   },
   CNY: {
@@ -390,6 +419,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Fen",
     minorPlural: "Fen",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   COP: {
@@ -403,6 +433,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centavo",
     minorPlural: "Centavos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   CRC: {
@@ -416,6 +447,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centimo",
     minorPlural: "Centimos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   CUP: {
@@ -429,6 +461,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centavo",
     minorPlural: "Centavos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   CVE: {
@@ -442,6 +475,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centavo",
     minorPlural: "Centavos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   CZK: {
@@ -455,6 +489,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Haléř",
     minorPlural: "Haléř",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   DJF: {
@@ -468,6 +503,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centime",
     minorPlural: "Centimes",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   DKK: {
@@ -481,6 +517,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Øre",
     minorPlural: "Øre",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   DOP: {
@@ -494,6 +531,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centavo",
     minorPlural: "Centavos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   DZD: {
@@ -507,6 +545,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Santeem",
     minorPlural: "Santeems",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   EGP: {
@@ -520,6 +559,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Qirsh",
     minorPlural: "Qirsh",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   ERN: {
@@ -533,6 +573,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   ETB: {
@@ -546,6 +587,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Santim",
     minorPlural: "Santim",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   EUR: {
@@ -559,6 +601,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   FJD: {
@@ -572,6 +615,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   FKP: {
@@ -585,6 +629,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Penny",
     minorPlural: "Pence",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   GBP: {
@@ -598,6 +643,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Penny",
     minorPlural: "Pence",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   GEL: {
@@ -611,6 +657,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Tetri",
     minorPlural: "Tetri",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   GHS: {
@@ -624,6 +671,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Pesewa",
     minorPlural: "Pesewas",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   GIP: {
@@ -637,6 +685,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Penny",
     minorPlural: "Pence",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   GMD: {
@@ -650,6 +699,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Butut",
     minorPlural: "Bututs",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   GNF: {
@@ -663,6 +713,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centime",
     minorPlural: "Centimes",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   GTQ: {
@@ -676,6 +727,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centavo",
     minorPlural: "Centavos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   GYD: {
@@ -689,6 +741,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   HKD: {
@@ -702,6 +755,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   HNL: {
@@ -715,6 +769,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centavo",
     minorPlural: "Centavos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   HRK: {
@@ -728,6 +783,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Lipa",
     minorPlural: "Lipa",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   HTG: {
@@ -741,6 +797,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centime",
     minorPlural: "Centimes",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   HUF: {
@@ -754,6 +811,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "fillér",
     minorPlural: "fillér",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   IDR: {
@@ -767,6 +825,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Sen",
     minorPlural: "Sen",
     decimals: 2,
+    decimalsCompact: 0,
     digitGrouping: 3,
   },
   ILS: {
@@ -780,6 +839,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Agora",
     minorPlural: "Agoras",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   INR: {
@@ -793,6 +853,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Paisa",
     minorPlural: "Paise",
     decimals: 2,
+    decimalsCompact: 0,
     digitGrouping: 2,
   },
   IQD: {
@@ -806,6 +867,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Fils",
     minorPlural: "Fils",
     decimals: 3,
+    decimalsCompact: 3,
     digitGrouping: 2,
   },
   IRR: {
@@ -819,6 +881,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Dinar",
     minorPlural: "Dinars",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   ISK: {
@@ -832,6 +895,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Aurar",
     minorPlural: "Aurar",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   JMD: {
@@ -845,6 +909,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   JOD: {
@@ -858,6 +923,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Fils",
     minorPlural: "Fils",
     decimals: 3,
+    decimalsCompact: 3,
     digitGrouping: 3,
   },
   JPY: {
@@ -871,6 +937,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Sen",
     minorPlural: "Sen",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   KES: {
@@ -884,6 +951,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   KGS: {
@@ -897,6 +965,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Tyiyn",
     minorPlural: "Tyiyn",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   KHR: {
@@ -910,6 +979,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Sen",
     minorPlural: "Sen",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   KMF: {
@@ -923,6 +993,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centime",
     minorPlural: "Centimes",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   KPW: {
@@ -936,6 +1007,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Chon",
     minorPlural: "Chon",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   KRW: {
@@ -949,6 +1021,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Jeon",
     minorPlural: "Jeon",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   KWD: {
@@ -962,6 +1035,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Fils",
     minorPlural: "Fils",
     decimals: 3,
+    decimalsCompact: 3,
     digitGrouping: 3,
   },
   KYD: {
@@ -975,6 +1049,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   KZT: {
@@ -988,6 +1063,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Tıyn",
     minorPlural: "Tıyn",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   LAK: {
@@ -1001,6 +1077,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Att",
     minorPlural: "Att",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   LBP: {
@@ -1014,6 +1091,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Qirsh",
     minorPlural: "Qirsh",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   LKR: {
@@ -1027,6 +1105,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 0,
     digitGrouping: 2,
   },
   LRD: {
@@ -1040,6 +1119,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   LSL: {
@@ -1053,6 +1133,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Sente",
     minorPlural: "Lisente",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   LTL: {
@@ -1066,6 +1147,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centas",
     minorPlural: "Centas",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   LYD: {
@@ -1079,6 +1161,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Dirham",
     minorPlural: "Dirhams",
     decimals: 3,
+    decimalsCompact: 3,
     digitGrouping: 3,
   },
   MAD: {
@@ -1092,6 +1175,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centime",
     minorPlural: "Centimes",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   MDL: {
@@ -1105,6 +1189,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Ban",
     minorPlural: "Bani",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   MGA: {
@@ -1118,6 +1203,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Iraimbilanja",
     minorPlural: "Iraimbilanja",
     decimals: 0,
+    decimalsCompact: 0,
     digitGrouping: 3,
   },
   MKD: {
@@ -1131,6 +1217,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Deni",
     minorPlural: "Deni",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   MMK: {
@@ -1144,6 +1231,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Pya",
     minorPlural: "Pya",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   MNT: {
@@ -1157,6 +1245,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "möngö",
     minorPlural: "möngö",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   MOP: {
@@ -1170,6 +1259,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Avo",
     minorPlural: "Avos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   MRO: {
@@ -1183,6 +1273,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Khoum",
     minorPlural: "Khoums",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   MUR: {
@@ -1196,6 +1287,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 0,
     digitGrouping: 3,
   },
   MVR: {
@@ -1209,6 +1301,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "laari",
     minorPlural: "laari",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   MWK: {
@@ -1222,6 +1315,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Tambala",
     minorPlural: "Tambala",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   MXN: {
@@ -1235,6 +1329,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centavo",
     minorPlural: "Centavos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   MYR: {
@@ -1248,6 +1343,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Sen",
     minorPlural: "Sen",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   MZN: {
@@ -1261,6 +1357,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centavo",
     minorPlural: "Centavos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   NAD: {
@@ -1274,6 +1371,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   NGN: {
@@ -1287,6 +1385,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Kobo",
     minorPlural: "Kobo",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   NIO: {
@@ -1300,6 +1399,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centavo",
     minorPlural: "Centavos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   NOK: {
@@ -1313,6 +1413,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "øre",
     minorPlural: "øre",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   NPR: {
@@ -1326,6 +1427,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Paisa",
     minorPlural: "Paise",
     decimals: 2,
+    decimalsCompact: 0,
     digitGrouping: 2,
   },
   NZD: {
@@ -1339,6 +1441,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   OMR: {
@@ -1352,6 +1455,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Baisa",
     minorPlural: "Baisa",
     decimals: 3,
+    decimalsCompact: 3,
     digitGrouping: 3,
   },
   PAB: {
@@ -1365,6 +1469,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centésimo",
     minorPlural: "Centésimos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   PEN: {
@@ -1378,6 +1483,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Céntimo",
     minorPlural: "Céntimos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   PGK: {
@@ -1391,6 +1497,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Toea",
     minorPlural: "Toea",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   PHP: {
@@ -1404,6 +1511,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Sentimo",
     minorPlural: "Sentimo",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   PKR: {
@@ -1417,6 +1525,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Paisa",
     minorPlural: "Paise",
     decimals: 2,
+    decimalsCompact: 0,
     digitGrouping: 2,
   },
   PLN: {
@@ -1430,6 +1539,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Grosz",
     minorPlural: "Groszy",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   PYG: {
@@ -1443,6 +1553,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centimo",
     minorPlural: "Centimos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   QAR: {
@@ -1456,6 +1567,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Dirham",
     minorPlural: "Dirhams",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   RON: {
@@ -1469,6 +1581,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Ban",
     minorPlural: "Bani",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   RSD: {
@@ -1482,6 +1595,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Para",
     minorPlural: "Para",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   RUB: {
@@ -1495,6 +1609,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Kopek",
     minorPlural: "Kopeks",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   RWF: {
@@ -1508,6 +1623,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centime",
     minorPlural: "Centimes",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   SAR: {
@@ -1521,6 +1637,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Halalah",
     minorPlural: "Halalahs",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   SBD: {
@@ -1534,6 +1651,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   SCR: {
@@ -1547,6 +1665,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   SDG: {
@@ -1560,6 +1679,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Qirsh",
     minorPlural: "Qirsh",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   SEK: {
@@ -1573,6 +1693,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Öre",
     minorPlural: "Öre",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   SGD: {
@@ -1586,6 +1707,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   SHP: {
@@ -1599,6 +1721,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Penny",
     minorPlural: "Pence",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   SLL: {
@@ -1612,6 +1735,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   SOS: {
@@ -1625,6 +1749,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Senti",
     minorPlural: "Senti",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   SRD: {
@@ -1638,6 +1763,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   SSP: {
@@ -1651,6 +1777,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Qirsh",
     minorPlural: "Qirsh",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   STD: {
@@ -1664,6 +1791,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Dobra",
     minorPlural: "Dobra",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   SYP: {
@@ -1677,6 +1805,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Qirsh",
     minorPlural: "Qirsh",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   SZL: {
@@ -1690,6 +1819,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   THB: {
@@ -1703,6 +1833,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Satang",
     minorPlural: "Satang",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   TJS: {
@@ -1716,6 +1847,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Diram",
     minorPlural: "Diram",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   TMT: {
@@ -1729,6 +1861,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Tenge",
     minorPlural: "Tenge",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   TND: {
@@ -1742,6 +1875,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Millime",
     minorPlural: "Millime",
     decimals: 3,
+    decimalsCompact: 3,
     digitGrouping: 3,
   },
   TOP: {
@@ -1755,6 +1889,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Seniti",
     minorPlural: "Seniti",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   TRY: {
@@ -1768,6 +1903,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Kuruş",
     minorPlural: "Kuruş",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   TTD: {
@@ -1781,6 +1917,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   TWD: {
@@ -1794,6 +1931,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   TZS: {
@@ -1807,6 +1945,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Senti",
     minorPlural: "Senti",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   UAH: {
@@ -1820,6 +1959,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Kopiyka",
     minorPlural: "kopiyky",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   UGX: {
@@ -1833,6 +1973,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   USD: {
@@ -1846,6 +1987,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   UYU: {
@@ -1859,6 +2001,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centésimo",
     minorPlural: "Centésimos",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   UZS: {
@@ -1872,6 +2015,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Tiyin",
     minorPlural: "Tiyin",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   VEF: {
@@ -1885,6 +2029,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "céntimo",
     minorPlural: "céntimo",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   VND: {
@@ -1898,6 +2043,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Hào",
     minorPlural: "Hào",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   VUV: {
@@ -1911,6 +2057,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "",
     minorPlural: "",
     decimals: 0,
+    decimalsCompact: 0,
     digitGrouping: 3,
   },
   WST: {
@@ -1924,6 +2071,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Sene",
     minorPlural: "Sene",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   XAF: {
@@ -1937,6 +2085,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centime",
     minorPlural: "Centimes",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   XCD: {
@@ -1950,6 +2099,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   XOF: {
@@ -1963,6 +2113,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centime",
     minorPlural: "Centimes",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   XPF: {
@@ -1976,6 +2127,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Centime",
     minorPlural: "Centimes",
     decimals: 0,
+    decimalsCompact: 0,
     digitGrouping: 3,
   },
   YER: {
@@ -1989,6 +2141,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Fils",
     minorPlural: "Fils",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   ZAR: {
@@ -2002,6 +2155,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   ZMK: {
@@ -2015,6 +2169,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Ngwee",
     minorPlural: "Ngwee",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
   ZWL: {
@@ -2028,6 +2183,7 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
     minorSingle: "Cent",
     minorPlural: "Cents",
     decimals: 2,
+    decimalsCompact: 2,
     digitGrouping: 3,
   },
 };

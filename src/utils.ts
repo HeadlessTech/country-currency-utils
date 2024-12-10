@@ -14,38 +14,48 @@ export function getCurrencyDetails(currencyCode: TCurrencyCode): TCurrencyData {
   return CURRENCIES_MAP[currencyCode];
 }
 
-function getRoundedAmountBasic(
-  amount: number,
-  decimals: number,
-  isRoundUp = false
-) {
-  const factor = Math.pow(10, decimals);
-
-  return isRoundUp
-    ? Math.ceil(amount * factor) / factor
-    : Math.round(amount * factor) / factor;
-}
+/* ======== Amount rounding ========= */
 
 export function getRoundedAmount(
   amount: number,
-  currencyCode: TCurrencyCode,
-  isRoundUp = false
-): number {
-  const currencyDetails = getCurrencyDetails(currencyCode);
-  const { decimals } = currencyDetails;
+  decimals: number,
+  isRoundMiddle = false
+) {
+  const factor = Math.pow(10, decimals);
+  const multipliedAmount = amount * factor;
 
-  return getRoundedAmountBasic(amount, decimals, isRoundUp);
+  return isRoundMiddle
+    ? Math.round(multipliedAmount) / factor
+    : Math.ceil(multipliedAmount) / factor;
 }
 
-function getFormattedAmountBasic(
-  amount: number,
-  decimals: number,
-  digitGrouping: number,
-  isRoundUp = false
-) {
-  const roundedAmount = getRoundedAmountBasic(amount, decimals, isRoundUp);
+export type TCurrencyRoundOptions = {
+  isRoundMiddle?: boolean;
+  isDecimalsStandard?: boolean;
+};
 
-  let amountStr = roundedAmount.toString();
+export function getRoundedAmountOnCurrency(
+  amount: number,
+  currencyCode: TCurrencyCode,
+  options?: TCurrencyRoundOptions
+): number {
+  const currencyDetails = getCurrencyDetails(currencyCode);
+  const { decimals, decimalsCompact } = currencyDetails;
+  const { isRoundMiddle, isDecimalsStandard } = options || {};
+
+  const decimalsFinal = isDecimalsStandard ? decimals : decimalsCompact;
+
+  return getRoundedAmount(amount, decimalsFinal, isRoundMiddle);
+}
+
+/* ======== Amount formatting ========= */
+
+export function getFormattedAmount(
+  amount: number,
+  digitGrouping: number,
+  fixedDecimals?: number
+) {
+  let amountStr = amount.toString();
   let [integerPart, decimalPart] = amountStr.split(".");
 
   if (digitGrouping === 2) {
@@ -59,57 +69,97 @@ function getFormattedAmountBasic(
     integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  if (fixedDecimals && fixedDecimals > 0) {
+    if (decimalPart?.length > fixedDecimals) {
+      decimalPart = decimalPart.substring(0, fixedDecimals);
+    } else if (!decimalPart || decimalPart.length < fixedDecimals) {
+      decimalPart =
+        (decimalPart || "") +
+        Array(fixedDecimals - (decimalPart?.length || 0) + 1).join("0");
+    }
+  }
+
   return decimalPart ? integerPart + "." + decimalPart : integerPart;
 }
 
-export function getFormattedAmount(
+export type TCurrencyFormatOptions = TCurrencyRoundOptions & {
+  avoidRound?: boolean;
+  avoidFixedDecimals?: boolean;
+};
+
+export function getFormattedAmountOnCurrency(
   amount: number,
   currencyCode: TCurrencyCode,
-  isRoundUp = false
+  options?: TCurrencyFormatOptions
 ): string {
   const currencyDetails = getCurrencyDetails(currencyCode);
-  const { decimals, digitGrouping } = currencyDetails;
+  const { decimals, decimalsCompact, digitGrouping } = currencyDetails;
+  const { isRoundMiddle, isDecimalsStandard, avoidRound, avoidFixedDecimals } =
+    options || {};
 
-  return getFormattedAmountBasic(amount, decimals, digitGrouping, isRoundUp);
+  const decimalsFinal = isDecimalsStandard ? decimals : decimalsCompact;
+
+  amount = avoidRound
+    ? amount
+    : getRoundedAmount(amount, decimalsFinal, isRoundMiddle);
+
+  return getFormattedAmount(
+    amount,
+    digitGrouping,
+    avoidFixedDecimals ? undefined : decimalsFinal
+  );
 }
 
-export function getDisplayAmount(
+/* ======== Amount display ======== */
+
+export type TCurrencyDisplayOptions = TCurrencyFormatOptions & {
+  avoidFormat?: boolean;
+  isSymbolStandard?: boolean;
+  isSymbolNative?: boolean;
+  separator?: string;
+};
+
+export function getDisplayAmountOnCurrency(
   amount: number,
   currencyCode: TCurrencyCode,
-  isRoundUp = false
+  options?: TCurrencyDisplayOptions
 ): string {
   const currencyDetails = getCurrencyDetails(currencyCode);
-  const { decimals, digitGrouping, symbolPreferred } = currencyDetails;
-
-  const formattedAmount = getFormattedAmountBasic(
-    amount,
+  const {
     decimals,
+    decimalsCompact,
     digitGrouping,
-    isRoundUp
-  );
+    symbolPreferred,
+    symbolNative,
+    symbol,
+  } = currencyDetails;
+  const {
+    avoidRound,
+    isRoundMiddle,
+    isDecimalsStandard,
+    avoidFormat,
+    isSymbolNative,
+    isSymbolStandard,
+    separator,
+  } = options || {};
 
-  return symbolPreferred + " " + formattedAmount;
-}
+  const decimalsFinal = isDecimalsStandard ? decimals : decimalsCompact;
 
-export type TSymbolType = "standard" | "native";
+  amount = avoidRound
+    ? amount
+    : getRoundedAmount(amount, decimalsFinal, isRoundMiddle);
 
-export function getDisplayAmountWithSymbol(
-  amount: number,
-  currencyCode: TCurrencyCode,
-  isRoundUp = false,
-  symbolType: TSymbolType
-): string {
-  const currencyDetails = getCurrencyDetails(currencyCode);
-  const { decimals, digitGrouping, symbol, symbolNative } = currencyDetails;
-
-  const formattedAmount = getFormattedAmountBasic(
-    amount,
-    decimals,
-    digitGrouping,
-    isRoundUp
-  );
+  const formattedAmount = avoidFormat
+    ? amount
+    : getFormattedAmount(amount, digitGrouping, decimalsFinal);
 
   return (
-    (symbolType === "standard" ? symbol : symbolNative) + " " + formattedAmount
+    (isSymbolStandard
+      ? symbol
+      : isSymbolNative
+      ? symbolNative
+      : symbolPreferred) +
+    (separator || " ") +
+    formattedAmount
   );
 }
