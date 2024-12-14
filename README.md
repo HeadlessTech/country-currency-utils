@@ -223,7 +223,7 @@ All data and functions have been tested using Jest.
 
 ## License
 
-This project is licensed under the MIT License
+This project is licensed under the IS License
 
 ## Developed By
 
