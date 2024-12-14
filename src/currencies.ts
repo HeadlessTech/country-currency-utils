@@ -2201,9 +2201,9 @@ export type TCurrencyData = TCurrencyDetails & {
   currencyCode: TCurrencyCode;
 };
 
-export const CURRENCIES_DATA: TCurrencyData[] = currencyCodesFromDetails
-  .map((currencyCodeFromMap) => ({
+export const CURRENCIES_DATA: TCurrencyData[] = currencyCodesFromDetails.map(
+  (currencyCodeFromMap) => ({
     currencyCode: currencyCodeFromMap,
     ...CURRENCIES_DETAILS[currencyCodeFromMap],
-  }))
-  .sort((a, b) => a.currencyCode.localeCompare(b.currencyCode));
+  })
+);

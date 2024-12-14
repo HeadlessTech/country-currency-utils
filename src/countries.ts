@@ -1466,15 +1466,15 @@ export type TCountryData = TCountryDetails & {
   countryCode: TCountryCode;
 };
 
-export const COUNTRIES_DATA: TCountryData[] = countryCodes
-  .map((countryCode: TCountryCode) => ({
+export const COUNTRIES_DATA: TCountryData[] = countryCodes.map(
+  (countryCode: TCountryCode) => ({
     countryCode,
     name: COUNTRIES_DETAILS[countryCode].name as string,
     dialCode: COUNTRIES_DETAILS[countryCode].dialCode as TDialCode,
     currencyCode: COUNTRIES_DETAILS[countryCode].currencyCode as TCurrencyCode,
     flagEmoji: COUNTRIES_DETAILS[countryCode].flagEmoji as string,
-  }))
-  .sort((a, b) => a.name.localeCompare(b.name));
+  })
+);
 
 export const countryNames = COUNTRIES_DATA.map((c) => c.name) as string[];
 export const dialCodes = COUNTRIES_DATA.map((c) => c.dialCode) as TDialCode[];
