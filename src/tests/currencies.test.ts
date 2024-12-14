@@ -1,7 +1,6 @@
 import { COUNTRIES_DATA, currencyCodes } from "../countries";
-import { CURRENCIES_DATA, CURRENCIES_MAP } from "../currencies";
+import { CURRENCIES_MAP } from "../currencies";
 import {
-  getCurrencyDetails,
   getDisplayAmountOnCurrency,
   getFormattedAmount,
   getFormattedAmountOnCurrency,
