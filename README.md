@@ -8,7 +8,11 @@ To install the package, run:
 
 ```bash
 npm install country-currency-utils
+```
+
 or
+
+```bash
 yarn add country-currency-utils
 ```
 
@@ -22,7 +26,7 @@ import {
 } from "country-currency-utils";
 ```
 
-**Some type references:**
+**Type references:**
 
 ```typescript
 type TCountryDetails = {
@@ -215,7 +219,7 @@ All data and functions have been tested using Jest.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License
 
 ## Developed By
 
