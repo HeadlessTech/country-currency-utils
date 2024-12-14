@@ -138,6 +138,7 @@ export function getDisplayAmountOnCurrency(
     isRoundMiddle,
     isDecimalsStandard,
     avoidFormat,
+    avoidFixedDecimals,
     isSymbolNative,
     isSymbolStandard,
     separator,
@@ -151,7 +152,11 @@ export function getDisplayAmountOnCurrency(
 
   const formattedAmount = avoidFormat
     ? amount
-    : getFormattedAmount(amount, digitGrouping, decimalsFinal);
+    : getFormattedAmount(
+        amount,
+        digitGrouping,
+        avoidFixedDecimals ? undefined : decimalsFinal
+      );
 
   return (
     (isSymbolStandard
@@ -159,7 +164,7 @@ export function getDisplayAmountOnCurrency(
       : isSymbolNative
       ? symbolNative
       : symbolPreferred) +
-    (separator || " ") +
+    (separator !== undefined ? separator : " ") +
     formattedAmount
   );
 }

@@ -2,6 +2,7 @@ import { COUNTRIES_DATA, currencyCodes } from "../countries";
 import { CURRENCIES_DATA, CURRENCIES_MAP } from "../currencies";
 import {
   getCurrencyDetails,
+  getDisplayAmountOnCurrency,
   getFormattedAmount,
   getFormattedAmountOnCurrency,
   getRoundedAmount,
@@ -189,4 +190,57 @@ test("Test amount formatting on currency", () => {
       isDecimalsStandard: true,
     })
   ).toBe("1.12");
+});
+
+/*
+  Display amount on currency
+*/
+test("Test amount display on currency", () => {
+  // USD
+  expect(getDisplayAmountOnCurrency(1.123, "USD")).toBe("$ 1.13");
+  expect(getDisplayAmountOnCurrency(1234.12, "USD")).toBe("$ 1,234.12");
+  expect(
+    getDisplayAmountOnCurrency(1234.12, "USD", { avoidFormat: true })
+  ).toBe("$ 1234.12");
+  expect(
+    getDisplayAmountOnCurrency(1234.1234, "USD", {
+      avoidFormat: true,
+      avoidRound: true,
+    })
+  ).toBe("$ 1234.1234");
+  expect(getDisplayAmountOnCurrency(1234.1, "USD")).toBe("$ 1,234.10");
+  expect(
+    getDisplayAmountOnCurrency(1234.1, "USD", { avoidFixedDecimals: true })
+  ).toBe("$ 1,234.1");
+  expect(
+    getDisplayAmountOnCurrency(1234.1, "USD", {
+      avoidFormat: true,
+      avoidFixedDecimals: true,
+    })
+  ).toBe("$ 1234.1");
+
+  // BDT
+  expect(getDisplayAmountOnCurrency(1.123, "BDT")).toBe("Tk 2");
+  expect(
+    getDisplayAmountOnCurrency(1.123, "BDT", { isDecimalsStandard: true })
+  ).toBe("Tk 1.13");
+  expect(
+    getDisplayAmountOnCurrency(1.123, "BDT", { isSymbolNative: true })
+  ).toBe("Tk 2");
+  expect(
+    getDisplayAmountOnCurrency(1.123, "BDT", { isSymbolStandard: true })
+  ).toBe("৳ 2");
+
+  expect(
+    getDisplayAmountOnCurrency(1123, "BDT", { isSymbolStandard: true })
+  ).toBe("৳ 1,123");
+  expect(getDisplayAmountOnCurrency(1123, "BDT", { separator: "" })).toBe(
+    "Tk1,123"
+  );
+  expect(
+    getDisplayAmountOnCurrency(1123, "BDT", {
+      separator: "-",
+      avoidFormat: true,
+    })
+  ).toBe("Tk-1123");
 });

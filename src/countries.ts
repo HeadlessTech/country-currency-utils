@@ -378,7 +378,7 @@ export const COUNTRIES_MAP = {
     flagEmoji: "🇵🇷",
   },
   PS: {
-    name: "Palestinian Territory, Occupied",
+    name: "Palestine",
     dialCode: "+970" as const,
     currencyCode: "ILS" as const,
     flagEmoji: "🇵🇸",
