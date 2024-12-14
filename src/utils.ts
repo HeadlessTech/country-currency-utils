@@ -1,16 +1,20 @@
 import {
   COUNTRIES_MAP,
   TCountryCode,
-  TCountryData,
+  TCountryDetailsData,
   TCurrencyCode,
 } from "./countries";
-import { CURRENCIES_MAP, TCurrencyData } from "./currencies";
+import { CURRENCIES_MAP, TCurrencyDetailsData } from "./currencies";
 
-export function getCountryDetails(countryCode: TCountryCode): TCountryData {
+export function getCountryDetails(
+  countryCode: TCountryCode
+): TCountryDetailsData {
   return COUNTRIES_MAP[countryCode];
 }
 
-export function getCurrencyDetails(currencyCode: TCurrencyCode): TCurrencyData {
+export function getCurrencyDetails(
+  currencyCode: TCurrencyCode
+): TCurrencyDetailsData {
   return CURRENCIES_MAP[currencyCode];
 }
 

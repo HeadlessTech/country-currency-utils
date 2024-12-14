@@ -1,6 +1,6 @@
 import { TCurrencyCode } from "./countries";
 
-export type TCurrencyData = {
+export type TCurrencyDetailsData = {
   name: string;
   demonym: string;
   majorSingle: string;
@@ -15,7 +15,7 @@ export type TCurrencyData = {
   digitGrouping: 2 | 3;
 };
 
-export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
+export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyDetailsData> = {
   AED: {
     name: "United Arab Emirates Dirham",
     demonym: "UAE",
@@ -2189,6 +2189,10 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyData> = {
 };
 
 const currencyCodesFromMap = Object.keys(CURRENCIES_MAP) as TCurrencyCode[];
+
+export type TCurrencyData = TCurrencyDetailsData & {
+  currencyCode: TCurrencyCode;
+};
 
 export const CURRENCIES_DATA = currencyCodesFromMap
   .map((currencyCodeFromMap) => ({

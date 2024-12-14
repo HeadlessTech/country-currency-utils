@@ -1454,6 +1454,17 @@ export type TCurrencyCode =
 
 const countryCodes = Object.keys(COUNTRIES_MAP) as TCountryCode[];
 
+export type TCountryDetailsData = {
+  name: string;
+  dialCode: TDialCode;
+  currencyCode: TCurrencyCode;
+  flagEmoji: string;
+};
+
+export type TCountryData = TCountryDetailsData & {
+  countryCode: TCountryCode;
+};
+
 export const COUNTRIES_DATA: {
   countryCode: TCountryCode;
   name: string;
@@ -1476,10 +1487,3 @@ export const currencyCodes = COUNTRIES_DATA.map(
   (c) => c.currencyCode
 ) as TCurrencyCode[];
 export const countryFlags = COUNTRIES_DATA.map((c) => c.flagEmoji) as string[];
-
-export type TCountryData = {
-  name: string;
-  dialCode: TDialCode;
-  currencyCode: TCurrencyCode;
-  flagEmoji: string;
-};
