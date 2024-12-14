@@ -32,5 +32,22 @@
     "ts-jest": "^29.2.5",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2"
-  }
+  },
+  "keywords": [
+    "countries",
+    "currencies",
+    "money",
+    "monetory amounts",
+    "formatting monetory amounts",
+    "currency utilities",
+    "typescript",
+    "library",
+    "nodejs",
+    "browser",
+    "deno"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HeadlessTech/country-currency-utils.git"
+  },
 }
