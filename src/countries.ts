@@ -1,4 +1,4 @@
-export const COUNTRIES_MAP = {
+export const COUNTRIES_DETAILS = {
   BD: {
     name: "Bangladesh",
     dialCode: "+880" as const,
@@ -1447,21 +1447,21 @@ export const COUNTRIES_MAP = {
   },
 };
 
-export type TCountryCode = keyof typeof COUNTRIES_MAP;
-export type TDialCode = (typeof COUNTRIES_MAP)[TCountryCode]["dialCode"];
+export type TCountryCode = keyof typeof COUNTRIES_DETAILS;
+export type TDialCode = (typeof COUNTRIES_DETAILS)[TCountryCode]["dialCode"];
 export type TCurrencyCode =
-  (typeof COUNTRIES_MAP)[TCountryCode]["currencyCode"];
+  (typeof COUNTRIES_DETAILS)[TCountryCode]["currencyCode"];
 
-const countryCodes = Object.keys(COUNTRIES_MAP) as TCountryCode[];
+const countryCodes = Object.keys(COUNTRIES_DETAILS) as TCountryCode[];
 
-export type TCountryDetailsData = {
+export type TCountryDetails = {
   name: string;
   dialCode: TDialCode;
   currencyCode: TCurrencyCode;
   flagEmoji: string;
 };
 
-export type TCountryData = TCountryDetailsData & {
+export type TCountryData = TCountryDetails & {
   countryCode: TCountryCode;
 };
 
@@ -1474,10 +1474,10 @@ export const COUNTRIES_DATA: {
 }[] = countryCodes
   .map((countryCode: TCountryCode) => ({
     countryCode,
-    name: COUNTRIES_MAP[countryCode].name as string,
-    dialCode: COUNTRIES_MAP[countryCode].dialCode as TDialCode,
-    currencyCode: COUNTRIES_MAP[countryCode].currencyCode as TCurrencyCode,
-    flagEmoji: COUNTRIES_MAP[countryCode].flagEmoji as string,
+    name: COUNTRIES_DETAILS[countryCode].name as string,
+    dialCode: COUNTRIES_DETAILS[countryCode].dialCode as TDialCode,
+    currencyCode: COUNTRIES_DETAILS[countryCode].currencyCode as TCurrencyCode,
+    flagEmoji: COUNTRIES_DETAILS[countryCode].flagEmoji as string,
   }))
   .sort((a, b) => a.name.localeCompare(b.name));
 

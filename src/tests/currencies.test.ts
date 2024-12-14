@@ -1,5 +1,5 @@
 import { COUNTRIES_DATA, currencyCodes } from "../countries";
-import { CURRENCIES_MAP } from "../currencies";
+import { CURRENCIES_DETAILS } from "../currencies";
 import {
   getDisplayAmountOnCurrency,
   getFormattedAmount,
@@ -15,7 +15,7 @@ import {
 test("country to currency match", () => {
   const leftOutCurrencies: string[] = [];
   currencyCodes.forEach((currencyCode) => {
-    if (!CURRENCIES_MAP[currencyCode]) leftOutCurrencies.push(currencyCode);
+    if (!CURRENCIES_DETAILS[currencyCode]) leftOutCurrencies.push(currencyCode);
   });
   expect(leftOutCurrencies.length).toBe(0);
 });
@@ -26,7 +26,7 @@ test("country to currency match", () => {
 */
 test("country to currency match", () => {
   const extraCurrencies: string[] = [];
-  const currencies = Object.keys(CURRENCIES_MAP);
+  const currencies = Object.keys(CURRENCIES_DETAILS);
 
   currencies.forEach((currency) => {
     if (

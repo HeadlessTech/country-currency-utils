@@ -1,6 +1,6 @@
 export {
   COUNTRIES_DATA,
-  COUNTRIES_MAP,
+  COUNTRIES_DETAILS,
   countryNames,
   currencyCodes,
   dialCodes,
@@ -10,7 +10,11 @@ export {
   TCurrencyCode,
   TDialCode,
 } from "./countries";
-export { CURRENCIES_DATA, CURRENCIES_MAP, TCurrencyData } from "./currencies";
+export {
+  CURRENCIES_DATA,
+  CURRENCIES_DETAILS,
+  TCurrencyData,
+} from "./currencies";
 export {
   getCountryDetails,
   getCurrencyDetails,

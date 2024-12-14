@@ -1,21 +1,19 @@
 import {
-  COUNTRIES_MAP,
+  COUNTRIES_DETAILS,
   TCountryCode,
-  TCountryDetailsData,
+  TCountryDetails,
   TCurrencyCode,
 } from "./countries";
-import { CURRENCIES_MAP, TCurrencyDetailsData } from "./currencies";
+import { CURRENCIES_DETAILS, TCurrencyDetails } from "./currencies";
 
-export function getCountryDetails(
-  countryCode: TCountryCode
-): TCountryDetailsData {
-  return COUNTRIES_MAP[countryCode];
+export function getCountryDetails(countryCode: TCountryCode): TCountryDetails {
+  return COUNTRIES_DETAILS[countryCode];
 }
 
 export function getCurrencyDetails(
   currencyCode: TCurrencyCode
-): TCurrencyDetailsData {
-  return CURRENCIES_MAP[currencyCode];
+): TCurrencyDetails {
+  return CURRENCIES_DETAILS[currencyCode];
 }
 
 /* ======== Amount rounding ========= */

@@ -1,6 +1,6 @@
 import { TCurrencyCode } from "./countries";
 
-export type TCurrencyDetailsData = {
+export type TCurrencyDetails = {
   name: string;
   demonym: string;
   majorSingle: string;
@@ -15,7 +15,7 @@ export type TCurrencyDetailsData = {
   digitGrouping: 2 | 3;
 };
 
-export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyDetailsData> = {
+export const CURRENCIES_DETAILS: Record<TCurrencyCode, TCurrencyDetails> = {
   AED: {
     name: "United Arab Emirates Dirham",
     demonym: "UAE",
@@ -2188,15 +2188,15 @@ export const CURRENCIES_MAP: Record<TCurrencyCode, TCurrencyDetailsData> = {
   },
 };
 
-const currencyCodesFromMap = Object.keys(CURRENCIES_MAP) as TCurrencyCode[];
+const currencyCodesFromMap = Object.keys(CURRENCIES_DETAILS) as TCurrencyCode[];
 
-export type TCurrencyData = TCurrencyDetailsData & {
+export type TCurrencyData = TCurrencyDetails & {
   currencyCode: TCurrencyCode;
 };
 
 export const CURRENCIES_DATA = currencyCodesFromMap
   .map((currencyCodeFromMap) => ({
     currencyCode: currencyCodeFromMap,
-    ...CURRENCIES_MAP[currencyCodeFromMap],
+    ...CURRENCIES_DETAILS[currencyCodeFromMap],
   }))
   .sort((a, b) => a.currencyCode.localeCompare(b.currencyCode));
