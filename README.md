@@ -122,14 +122,18 @@ getRoundedAmount(amount: number, decimals: number, isRoundMiddle?: boolean): num
 
 The default behavior is to `ceil` the amount to the specified decimal places. This is because we want to maximize the monetory amount. However, use the `isRoundMiddle` param to use actual `rounding`
 
-**Example:**
+_Example:_
 
 ```typescript
 const roundedAmount = getRoundedAmount(123.4517, 2); // 123.46
 const roundedAmount = getRoundedAmount(123.4517, 2, true); // 123.45
 ```
 
-`getRoundedAmountOnCurrency(amount: number, currencyCode: TCurrencyCode, options?: TCurrencyRoundOptions): number`
+**getRoundedAmountOnCurrency**
+
+```typescript
+getRoundedAmountOnCurrency(amount: number, currencyCode: TCurrencyCode, options?: TCurrencyRoundOptions): number
+```
 
 ```typescript
 type TCurrencyRoundOptions = {
@@ -140,7 +144,7 @@ type TCurrencyRoundOptions = {
 
 This uses the `getRoundedAmount` function internally to round on details of a currency code. Default behavior is to use the `decimalsContact` decimal places, but this can be overridden using `isDecimalsStandard`
 
-**Example:**
+_Example:_
 
 ```typescript
 const roundedAmount = getRoundedAmountOnCurrency(123.4567, "USD"); // 123.46
@@ -150,11 +154,15 @@ const roundedAmount = getRoundedAmountOnCurrency(123.45, "BDT", {
 }); // 123.45
 ```
 
-`getFormattedAmount(amount: number, digitGrouping: number, fixedDecimals?: number): string`
+**getFormattedAmount**
+
+```typescript
+getFormattedAmount(amount: number, digitGrouping: number, fixedDecimals?: number): string
+```
 
 Returns a string with comma separated amount. `digitGrouping` maybe 2 or 3. `fixedDecimals` pads the decimal places with 0s or truncates (does not round) extra decimal places.
 
-**Example:**
+_Example:_
 
 ```typescript
 const formattedAmount = getFormattedAmount(123456.7, 2); // "1,23,456.7"
@@ -163,7 +171,11 @@ const formattedAmount = getFormattedAmount(123456.7, 2, 2); // "1,23,456.70"
 const formattedAmount = getFormattedAmount(123456.789, 3, 2); // "123,456.78"
 ```
 
-`getFormattedAmountOnCurrency(amount: number, currencyCode: TCurrencyCode, options?: TCurrencyFormatOptions): string`
+**getFormattedAmountOnCurrency**
+
+```typescript
+getFormattedAmountOnCurrency(amount: number, currencyCode: TCurrencyCode, options?: TCurrencyFormatOptions): string
+```
 
 ```typescript
 type TCurrencyFormatOptions = TCurrencyRoundOptions & {
@@ -174,7 +186,7 @@ type TCurrencyFormatOptions = TCurrencyRoundOptions & {
 
 Formats the given amount according to the currency's standard decimal places and digit grouping and returns it as a string. The function by default rounds the number and formats on the currency definitions. The options inherits from rounding options. `avoidRound` avoids rounding the amount. `avoidFixedDecimals` avoids using fixed decimals defined from currency.
 
-**Example:**
+_Example:_
 
 ```typescript
 const formattedAmount = getFormattedAmountOnCurrency(123456.7, "USD"); // "123,456.70"
@@ -187,7 +199,11 @@ const formattedAmount = getFormattedAmountOnCurrency(123456.7, "BDT", {
 }); // "1,23,456.7"
 ```
 
-`getDisplayAmountOnCurrency(amount: number, currencyCode: TCurrencyCode, options?: TCurrencyFormatOptions): string`
+**getDisplayAmountOnCurrency**
+
+```typescript
+getDisplayAmountOnCurrency(amount: number, currencyCode: TCurrencyCode, options?: TCurrencyFormatOptions): string
+```
 
 ```typescript
 type TCurrencyDisplayOptions = TCurrencyFormatOptions & {
@@ -200,7 +216,7 @@ type TCurrencyDisplayOptions = TCurrencyFormatOptions & {
 
 Returns a displayable amount with currency symbol, rounded by default and uses proper digit grouping on currency. `avoidFormat` avoid formatting. `isSymbolStandard` and `isSymbolNative` defined the symbol to use, default is to use `preferredSymbol`. `separator` can be used define separator string between symbol and amount. The function inherits options for rounding and formatting
 
-**Example:**
+_Example:_
 
 ```typescript
 const displayAmount = getDisplayAmountOnCurrency(123.4567, "USD"); // "$ 123.46"
