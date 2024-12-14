@@ -21,7 +21,7 @@ export function getCurrencyDetails(
 export function getRoundedAmount(
   amount: number,
   decimals: number,
-  isRoundMiddle = false
+  isRoundMiddle = false // Rounds with rounding instead of ceil
 ) {
   const factor = Math.pow(10, decimals);
   const multipliedAmount = amount * factor;
@@ -32,8 +32,8 @@ export function getRoundedAmount(
 }
 
 export type TCurrencyRoundOptions = {
-  isRoundMiddle?: boolean;
-  isDecimalsStandard?: boolean;
+  isRoundMiddle?: boolean; // Default behavior is Math.ceil, isRoundMiddle rounds with Math.round
+  isDecimalsStandard?: boolean; // Default behavior is to use compact decimals, isDecimalsStandard uses standard decimals
 };
 
 export function getRoundedAmountOnCurrency(
@@ -54,8 +54,8 @@ export function getRoundedAmountOnCurrency(
 
 export function getFormattedAmount(
   amount: number,
-  digitGrouping: number,
-  fixedDecimals?: number
+  digitGrouping: number, // Digit grouping - 2 or 3, for formatting
+  fixedDecimals?: number // Adds 0s decimal padding or truncate extra decimal points
 ) {
   let amountStr = amount.toString();
   let [integerPart, decimalPart] = amountStr.split(".");
@@ -85,8 +85,8 @@ export function getFormattedAmount(
 }
 
 export type TCurrencyFormatOptions = TCurrencyRoundOptions & {
-  avoidRound?: boolean;
-  avoidFixedDecimals?: boolean;
+  avoidRound?: boolean; // avoids rounding amount
+  avoidFixedDecimals?: boolean; // default behavior is to have fixed decimals
 };
 
 export function getFormattedAmountOnCurrency(
@@ -115,10 +115,10 @@ export function getFormattedAmountOnCurrency(
 /* ======== Amount display ======== */
 
 export type TCurrencyDisplayOptions = TCurrencyFormatOptions & {
-  avoidFormat?: boolean;
-  isSymbolStandard?: boolean;
-  isSymbolNative?: boolean;
-  separator?: string;
+  avoidFormat?: boolean; // Default behavior is to format amount
+  isSymbolStandard?: boolean; // Default behavior is to use preferred symbol, isSymbolStandard uses standard symbol
+  isSymbolNative?: boolean; // Default behavior is to use preferred symbol, isSymbolNative uses native symbol
+  separator?: string; // Default separator is space between symbol and amount, can be changed to any string
 };
 
 export function getDisplayAmountOnCurrency(

@@ -1,18 +1,22 @@
 import { TCurrencyCode } from "./countries";
 
+/*
+  Currency details
+  Includes all data related to a currency
+*/
 export type TCurrencyDetails = {
-  name: string;
-  demonym: string;
-  majorSingle: string;
-  majorPlural: string;
-  symbol: string;
-  symbolNative: string;
-  symbolPreferred: string;
-  minorSingle: string;
-  minorPlural: string;
-  decimals: number;
-  decimalsCompact: number;
-  digitGrouping: 2 | 3;
+  name: string; // Currency name
+  demonym: string; // Currency demonym
+  majorSingle: string; // Major unit name in singular form (e.g. Dollar)
+  majorPlural: string; // Major unit name in plural form (e.g. Dollars)
+  symbol: string; // Currency symbol (e.g. $, CA$)
+  symbolNative: string; // Currency symbol in native language (e.g. $)
+  symbolPreferred: string; // preferred currency symbol, used for display
+  minorSingle: string; // Minor unit name in singular form (e.g. Cent)
+  minorPlural: string; // Minor unit name in plural form (e.g. Cents)
+  decimals: number; // Number of decimal places, used for standard display
+  decimalsCompact: number; // Number of decimal places, used for compact display
+  digitGrouping: 2 | 3; // Digit grouping for formatting (e.g. 2 for 1,00,000, 3 for 100,000)
 };
 
 export const CURRENCIES_DETAILS: Record<TCurrencyCode, TCurrencyDetails> = {
@@ -2188,13 +2192,16 @@ export const CURRENCIES_DETAILS: Record<TCurrencyCode, TCurrencyDetails> = {
   },
 };
 
-const currencyCodesFromMap = Object.keys(CURRENCIES_DETAILS) as TCurrencyCode[];
+const currencyCodesFromDetails = Object.keys(
+  CURRENCIES_DETAILS
+) as TCurrencyCode[];
 
+// Currency data with currency code
 export type TCurrencyData = TCurrencyDetails & {
   currencyCode: TCurrencyCode;
 };
 
-export const CURRENCIES_DATA = currencyCodesFromMap
+export const CURRENCIES_DATA: TCurrencyData[] = currencyCodesFromDetails
   .map((currencyCodeFromMap) => ({
     currencyCode: currencyCodeFromMap,
     ...CURRENCIES_DETAILS[currencyCodeFromMap],

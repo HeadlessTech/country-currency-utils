@@ -1455,23 +1455,18 @@ export type TCurrencyCode =
 const countryCodes = Object.keys(COUNTRIES_DETAILS) as TCountryCode[];
 
 export type TCountryDetails = {
-  name: string;
-  dialCode: TDialCode;
-  currencyCode: TCurrencyCode;
-  flagEmoji: string;
+  name: string; // Country name
+  dialCode: TDialCode; // Country dial code
+  currencyCode: TCurrencyCode; // Country currency code
+  flagEmoji: string; // Country flag emoji
 };
 
+// Country data with country code
 export type TCountryData = TCountryDetails & {
   countryCode: TCountryCode;
 };
 
-export const COUNTRIES_DATA: {
-  countryCode: TCountryCode;
-  name: string;
-  dialCode: TDialCode;
-  currencyCode: TCurrencyCode;
-  flagEmoji: string;
-}[] = countryCodes
+export const COUNTRIES_DATA: TCountryData[] = countryCodes
   .map((countryCode: TCountryCode) => ({
     countryCode,
     name: COUNTRIES_DETAILS[countryCode].name as string,
