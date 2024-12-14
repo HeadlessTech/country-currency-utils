@@ -91,6 +91,11 @@ test("Test amount rounding on currency", () => {
       isDecimalsStandard: true,
     })
   ).toBe(1.12);
+  expect(
+    getFormattedAmountOnCurrency(123456.7, "BDT", {
+      avoidRound: true,
+    })
+  ).toBe("1,23,456.7");
 });
 
 /*

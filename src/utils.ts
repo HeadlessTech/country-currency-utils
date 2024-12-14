@@ -54,7 +54,7 @@ export function getRoundedAmountOnCurrency(
 
 export function getFormattedAmount(
   amount: number,
-  digitGrouping: number, // Digit grouping - 2 or 3, for formatting
+  digitGrouping: 2 | 3, // Digit grouping - 2 or 3, for formatting
   fixedDecimals?: number // Adds 0s decimal padding or truncate extra decimal points
 ) {
   let amountStr = amount.toString();
