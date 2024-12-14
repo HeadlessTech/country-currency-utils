@@ -114,7 +114,11 @@ const countryDetails = getCountryDetails("BD");
 There are many functions and utilities that may be required when handling monetory amounts.
 Here are a list of functions:
 
-### `getRoundedAmount(amount: number, decimals: number, isRoundMiddle?: boolean): number`
+**getRoundedAmount**
+
+```typescript
+getRoundedAmount(amount: number, decimals: number, isRoundMiddle?: boolean): number
+```
 
 The default behavior is to `ceil` the amount to the specified decimal places. This is because we want to maximize the monetory amount. However, use the `isRoundMiddle` param to use actual `rounding`
 
@@ -125,7 +129,7 @@ const roundedAmount = getRoundedAmount(123.4517, 2); // 123.46
 const roundedAmount = getRoundedAmount(123.4517, 2, true); // 123.45
 ```
 
-### `getRoundedAmountOnCurrency(amount: number, currencyCode: TCurrencyCode, options?: TCurrencyRoundOptions): number`
+`getRoundedAmountOnCurrency(amount: number, currencyCode: TCurrencyCode, options?: TCurrencyRoundOptions): number`
 
 ```typescript
 type TCurrencyRoundOptions = {
@@ -146,7 +150,7 @@ const roundedAmount = getRoundedAmountOnCurrency(123.45, "BDT", {
 }); // 123.45
 ```
 
-### `getFormattedAmount(amount: number, digitGrouping: number, fixedDecimals?: number): string`
+`getFormattedAmount(amount: number, digitGrouping: number, fixedDecimals?: number): string`
 
 Returns a string with comma separated amount. `digitGrouping` maybe 2 or 3. `fixedDecimals` pads the decimal places with 0s or truncates (does not round) extra decimal places.
 
@@ -159,7 +163,7 @@ const formattedAmount = getFormattedAmount(123456.7, 2, 2); // "1,23,456.70"
 const formattedAmount = getFormattedAmount(123456.789, 3, 2); // "123,456.78"
 ```
 
-### `getFormattedAmountOnCurrency(amount: number, currencyCode: TCurrencyCode, options?: TCurrencyFormatOptions): string`
+`getFormattedAmountOnCurrency(amount: number, currencyCode: TCurrencyCode, options?: TCurrencyFormatOptions): string`
 
 ```typescript
 type TCurrencyFormatOptions = TCurrencyRoundOptions & {
@@ -183,7 +187,7 @@ const formattedAmount = getFormattedAmountOnCurrency(123456.7, "BDT", {
 }); // "1,23,456.7"
 ```
 
-### `getDisplayAmountOnCurrency(amount: number, currencyCode: TCurrencyCode, options?: TCurrencyFormatOptions): string`
+`getDisplayAmountOnCurrency(amount: number, currencyCode: TCurrencyCode, options?: TCurrencyFormatOptions): string`
 
 ```typescript
 type TCurrencyDisplayOptions = TCurrencyFormatOptions & {
