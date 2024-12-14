@@ -243,7 +243,7 @@ This project is licensed under the IS License
 
 ## Developed By
 
-Headless Technologies Limited (https://headless.ltd)  
+Headless Technologies (https://headless.ltd)  
 A software, hardware, and AI company building solutions on tech.
 
 ## Support
