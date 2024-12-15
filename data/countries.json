@@ -1,0 +1,1448 @@
+{
+  "BD": {
+    "name": "Bangladesh",
+    "dialCode": "+880",
+    "currencyCode": "BDT",
+    "flagEmoji": "🇧🇩"
+  },
+  "BE": {
+    "name": "Belgium",
+    "dialCode": "+32",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇧🇪"
+  },
+  "BF": {
+    "name": "Burkina Faso",
+    "dialCode": "+226",
+    "currencyCode": "XOF",
+    "flagEmoji": "🇧🇫"
+  },
+  "BG": {
+    "name": "Bulgaria",
+    "dialCode": "+359",
+    "currencyCode": "BGN",
+    "flagEmoji": "🇧🇬"
+  },
+  "BA": {
+    "name": "Bosnia and Herzegovina",
+    "dialCode": "+387",
+    "currencyCode": "BAM",
+    "flagEmoji": "🇧🇦"
+  },
+  "BB": {
+    "name": "Barbados",
+    "dialCode": "+1246",
+    "currencyCode": "BBD",
+    "flagEmoji": "🇧🇧"
+  },
+  "WF": {
+    "name": "Wallis and Futuna",
+    "dialCode": "+681",
+    "currencyCode": "XPF",
+    "flagEmoji": "🇼🇫"
+  },
+  "BL": {
+    "name": "Saint Barthelemy",
+    "dialCode": "+590",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇧🇱"
+  },
+  "BM": {
+    "name": "Bermuda",
+    "dialCode": "+1441",
+    "currencyCode": "BMD",
+    "flagEmoji": "🇧🇲"
+  },
+  "BN": {
+    "name": "Brunei Darussalam",
+    "dialCode": "+673",
+    "currencyCode": "BND",
+    "flagEmoji": "🇧🇳"
+  },
+  "BO": {
+    "name": "Bolivia, Plurinational State of",
+    "dialCode": "+591",
+    "currencyCode": "BOB",
+    "flagEmoji": "🇧🇴"
+  },
+  "BH": {
+    "name": "Bahrain",
+    "dialCode": "+973",
+    "currencyCode": "BHD",
+    "flagEmoji": "🇧🇭"
+  },
+  "BI": {
+    "name": "Burundi",
+    "dialCode": "+257",
+    "currencyCode": "BIF",
+    "flagEmoji": "🇧🇮"
+  },
+  "BJ": {
+    "name": "Benin",
+    "dialCode": "+229",
+    "currencyCode": "XOF",
+    "flagEmoji": "🇧🇯"
+  },
+  "BT": {
+    "name": "Bhutan",
+    "dialCode": "+975",
+    "currencyCode": "BTN",
+    "flagEmoji": "🇧🇹"
+  },
+  "JM": {
+    "name": "Jamaica",
+    "dialCode": "+1876",
+    "currencyCode": "JMD",
+    "flagEmoji": "🇯🇲"
+  },
+  "BW": {
+    "name": "Botswana",
+    "dialCode": "+267",
+    "currencyCode": "BWP",
+    "flagEmoji": "🇧🇼"
+  },
+  "WS": {
+    "name": "Samoa",
+    "dialCode": "+685",
+    "currencyCode": "WST",
+    "flagEmoji": "🇼🇸"
+  },
+  "BR": {
+    "name": "Brazil",
+    "dialCode": "+55",
+    "currencyCode": "BRL",
+    "flagEmoji": "🇧🇷"
+  },
+  "BS": {
+    "name": "Bahamas",
+    "dialCode": "+1242",
+    "currencyCode": "BSD",
+    "flagEmoji": "🇧🇸"
+  },
+  "JE": {
+    "name": "Jersey",
+    "dialCode": "+44",
+    "currencyCode": "GBP",
+    "flagEmoji": "🇯🇪"
+  },
+  "BY": {
+    "name": "Belarus",
+    "dialCode": "+375",
+    "currencyCode": "BYR",
+    "flagEmoji": "🇧🇾"
+  },
+  "BZ": {
+    "name": "Belize",
+    "dialCode": "+501",
+    "currencyCode": "BZD",
+    "flagEmoji": "🇧🇿"
+  },
+  "RU": {
+    "name": "Russia",
+    "dialCode": "+7",
+    "currencyCode": "RUB",
+    "flagEmoji": "🇷🇺"
+  },
+  "RW": {
+    "name": "Rwanda",
+    "dialCode": "+250",
+    "currencyCode": "RWF",
+    "flagEmoji": "🇷🇼"
+  },
+  "RS": {
+    "name": "Serbia",
+    "dialCode": "+381",
+    "currencyCode": "RSD",
+    "flagEmoji": "🇷🇸"
+  },
+  "TL": {
+    "name": "Timor-Leste",
+    "dialCode": "+670",
+    "currencyCode": "USD",
+    "flagEmoji": "🇹🇱"
+  },
+  "RE": {
+    "name": "Reunion",
+    "dialCode": "+262",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇷🇪"
+  },
+  "TM": {
+    "name": "Turkmenistan",
+    "dialCode": "+993",
+    "currencyCode": "TMT",
+    "flagEmoji": "🇹🇲"
+  },
+  "TJ": {
+    "name": "Tajikistan",
+    "dialCode": "+992",
+    "currencyCode": "TJS",
+    "flagEmoji": "🇹🇯"
+  },
+  "RO": {
+    "name": "Romania",
+    "dialCode": "+40",
+    "currencyCode": "RON",
+    "flagEmoji": "🇷🇴"
+  },
+  "TK": {
+    "name": "Tokelau",
+    "dialCode": "+690",
+    "currencyCode": "NZD",
+    "flagEmoji": "🇹🇰"
+  },
+  "GW": {
+    "name": "Guinea-Bissau",
+    "dialCode": "+245",
+    "currencyCode": "XOF",
+    "flagEmoji": "🇬🇼"
+  },
+  "GU": {
+    "name": "Guam",
+    "dialCode": "+1671",
+    "currencyCode": "USD",
+    "flagEmoji": "🇬🇺"
+  },
+  "GT": {
+    "name": "Guatemala",
+    "dialCode": "+502",
+    "currencyCode": "GTQ",
+    "flagEmoji": "🇬🇹"
+  },
+  "GS": {
+    "name": "South Georgia and the South Sandwich Islands",
+    "dialCode": "+500",
+    "currencyCode": "GBP",
+    "flagEmoji": "🇬🇸"
+  },
+  "GR": {
+    "name": "Greece",
+    "dialCode": "+30",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇬🇷"
+  },
+  "GQ": {
+    "name": "Equatorial Guinea",
+    "dialCode": "+240",
+    "currencyCode": "XAF",
+    "flagEmoji": "🇬🇶"
+  },
+  "GP": {
+    "name": "Guadeloupe",
+    "dialCode": "+590",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇬🇵"
+  },
+  "JP": {
+    "name": "Japan",
+    "dialCode": "+81",
+    "currencyCode": "JPY",
+    "flagEmoji": "🇯🇵"
+  },
+  "GY": {
+    "name": "Guyana",
+    "dialCode": "+595",
+    "currencyCode": "GYD",
+    "flagEmoji": "🇬🇾"
+  },
+  "GG": {
+    "name": "Guernsey",
+    "dialCode": "+44",
+    "currencyCode": "GBP",
+    "flagEmoji": "🇬🇬"
+  },
+  "GF": {
+    "name": "French Guiana",
+    "dialCode": "+594",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇬🇫"
+  },
+  "GE": {
+    "name": "Georgia",
+    "dialCode": "+995",
+    "currencyCode": "GEL",
+    "flagEmoji": "🇬🇪"
+  },
+  "GD": {
+    "name": "Grenada",
+    "dialCode": "+1473",
+    "currencyCode": "XCD",
+    "flagEmoji": "🇬🇩"
+  },
+  "GB": {
+    "name": "United Kingdom",
+    "dialCode": "+44",
+    "currencyCode": "GBP",
+    "flagEmoji": "🇬🇧"
+  },
+  "GA": {
+    "name": "Gabon",
+    "dialCode": "+241",
+    "currencyCode": "XAF",
+    "flagEmoji": "🇬🇦"
+  },
+  "SV": {
+    "name": "El Salvador",
+    "dialCode": "+503",
+    "currencyCode": "USD",
+    "flagEmoji": "🇸🇻"
+  },
+  "GN": {
+    "name": "Guinea",
+    "dialCode": "+224",
+    "currencyCode": "GNF",
+    "flagEmoji": "🇬🇳"
+  },
+  "GM": {
+    "name": "Gambia",
+    "dialCode": "+220",
+    "currencyCode": "GMD",
+    "flagEmoji": "🇬🇲"
+  },
+  "GL": {
+    "name": "Greenland",
+    "dialCode": "+299",
+    "currencyCode": "DKK",
+    "flagEmoji": "🇬🇱"
+  },
+  "GI": {
+    "name": "Gibraltar",
+    "dialCode": "+350",
+    "currencyCode": "GIP",
+    "flagEmoji": "🇬🇮"
+  },
+  "GH": {
+    "name": "Ghana",
+    "dialCode": "+233",
+    "currencyCode": "GHS",
+    "flagEmoji": "🇬🇭"
+  },
+  "OM": {
+    "name": "Oman",
+    "dialCode": "+968",
+    "currencyCode": "OMR",
+    "flagEmoji": "🇴🇲"
+  },
+  "TN": {
+    "name": "Tunisia",
+    "dialCode": "+216",
+    "currencyCode": "TND",
+    "flagEmoji": "🇹🇳"
+  },
+  "JO": {
+    "name": "Jordan",
+    "dialCode": "+962",
+    "currencyCode": "JOD",
+    "flagEmoji": "🇯🇴"
+  },
+  "HR": {
+    "name": "Croatia",
+    "dialCode": "+385",
+    "currencyCode": "HRK",
+    "flagEmoji": "🇭🇷"
+  },
+  "HT": {
+    "name": "Haiti",
+    "dialCode": "+509",
+    "currencyCode": "HTG",
+    "flagEmoji": "🇭🇹"
+  },
+  "HU": {
+    "name": "Hungary",
+    "dialCode": "+36",
+    "currencyCode": "HUF",
+    "flagEmoji": "🇭🇺"
+  },
+  "HK": {
+    "name": "Hong Kong",
+    "dialCode": "+852",
+    "currencyCode": "HKD",
+    "flagEmoji": "🇭🇰"
+  },
+  "HN": {
+    "name": "Honduras",
+    "dialCode": "+504",
+    "currencyCode": "HNL",
+    "flagEmoji": "🇭🇳"
+  },
+  "VE": {
+    "name": "Venezuela, Bolivarian Republic of Venezuela",
+    "dialCode": "+58",
+    "currencyCode": "VEF",
+    "flagEmoji": "🇻🇪"
+  },
+  "PR": {
+    "name": "Puerto Rico",
+    "dialCode": "+1939",
+    "currencyCode": "USD",
+    "flagEmoji": "🇵🇷"
+  },
+  "PS": {
+    "name": "Palestine",
+    "dialCode": "+970",
+    "currencyCode": "ILS",
+    "flagEmoji": "🇵🇸"
+  },
+  "PW": {
+    "name": "Palau",
+    "dialCode": "+680",
+    "currencyCode": "USD",
+    "flagEmoji": "🇵🇼"
+  },
+  "PT": {
+    "name": "Portugal",
+    "dialCode": "+351",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇵🇹"
+  },
+  "SJ": {
+    "name": "Svalbard and Jan Mayen",
+    "dialCode": "+47",
+    "currencyCode": "NOK",
+    "flagEmoji": "🇸🇯"
+  },
+  "PY": {
+    "name": "Paraguay",
+    "dialCode": "+595",
+    "currencyCode": "PYG",
+    "flagEmoji": "🇵🇾"
+  },
+  "IQ": {
+    "name": "Iraq",
+    "dialCode": "+964",
+    "currencyCode": "IQD",
+    "flagEmoji": "🇮🇶"
+  },
+  "PA": {
+    "name": "Panama",
+    "dialCode": "+507",
+    "currencyCode": "PAB",
+    "flagEmoji": "🇵🇦"
+  },
+  "PF": {
+    "name": "French Polynesia",
+    "dialCode": "+689",
+    "currencyCode": "XPF",
+    "flagEmoji": "🇵🇫"
+  },
+  "PG": {
+    "name": "Papua New Guinea",
+    "dialCode": "+675",
+    "currencyCode": "PGK",
+    "flagEmoji": "🇵🇬"
+  },
+  "PE": {
+    "name": "Peru",
+    "dialCode": "+51",
+    "currencyCode": "PEN",
+    "flagEmoji": "🇵🇪"
+  },
+  "PK": {
+    "name": "Pakistan",
+    "dialCode": "+92",
+    "currencyCode": "PKR",
+    "flagEmoji": "🇵🇰"
+  },
+  "PH": {
+    "name": "Philippines",
+    "dialCode": "+63",
+    "currencyCode": "PHP",
+    "flagEmoji": "🇵🇭"
+  },
+  "PN": {
+    "name": "Pitcairn",
+    "dialCode": "+872",
+    "currencyCode": "NZD",
+    "flagEmoji": "🇵🇳"
+  },
+  "PL": {
+    "name": "Poland",
+    "dialCode": "+48",
+    "currencyCode": "PLN",
+    "flagEmoji": "🇵🇱"
+  },
+  "PM": {
+    "name": "Saint Pierre and Miquelon",
+    "dialCode": "+508",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇵🇲"
+  },
+  "ZM": {
+    "name": "Zambia",
+    "dialCode": "+260",
+    "currencyCode": "ZMK",
+    "flagEmoji": "🇿🇲"
+  },
+  "EE": {
+    "name": "Estonia",
+    "dialCode": "+372",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇪🇪"
+  },
+  "EG": {
+    "name": "Egypt",
+    "dialCode": "+20",
+    "currencyCode": "EGP",
+    "flagEmoji": "🇪🇬"
+  },
+  "ZA": {
+    "name": "South Africa",
+    "dialCode": "+27",
+    "currencyCode": "ZAR",
+    "flagEmoji": "🇿🇦"
+  },
+  "EC": {
+    "name": "Ecuador",
+    "dialCode": "+593",
+    "currencyCode": "USD",
+    "flagEmoji": "🇪🇨"
+  },
+  "IT": {
+    "name": "Italy",
+    "dialCode": "+39",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇮🇹"
+  },
+  "VN": {
+    "name": "Vietnam",
+    "dialCode": "+84",
+    "currencyCode": "VND",
+    "flagEmoji": "🇻🇳"
+  },
+  "SB": {
+    "name": "Solomon Islands",
+    "dialCode": "+677",
+    "currencyCode": "SBD",
+    "flagEmoji": "🇸🇧"
+  },
+  "ET": {
+    "name": "Ethiopia",
+    "dialCode": "+251",
+    "currencyCode": "ETB",
+    "flagEmoji": "🇪🇹"
+  },
+  "SO": {
+    "name": "Somalia",
+    "dialCode": "+252",
+    "currencyCode": "SOS",
+    "flagEmoji": "🇸🇴"
+  },
+  "ZW": {
+    "name": "Zimbabwe",
+    "dialCode": "+263",
+    "currencyCode": "ZWL",
+    "flagEmoji": "🇿🇼"
+  },
+  "SA": {
+    "name": "Saudi Arabia",
+    "dialCode": "+966",
+    "currencyCode": "SAR",
+    "flagEmoji": "🇸🇦"
+  },
+  "ES": {
+    "name": "Spain",
+    "dialCode": "+34",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇪🇸"
+  },
+  "ER": {
+    "name": "Eritrea",
+    "dialCode": "+291",
+    "currencyCode": "ERN",
+    "flagEmoji": "🇪🇷"
+  },
+  "ME": {
+    "name": "Montenegro",
+    "dialCode": "+382",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇲🇪"
+  },
+  "MD": {
+    "name": "Moldova",
+    "dialCode": "+373",
+    "currencyCode": "MDL",
+    "flagEmoji": "🇲🇩"
+  },
+  "MG": {
+    "name": "Madagascar",
+    "dialCode": "+261",
+    "currencyCode": "MGA",
+    "flagEmoji": "🇲🇬"
+  },
+  "MF": {
+    "name": "Saint Martin",
+    "dialCode": "+590",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇲🇫"
+  },
+  "MA": {
+    "name": "Morocco",
+    "dialCode": "+212",
+    "currencyCode": "MAD",
+    "flagEmoji": "🇲🇦"
+  },
+  "MC": {
+    "name": "Monaco",
+    "dialCode": "+377",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇲🇨"
+  },
+  "UZ": {
+    "name": "Uzbekistan",
+    "dialCode": "+998",
+    "currencyCode": "UZS",
+    "flagEmoji": "🇺🇿"
+  },
+  "MM": {
+    "name": "Myanmar",
+    "dialCode": "+95",
+    "currencyCode": "MMK",
+    "flagEmoji": "🇲🇲"
+  },
+  "ML": {
+    "name": "Mali",
+    "dialCode": "+223",
+    "currencyCode": "XOF",
+    "flagEmoji": "🇲🇱"
+  },
+  "MO": {
+    "name": "Macao",
+    "dialCode": "+853",
+    "currencyCode": "MOP",
+    "flagEmoji": "🇲🇴"
+  },
+  "MN": {
+    "name": "Mongolia",
+    "dialCode": "+976",
+    "currencyCode": "MNT",
+    "flagEmoji": "🇲🇳"
+  },
+  "MH": {
+    "name": "Marshall Islands",
+    "dialCode": "+692",
+    "currencyCode": "USD",
+    "flagEmoji": "🇲🇭"
+  },
+  "MK": {
+    "name": "Macedonia",
+    "dialCode": "+389",
+    "currencyCode": "MKD",
+    "flagEmoji": "🇲🇰"
+  },
+  "MU": {
+    "name": "Mauritius",
+    "dialCode": "+230",
+    "currencyCode": "MUR",
+    "flagEmoji": "🇲🇺"
+  },
+  "MT": {
+    "name": "Malta",
+    "dialCode": "+356",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇲🇹"
+  },
+  "MW": {
+    "name": "Malawi",
+    "dialCode": "+265",
+    "currencyCode": "MWK",
+    "flagEmoji": "🇲🇼"
+  },
+  "MV": {
+    "name": "Maldives",
+    "dialCode": "+960",
+    "currencyCode": "MVR",
+    "flagEmoji": "🇲🇻"
+  },
+  "MQ": {
+    "name": "Martinique",
+    "dialCode": "+596",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇲🇶"
+  },
+  "MP": {
+    "name": "Northern Mariana Islands",
+    "dialCode": "+1670",
+    "currencyCode": "USD",
+    "flagEmoji": "🇲🇵"
+  },
+  "MS": {
+    "name": "Montserrat",
+    "dialCode": "+1664",
+    "currencyCode": "XCD",
+    "flagEmoji": "🇲🇸"
+  },
+  "MR": {
+    "name": "Mauritania",
+    "dialCode": "+222",
+    "currencyCode": "MRO",
+    "flagEmoji": "🇲🇷"
+  },
+  "IM": {
+    "name": "Isle of Man",
+    "dialCode": "+44",
+    "currencyCode": "GBP",
+    "flagEmoji": "🇮🇲"
+  },
+  "UG": {
+    "name": "Uganda",
+    "dialCode": "+256",
+    "currencyCode": "UGX",
+    "flagEmoji": "🇺🇬"
+  },
+  "TZ": {
+    "name": "Tanzania, United Republic of Tanzania",
+    "dialCode": "+255",
+    "currencyCode": "TZS",
+    "flagEmoji": "🇹🇿"
+  },
+  "MY": {
+    "name": "Malaysia",
+    "dialCode": "+60",
+    "currencyCode": "MYR",
+    "flagEmoji": "🇲🇾"
+  },
+  "MX": {
+    "name": "Mexico",
+    "dialCode": "+52",
+    "currencyCode": "MXN",
+    "flagEmoji": "🇲🇽"
+  },
+  "IL": {
+    "name": "Israel",
+    "dialCode": "+972",
+    "currencyCode": "ILS",
+    "flagEmoji": "🇮🇱"
+  },
+  "FR": {
+    "name": "France",
+    "dialCode": "+33",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇫🇷"
+  },
+  "IO": {
+    "name": "British Indian Ocean Territory",
+    "dialCode": "+246",
+    "currencyCode": "USD",
+    "flagEmoji": "🇮🇴"
+  },
+  "SH": {
+    "name": "Saint Helena, Ascension and Tristan Da Cunha",
+    "dialCode": "+290",
+    "currencyCode": "SHP",
+    "flagEmoji": "🇸🇭"
+  },
+  "FI": {
+    "name": "Finland",
+    "dialCode": "+358",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇫🇮"
+  },
+  "FJ": {
+    "name": "Fiji",
+    "dialCode": "+679",
+    "currencyCode": "FJD",
+    "flagEmoji": "🇫🇯"
+  },
+  "FK": {
+    "name": "Falkland Islands (Malvinas)",
+    "dialCode": "+500",
+    "currencyCode": "FKP",
+    "flagEmoji": "🇫🇰"
+  },
+  "FM": {
+    "name": "Micronesia, Federated States of Micronesia",
+    "dialCode": "+691",
+    "currencyCode": "USD",
+    "flagEmoji": "🇫🇲"
+  },
+  "FO": {
+    "name": "Faroe Islands",
+    "dialCode": "+298",
+    "currencyCode": "DKK",
+    "flagEmoji": "🇫🇴"
+  },
+  "NI": {
+    "name": "Nicaragua",
+    "dialCode": "+505",
+    "currencyCode": "NIO",
+    "flagEmoji": "🇳🇮"
+  },
+  "NL": {
+    "name": "Netherlands",
+    "dialCode": "+31",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇳🇱"
+  },
+  "NO": {
+    "name": "Norway",
+    "dialCode": "+47",
+    "currencyCode": "NOK",
+    "flagEmoji": "🇳🇴"
+  },
+  "NA": {
+    "name": "Namibia",
+    "dialCode": "+264",
+    "currencyCode": "NAD",
+    "flagEmoji": "🇳🇦"
+  },
+  "VU": {
+    "name": "Vanuatu",
+    "dialCode": "+678",
+    "currencyCode": "VUV",
+    "flagEmoji": "🇻🇺"
+  },
+  "NC": {
+    "name": "New Caledonia",
+    "dialCode": "+687",
+    "currencyCode": "XPF",
+    "flagEmoji": "🇳🇨"
+  },
+  "NE": {
+    "name": "Niger",
+    "dialCode": "+227",
+    "currencyCode": "XOF",
+    "flagEmoji": "🇳🇪"
+  },
+  "NF": {
+    "name": "Norfolk Island",
+    "dialCode": "+672",
+    "currencyCode": "AUD",
+    "flagEmoji": "🇳🇫"
+  },
+  "NG": {
+    "name": "Nigeria",
+    "dialCode": "+234",
+    "currencyCode": "NGN",
+    "flagEmoji": "🇳🇬"
+  },
+  "NZ": {
+    "name": "New Zealand",
+    "dialCode": "+64",
+    "currencyCode": "NZD",
+    "flagEmoji": "🇳🇿"
+  },
+  "NP": {
+    "name": "Nepal",
+    "dialCode": "+977",
+    "currencyCode": "NPR",
+    "flagEmoji": "🇳🇵"
+  },
+  "NR": {
+    "name": "Nauru",
+    "dialCode": "+674",
+    "currencyCode": "AUD",
+    "flagEmoji": "🇳🇷"
+  },
+  "NU": {
+    "name": "Niue",
+    "dialCode": "+683",
+    "currencyCode": "NZD",
+    "flagEmoji": "🇳🇺"
+  },
+  "CK": {
+    "name": "Cook Islands",
+    "dialCode": "+682",
+    "currencyCode": "NZD",
+    "flagEmoji": "🇨🇰"
+  },
+  "CI": {
+    "name": "Cote d'Ivoire",
+    "dialCode": "+225",
+    "currencyCode": "XOF",
+    "flagEmoji": "🇨🇮"
+  },
+  "CH": {
+    "name": "Switzerland",
+    "dialCode": "+41",
+    "currencyCode": "CHF",
+    "flagEmoji": "🇨🇭"
+  },
+  "CO": {
+    "name": "Colombia",
+    "dialCode": "+57",
+    "currencyCode": "COP",
+    "flagEmoji": "🇨🇴"
+  },
+  "CN": {
+    "name": "China",
+    "dialCode": "+86",
+    "currencyCode": "CNY",
+    "flagEmoji": "🇨🇳"
+  },
+  "CM": {
+    "name": "Cameroon",
+    "dialCode": "+237",
+    "currencyCode": "XAF",
+    "flagEmoji": "🇨🇲"
+  },
+  "CL": {
+    "name": "Chile",
+    "dialCode": "+56",
+    "currencyCode": "CLP",
+    "flagEmoji": "🇨🇱"
+  },
+  "CC": {
+    "name": "Cocos (Keeling) Islands",
+    "dialCode": "+61",
+    "currencyCode": "AUD",
+    "flagEmoji": "🇨🇨"
+  },
+  "CA": {
+    "name": "Canada",
+    "dialCode": "+1",
+    "currencyCode": "CAD",
+    "flagEmoji": "🇨🇦"
+  },
+  "CG": {
+    "name": "Congo",
+    "dialCode": "+242",
+    "currencyCode": "XAF",
+    "flagEmoji": "🇨🇬"
+  },
+  "CF": {
+    "name": "Central African Republic",
+    "dialCode": "+236",
+    "currencyCode": "XAF",
+    "flagEmoji": "🇨🇫"
+  },
+  "CD": {
+    "name": "Congo, The Democratic Republic of the Congo",
+    "dialCode": "+243",
+    "currencyCode": "CDF",
+    "flagEmoji": "🇨🇩"
+  },
+  "CZ": {
+    "name": "Czech Republic",
+    "dialCode": "+420",
+    "currencyCode": "CZK",
+    "flagEmoji": "🇨🇿"
+  },
+  "CY": {
+    "name": "Cyprus",
+    "dialCode": "+357",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇨🇾"
+  },
+  "CX": {
+    "name": "Christmas Island",
+    "dialCode": "+61",
+    "currencyCode": "AUD",
+    "flagEmoji": "🇨🇽"
+  },
+  "CR": {
+    "name": "Costa Rica",
+    "dialCode": "+506",
+    "currencyCode": "CRC",
+    "flagEmoji": "🇨🇷"
+  },
+  "CV": {
+    "name": "Cape Verde",
+    "dialCode": "+238",
+    "currencyCode": "CVE",
+    "flagEmoji": "🇨🇻"
+  },
+  "CU": {
+    "name": "Cuba",
+    "dialCode": "+53",
+    "currencyCode": "CUP",
+    "flagEmoji": "🇨🇺"
+  },
+  "SZ": {
+    "name": "Swaziland",
+    "dialCode": "+268",
+    "currencyCode": "SZL",
+    "flagEmoji": "🇸🇿"
+  },
+  "SY": {
+    "name": "Syrian Arab Republic",
+    "dialCode": "+963",
+    "currencyCode": "SYP",
+    "flagEmoji": "🇸🇾"
+  },
+  "KG": {
+    "name": "Kyrgyzstan",
+    "dialCode": "+996",
+    "currencyCode": "KGS",
+    "flagEmoji": "🇰🇬"
+  },
+  "KE": {
+    "name": "Kenya",
+    "dialCode": "+254",
+    "currencyCode": "KES",
+    "flagEmoji": "🇰🇪"
+  },
+  "SS": {
+    "name": "South Sudan",
+    "dialCode": "+211",
+    "currencyCode": "SSP",
+    "flagEmoji": "🇸🇸"
+  },
+  "SR": {
+    "name": "Suriname",
+    "dialCode": "+597",
+    "currencyCode": "SRD",
+    "flagEmoji": "🇸🇷"
+  },
+  "KI": {
+    "name": "Kiribati",
+    "dialCode": "+686",
+    "currencyCode": "AUD",
+    "flagEmoji": "🇰🇮"
+  },
+  "KH": {
+    "name": "Cambodia",
+    "dialCode": "+855",
+    "currencyCode": "KHR",
+    "flagEmoji": "🇰🇭"
+  },
+  "KN": {
+    "name": "Saint Kitts and Nevis",
+    "dialCode": "+1869",
+    "currencyCode": "XCD",
+    "flagEmoji": "🇰🇳"
+  },
+  "KM": {
+    "name": "Comoros",
+    "dialCode": "+269",
+    "currencyCode": "KMF",
+    "flagEmoji": "🇰🇲"
+  },
+  "ST": {
+    "name": "Sao Tome and Principe",
+    "dialCode": "+239",
+    "currencyCode": "STD",
+    "flagEmoji": "🇸🇹"
+  },
+  "SK": {
+    "name": "Slovakia",
+    "dialCode": "+421",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇸🇰"
+  },
+  "KR": {
+    "name": "Korea, Republic of South Korea",
+    "dialCode": "+82",
+    "currencyCode": "KRW",
+    "flagEmoji": "🇰🇷"
+  },
+  "SI": {
+    "name": "Slovenia",
+    "dialCode": "+386",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇸🇮"
+  },
+  "KP": {
+    "name": "Korea, Democratic People's Republic of Korea",
+    "dialCode": "+850",
+    "currencyCode": "KPW",
+    "flagEmoji": "🇰🇵"
+  },
+  "KW": {
+    "name": "Kuwait",
+    "dialCode": "+965",
+    "currencyCode": "KWD",
+    "flagEmoji": "🇰🇼"
+  },
+  "SN": {
+    "name": "Senegal",
+    "dialCode": "+221",
+    "currencyCode": "XOF",
+    "flagEmoji": "🇸🇳"
+  },
+  "SM": {
+    "name": "San Marino",
+    "dialCode": "+378",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇸🇲"
+  },
+  "SL": {
+    "name": "Sierra Leone",
+    "dialCode": "+232",
+    "currencyCode": "SLL",
+    "flagEmoji": "🇸🇱"
+  },
+  "SC": {
+    "name": "Seychelles",
+    "dialCode": "+248",
+    "currencyCode": "SCR",
+    "flagEmoji": "🇸🇨"
+  },
+  "KZ": {
+    "name": "Kazakhstan",
+    "dialCode": "+77",
+    "currencyCode": "KZT",
+    "flagEmoji": "🇰🇿"
+  },
+  "KY": {
+    "name": "Cayman Islands",
+    "dialCode": "+ 345",
+    "currencyCode": "KYD",
+    "flagEmoji": "🇰🇾"
+  },
+  "SG": {
+    "name": "Singapore",
+    "dialCode": "+65",
+    "currencyCode": "SGD",
+    "flagEmoji": "🇸🇬"
+  },
+  "SE": {
+    "name": "Sweden",
+    "dialCode": "+46",
+    "currencyCode": "SEK",
+    "flagEmoji": "🇸🇪"
+  },
+  "SD": {
+    "name": "Sudan",
+    "dialCode": "+249",
+    "currencyCode": "SDG",
+    "flagEmoji": "🇸🇩"
+  },
+  "DO": {
+    "name": "Dominican Republic",
+    "dialCode": "+1849",
+    "currencyCode": "DOP",
+    "flagEmoji": "🇩🇴"
+  },
+  "DM": {
+    "name": "Dominica",
+    "dialCode": "+1767",
+    "currencyCode": "XCD",
+    "flagEmoji": "🇩🇲"
+  },
+  "DJ": {
+    "name": "Djibouti",
+    "dialCode": "+253",
+    "currencyCode": "DJF",
+    "flagEmoji": "🇩🇯"
+  },
+  "DK": {
+    "name": "Denmark",
+    "dialCode": "+45",
+    "currencyCode": "DKK",
+    "flagEmoji": "🇩🇰"
+  },
+  "VG": {
+    "name": "Virgin Islands, British",
+    "dialCode": "+1284",
+    "currencyCode": "USD",
+    "flagEmoji": "🇻🇬"
+  },
+  "DE": {
+    "name": "Germany",
+    "dialCode": "+49",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇩🇪"
+  },
+  "YE": {
+    "name": "Yemen",
+    "dialCode": "+967",
+    "currencyCode": "YER",
+    "flagEmoji": "🇾🇪"
+  },
+  "DZ": {
+    "name": "Algeria",
+    "dialCode": "+213",
+    "currencyCode": "DZD",
+    "flagEmoji": "🇩🇿"
+  },
+  "US": {
+    "name": "United States",
+    "dialCode": "+1",
+    "currencyCode": "USD",
+    "flagEmoji": "🇺🇸"
+  },
+  "UY": {
+    "name": "Uruguay",
+    "dialCode": "+598",
+    "currencyCode": "UYU",
+    "flagEmoji": "🇺🇾"
+  },
+  "YT": {
+    "name": "Mayotte",
+    "dialCode": "+262",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇾🇹"
+  },
+  "LB": {
+    "name": "Lebanon",
+    "dialCode": "+961",
+    "currencyCode": "LBP",
+    "flagEmoji": "🇱🇧"
+  },
+  "LC": {
+    "name": "Saint Lucia",
+    "dialCode": "+1758",
+    "currencyCode": "XCD",
+    "flagEmoji": "🇱🇨"
+  },
+  "LA": {
+    "name": "Laos",
+    "dialCode": "+856",
+    "currencyCode": "LAK",
+    "flagEmoji": "🇱🇦"
+  },
+  "TV": {
+    "name": "Tuvalu",
+    "dialCode": "+688",
+    "currencyCode": "AUD",
+    "flagEmoji": "🇹🇻"
+  },
+  "TW": {
+    "name": "Taiwan",
+    "dialCode": "+886",
+    "currencyCode": "TWD",
+    "flagEmoji": "🇹🇼"
+  },
+  "TT": {
+    "name": "Trinidad and Tobago",
+    "dialCode": "+1868",
+    "currencyCode": "TTD",
+    "flagEmoji": "🇹🇹"
+  },
+  "TR": {
+    "name": "Turkey",
+    "dialCode": "+90",
+    "currencyCode": "TRY",
+    "flagEmoji": "🇹🇷"
+  },
+  "LK": {
+    "name": "Sri Lanka",
+    "dialCode": "+94",
+    "currencyCode": "LKR",
+    "flagEmoji": "🇱🇰"
+  },
+  "LI": {
+    "name": "Liechtenstein",
+    "dialCode": "+423",
+    "currencyCode": "CHF",
+    "flagEmoji": "🇱🇮"
+  },
+  "LV": {
+    "name": "Latvia",
+    "dialCode": "+371",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇱🇻"
+  },
+  "TO": {
+    "name": "Tonga",
+    "dialCode": "+676",
+    "currencyCode": "TOP",
+    "flagEmoji": "🇹🇴"
+  },
+  "LT": {
+    "name": "Lithuania",
+    "dialCode": "+370",
+    "currencyCode": "LTL",
+    "flagEmoji": "🇱🇹"
+  },
+  "LU": {
+    "name": "Luxembourg",
+    "dialCode": "+352",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇱🇺"
+  },
+  "LR": {
+    "name": "Liberia",
+    "dialCode": "+231",
+    "currencyCode": "LRD",
+    "flagEmoji": "🇱🇷"
+  },
+  "LS": {
+    "name": "Lesotho",
+    "dialCode": "+266",
+    "currencyCode": "LSL",
+    "flagEmoji": "🇱🇸"
+  },
+  "TH": {
+    "name": "Thailand",
+    "dialCode": "+66",
+    "currencyCode": "THB",
+    "flagEmoji": "🇹🇭"
+  },
+  "TG": {
+    "name": "Togo",
+    "dialCode": "+228",
+    "currencyCode": "XOF",
+    "flagEmoji": "🇹🇬"
+  },
+  "TD": {
+    "name": "Chad",
+    "dialCode": "+235",
+    "currencyCode": "XAF",
+    "flagEmoji": "🇹🇩"
+  },
+  "TC": {
+    "name": "Turks and Caicos Islands",
+    "dialCode": "+1649",
+    "currencyCode": "USD",
+    "flagEmoji": "🇹🇨"
+  },
+  "LY": {
+    "name": "Libyan Arab Jamahiriya",
+    "dialCode": "+218",
+    "currencyCode": "LYD",
+    "flagEmoji": "🇱🇾"
+  },
+  "VA": {
+    "name": "Holy See (Vatican City State)",
+    "dialCode": "+379",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇻🇦"
+  },
+  "VC": {
+    "name": "Saint Vincent and the Grenadines",
+    "dialCode": "+1784",
+    "currencyCode": "XCD",
+    "flagEmoji": "🇻🇨"
+  },
+  "AE": {
+    "name": "United Arab Emirates",
+    "dialCode": "+971",
+    "currencyCode": "AED",
+    "flagEmoji": "🇦🇪"
+  },
+  "AD": {
+    "name": "Andorra",
+    "dialCode": "+376",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇦🇩"
+  },
+  "AG": {
+    "name": "Antigua and Barbuda",
+    "dialCode": "+1268",
+    "currencyCode": "XCD",
+    "flagEmoji": "🇦🇬"
+  },
+  "AF": {
+    "name": "Afghanistan",
+    "dialCode": "+93",
+    "currencyCode": "AFN",
+    "flagEmoji": "🇦🇫"
+  },
+  "AI": {
+    "name": "Anguilla",
+    "dialCode": "+1264",
+    "currencyCode": "XCD",
+    "flagEmoji": "🇦🇮"
+  },
+  "VI": {
+    "name": "Virgin Islands, U.S.",
+    "dialCode": "+1340",
+    "currencyCode": "USD",
+    "flagEmoji": "🇻🇮"
+  },
+  "IS": {
+    "name": "Iceland",
+    "dialCode": "+354",
+    "currencyCode": "ISK",
+    "flagEmoji": "🇮🇸"
+  },
+  "IR": {
+    "name": "Iran, Islamic Republic of Persian Gulf",
+    "dialCode": "+98",
+    "currencyCode": "IRR",
+    "flagEmoji": "🇮🇷"
+  },
+  "AM": {
+    "name": "Armenia",
+    "dialCode": "+374",
+    "currencyCode": "AMD",
+    "flagEmoji": "🇦🇲"
+  },
+  "AL": {
+    "name": "Albania",
+    "dialCode": "+355",
+    "currencyCode": "ALL",
+    "flagEmoji": "🇦🇱"
+  },
+  "AO": {
+    "name": "Angola",
+    "dialCode": "+244",
+    "currencyCode": "AOA",
+    "flagEmoji": "🇦🇴"
+  },
+  "AQ": {
+    "name": "Antarctica",
+    "dialCode": "+672",
+    "currencyCode": "XCD",
+    "flagEmoji": "🇦🇶"
+  },
+  "AS": {
+    "name": "AmericanSamoa",
+    "dialCode": "+1684",
+    "currencyCode": "USD",
+    "flagEmoji": "🇦🇸"
+  },
+  "AR": {
+    "name": "Argentina",
+    "dialCode": "+54",
+    "currencyCode": "ARS",
+    "flagEmoji": "🇦🇷"
+  },
+  "AU": {
+    "name": "Australia",
+    "dialCode": "+61",
+    "currencyCode": "AUD",
+    "flagEmoji": "🇦🇺"
+  },
+  "AT": {
+    "name": "Austria",
+    "dialCode": "+43",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇦🇹"
+  },
+  "AW": {
+    "name": "Aruba",
+    "dialCode": "+297",
+    "currencyCode": "AWG",
+    "flagEmoji": "🇦🇼"
+  },
+  "IN": {
+    "name": "India",
+    "dialCode": "+91",
+    "currencyCode": "INR",
+    "flagEmoji": "🇮🇳"
+  },
+  "AX": {
+    "name": "Aland Islands",
+    "dialCode": "+358",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇦🇽"
+  },
+  "AZ": {
+    "name": "Azerbaijan",
+    "dialCode": "+994",
+    "currencyCode": "AZN",
+    "flagEmoji": "🇦🇿"
+  },
+  "IE": {
+    "name": "Ireland",
+    "dialCode": "+353",
+    "currencyCode": "EUR",
+    "flagEmoji": "🇮🇪"
+  },
+  "ID": {
+    "name": "Indonesia",
+    "dialCode": "+62",
+    "currencyCode": "IDR",
+    "flagEmoji": "🇮🇩"
+  },
+  "UA": {
+    "name": "Ukraine",
+    "dialCode": "+380",
+    "currencyCode": "UAH",
+    "flagEmoji": "🇺🇦"
+  },
+  "QA": {
+    "name": "Qatar",
+    "dialCode": "+974",
+    "currencyCode": "QAR",
+    "flagEmoji": "🇶🇦"
+  },
+  "MZ": {
+    "name": "Mozambique",
+    "dialCode": "+258",
+    "currencyCode": "MZN",
+    "flagEmoji": "🇲🇿"
+  }
+}
