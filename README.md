@@ -328,6 +328,31 @@ const displayAmount = getDisplayAmountOnCurrency(123.4567, BDTCurrencyData, {
 }); // "৳ 124"
 ```
 
+**getDisplayAmountOnCurrencyCode**
+
+```typescript
+getDisplayAmountOnCurrencyCode(amount: number, currencyCode: string, options?: TCurrencyFormatOptions): Promise<string>
+```
+
+Returns a displayable amount with currency symbol, using the `getDisplayAmountOnCurrency` function and looks up currency details on currency code
+
+_Example:_
+
+```typescript
+const displayAmount = await getDisplayAmountOnCurrencyCode(123.4567, "USD"); // "$ 123.46"
+const displayAmount = await getDisplayAmountOnCurrencyCode(123456.7, "USD"); // "$ 123,456.70"
+const displayAmount = await getDisplayAmountOnCurrencyCode(123456.7, "USD", {
+  avoidFormat: true,
+}); // "$ 123456.7"
+const displayAmount = await getDisplayAmountOnCurrencyCode(123456.7, "USD", {
+  separator: "",
+}); // "$123,456.70"
+const displayAmount = await getDisplayAmountOnCurrencyCode(123.4567, "BDT"); // "Tk 124"
+const displayAmount = await getDisplayAmountOnCurrencyCode(123.4567, "BDT", {
+  isSymbolStandard: true,
+}); // "৳ 124"
+```
+
 ## Testing
 
 All data and functions have been tested using Jest.

@@ -1,4 +1,4 @@
-import { TCurrencyData } from "./currencies";
+import { getCurrencyData, TCurrencyData } from "./currencies";
 
 /* ======== Amount rounding ========= */
 
@@ -156,4 +156,13 @@ export function getDisplayAmountOnCurrency(
     (separator !== undefined ? separator : " ") +
     formattedAmount
   );
+}
+
+export async function getDisplayAmountOnCurrencyCode(
+  amount: number,
+  currencyCode: string,
+  options?: TCurrencyDisplayOptions
+): Promise<string> {
+  const currencyData = await getCurrencyData(currencyCode);
+  return getDisplayAmountOnCurrency(amount, currencyData, options);
 }

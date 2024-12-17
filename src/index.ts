@@ -25,4 +25,5 @@ export {
   getFormattedAmountOnCurrency,
   TCurrencyDisplayOptions,
   getDisplayAmountOnCurrency,
+  getDisplayAmountOnCurrencyCode,
 } from "./utils";

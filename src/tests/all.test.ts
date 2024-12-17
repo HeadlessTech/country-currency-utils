@@ -4,6 +4,7 @@ import {
   getCurrenciesData,
   getCurrencyData,
   getDisplayAmountOnCurrency,
+  getDisplayAmountOnCurrencyCode,
   getFormattedAmount,
   getFormattedAmountOnCurrency,
   getRoundedAmount,
@@ -290,6 +291,75 @@ test("Test amount display on currency", async () => {
   ).toBe("Tk1,123");
   expect(
     getDisplayAmountOnCurrency(1123, BDTCurrencyDetails, {
+      separator: "-",
+      avoidFormat: true,
+    })
+  ).toBe("Tk-1123");
+});
+
+/*
+  Display amount on currency code
+*/
+test("Test amount display on currency code", async () => {
+  // USD
+  expect(await getDisplayAmountOnCurrencyCode(1.123, "USD")).toBe("$ 1.13");
+  expect(await getDisplayAmountOnCurrencyCode(1234.12, "USD")).toBe(
+    "$ 1,234.12"
+  );
+  expect(
+    await getDisplayAmountOnCurrencyCode(1234.12, "USD", {
+      avoidFormat: true,
+    })
+  ).toBe("$ 1234.12");
+  expect(
+    await getDisplayAmountOnCurrencyCode(1234.1234, "USD", {
+      avoidFormat: true,
+      avoidRound: true,
+    })
+  ).toBe("$ 1234.1234");
+  expect(await getDisplayAmountOnCurrencyCode(1234.1, "USD")).toBe(
+    "$ 1,234.10"
+  );
+  expect(
+    await getDisplayAmountOnCurrencyCode(1234.1, "USD", {
+      avoidFixedDecimals: true,
+    })
+  ).toBe("$ 1,234.1");
+  expect(
+    await getDisplayAmountOnCurrencyCode(1234.1, "USD", {
+      avoidFormat: true,
+      avoidFixedDecimals: true,
+    })
+  ).toBe("$ 1234.1");
+
+  // BDT
+  expect(await getDisplayAmountOnCurrencyCode(1.123, "BDT")).toBe("Tk 2");
+  expect(
+    await getDisplayAmountOnCurrencyCode(1.123, "BDT", {
+      isDecimalsStandard: true,
+    })
+  ).toBe("Tk 1.13");
+  expect(
+    await getDisplayAmountOnCurrencyCode(1.123, "BDT", {
+      isSymbolNative: true,
+    })
+  ).toBe("Tk 2");
+  expect(
+    await getDisplayAmountOnCurrencyCode(1.123, "BDT", {
+      isSymbolStandard: true,
+    })
+  ).toBe("৳ 2");
+
+  expect(
+    await getDisplayAmountOnCurrencyCode(1123, "BDT", {
+      isSymbolStandard: true,
+    })
+  ).toBe("৳ 1,123");
+  expect(
+    await getDisplayAmountOnCurrencyCode(1123, "BDT", { separator: "" })
+  ).toBe("Tk1,123");
+  expect(
+    await getDisplayAmountOnCurrencyCode(1123, "BDT", {
       separator: "-",
       avoidFormat: true,
     })
