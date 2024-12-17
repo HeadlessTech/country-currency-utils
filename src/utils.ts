@@ -1,20 +1,4 @@
-import {
-  COUNTRIES_DETAILS,
-  TCountryCode,
-  TCountryDetails,
-  TCurrencyCode,
-} from "./countries";
-import { CURRENCIES_DETAILS, TCurrencyDetails } from "./currencies";
-
-export function getCountryDetails(countryCode: TCountryCode): TCountryDetails {
-  return COUNTRIES_DETAILS[countryCode];
-}
-
-export function getCurrencyDetails(
-  currencyCode: TCurrencyCode
-): TCurrencyDetails {
-  return CURRENCIES_DETAILS[currencyCode];
-}
+import { TCurrencyData } from "./currencies";
 
 /* ======== Amount rounding ========= */
 
@@ -38,11 +22,10 @@ export type TCurrencyRoundOptions = {
 
 export function getRoundedAmountOnCurrency(
   amount: number,
-  currencyCode: TCurrencyCode,
+  currencyData: TCurrencyData,
   options?: TCurrencyRoundOptions
 ): number {
-  const currencyDetails = getCurrencyDetails(currencyCode);
-  const { decimals, decimalsCompact } = currencyDetails;
+  const { decimals, decimalsCompact } = currencyData;
   const { isRoundMiddle, isDecimalsStandard } = options || {};
 
   const decimalsFinal = isDecimalsStandard ? decimals : decimalsCompact;
@@ -91,11 +74,10 @@ export type TCurrencyFormatOptions = TCurrencyRoundOptions & {
 
 export function getFormattedAmountOnCurrency(
   amount: number,
-  currencyCode: TCurrencyCode,
+  currencyData: TCurrencyData,
   options?: TCurrencyFormatOptions
 ): string {
-  const currencyDetails = getCurrencyDetails(currencyCode);
-  const { decimals, decimalsCompact, digitGrouping } = currencyDetails;
+  const { decimals, decimalsCompact, digitGrouping } = currencyData;
   const { isRoundMiddle, isDecimalsStandard, avoidRound, avoidFixedDecimals } =
     options || {};
 
@@ -123,10 +105,9 @@ export type TCurrencyDisplayOptions = TCurrencyFormatOptions & {
 
 export function getDisplayAmountOnCurrency(
   amount: number,
-  currencyCode: TCurrencyCode,
+  currencyData: TCurrencyData,
   options?: TCurrencyDisplayOptions
 ): string {
-  const currencyDetails = getCurrencyDetails(currencyCode);
   const {
     decimals,
     decimalsCompact,
@@ -134,7 +115,7 @@ export function getDisplayAmountOnCurrency(
     symbolPreferred,
     symbolNative,
     symbol,
-  } = currencyDetails;
+  } = currencyData;
   const {
     avoidRound,
     isRoundMiddle,

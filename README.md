@@ -18,6 +18,12 @@ yarn add country-currency-utils
 
 ## Countries
 
+Country information is hosted using jsDeliver CDN.
+
+```bash
+https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/countries.json
+```
+
 Import Data as needed:
 
 ```typescript
@@ -65,6 +71,12 @@ const countryDetails = getCountryDetails("BD");
 ---
 
 ## Currencies
+
+Currency information is hosted using jsDeliver CDN.
+
+```bash
+https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/currencies.json
+```
 
 Currency related data and functionalities.
 
