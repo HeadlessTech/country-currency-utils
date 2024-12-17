@@ -16,69 +16,96 @@ or
 yarn add country-currency-utils
 ```
 
-## Countries
+## Countries and Currencies data
 
-Country information is hosted using jsDeliver CDN.
+The country and currency data are hosted via the package Github repo through CDN.
+
+URLS from package: **`COUNTRIES_DETAILS_URL`**, **`CURRENCIES_DETAILS_URL`**
+
+The URLs are
 
 ```bash
+# countries
 https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/countries.json
+
+#currencies
+https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/currencies.json
 ```
 
-Import Data as needed:
-
-```typescript
-import {
-  COUNTRIES_DETAILS, COUNTRIES_DATA ...
-} from "country-currency-utils";
-```
+## Country utilities
 
 **Type references:**
 
 ```typescript
 type TCountryDetails = {
   name: string; // Country name
-  dialCode: TDialCode; // Country dial code
-  currencyCode: TCurrencyCode; // Country currency code
+  dialCode: string; // Country dial code
+  currencyCode: string; // Country currency code
   flagEmoji: string; // Country flag emoji
 };
 
 type TCountryData = TCountryDetails & {
-  countryCode: TCountryCode;
+  countryCode: string; // ISO 3166 country code
 };
 ```
 
-**Available data:**
-
-`COUNTRIES_DETAILS (Record<TCountryCode, TCountryDetails>)`: A key, value object that use Country codes to defined country related details
-
-`COUNTRIES_DATA (TCountryData[])`: An array for object with country related data.
-
-`countryNames (string[])`: Array of country names
-`countryFlags (string[])`: Array of country flags emojis
-`dialCodes (TDialCode[])`: Array of dial codes
-`currencyCodes (TCurrencyCode)`: Array of currency codes
-
 **Available functions:**
 
-`getCountryDetails(countryCode: TCountryCode): TCountryDetails`: Return country details on country code
+**getAllCountryDetails**
+
+Reference
+
+```typescript
+getAllCountryDetails(): Promise<Record<string, TCountryDetails>>
+```
+
+Return all country details in Object format. The `key` in object is Country Code (ISO 3166).
+
+**getAllCountryData**
+
+Reference
+
+```typescript
+getAllCountryData(): Promise<TCountryData[]>
+```
+
+Return all country data in array format.
+
+**getCountryData**
+
+Reference
+
+```typescript
+getCountryData(countryCode: string): Promise<TCountryData | undefined>
+```
+
+Return country data given a country code.
 
 **Example:**
 
 ```typescript
-const countryDetails = getCountryDetails("BD");
+const countryData = getCountryData("BD");
+```
+
+**getCountriesData**
+
+Reference
+
+```typescript
+getCountriesData(countryCodes: string[]): Promise<(TCountryData | undefined)[]>
+```
+
+Return multiple countries data given array of country codes.
+
+**Example:**
+
+```typescript
+const countriesData = getCountriesData(["US", "BD"]);
 ```
 
 ---
 
-## Currencies
-
-Currency information is hosted using jsDeliver CDN.
-
-```bash
-https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/currencies.json
-```
-
-Currency related data and functionalities.
+## Currencies utilities
 
 **Type references**
 
@@ -99,29 +126,65 @@ type TCurrencyDetails = {
 };
 
 type TCurrencyData = TCurrencyDetails & {
-  currencyCode: TCurrencyCode;
+  currencyCode: string; // ISO 4217 currency codes
 };
 ```
 
-**Available data:**
-
-`CURRENCIES_DETAILS (Record<TCurrencyCode, TCurrencyDetails>)`: A key, value object that use Currency codes to defined currency related details
-
-`CURRENCIES_DATA (TCurrencyData[])`: An array for object with currency related data.
-
 **Available functions:**
 
-`getCurrencyDetails(currencyCode: TCurrencyCode): TCurrencyDetails`: Return currency details on currency code
+**getAllCurrencyDetails**
+
+Reference
+
+```typescript
+getAllCurrencyDetails(): Promise<Record<string, TCurrencyDetails>>
+```
+
+Return all currency details in Object format. The `key` in object is Currency Code (ISO 4217).
+
+**getAllCurrencyData**
+
+Reference
+
+```typescript
+getAllCurrencyData(): Promise<TCurrencyData[]>
+```
+
+Return all currency data in array format.
+
+**getCurrencyData**
+
+Reference
+
+```typescript
+getCurrencyData(currencyCode: string): Promise<TCurrencyData | undefined>
+```
+
+Returns Currency data given a currency code
 
 **Example:**
 
 ```typescript
-const countryDetails = getCountryDetails("BD");
+const currencyData = getCurrencyData("BDT");
+```
+
+**getCurrenciesData**
+
+Reference
+
+```typescript
+getCurrenciesData(currencyCodes: string[]): Promise<(TCurrencyData | undefined)[]>
+```
+
+Returns Currencies data given am array of currency codes
+
+**Example:**
+
+```typescript
+const currenciesData = getCurrenciesData(["USD", "BDT"]);
 ```
 
 ---
-
-## Currency Utils
 
 There are many functions and utilities that may be required when handling monetory amounts.
 Here are a list of functions:
@@ -144,7 +207,7 @@ const roundedAmount = getRoundedAmount(123.4517, 2, true); // 123.45
 **getRoundedAmountOnCurrency**
 
 ```typescript
-getRoundedAmountOnCurrency(amount: number, currencyCode: TCurrencyCode, options?: TCurrencyRoundOptions): number
+getRoundedAmountOnCurrency(amount: number, currencyData: TCurrencyData, options?: TCurrencyRoundOptions): number
 ```
 
 ```typescript
@@ -159,12 +222,18 @@ This uses the `getRoundedAmount` function internally to round on details of a cu
 _Example:_
 
 ```typescript
-const roundedAmount = getRoundedAmountOnCurrency(123.4567, "USD"); // 123.46
-const roundedAmount = getRoundedAmountOnCurrency(123.45, "BDT"); // 124
-const roundedAmount = getRoundedAmountOnCurrency(123.45, "BDT", {
+const USDCurrencyData = await getCurrencyData("USD");
+const BDTCurrencyData = await getCurrencyData("BDT");
+
+const roundedAmount = getRoundedAmountOnCurrency(123.4567, USDCurrencyData); // 123.46
+const roundedAmount = getRoundedAmountOnCurrency(123.45, BDTCurrencyData); // 124
+const roundedAmount = getRoundedAmountOnCurrency(123.45, BDTCurrencyData, {
   isDecimalsStandard: true,
 }); // 123.45
 ```
+
+**Note**
+You will notice that we are having to run a promise to get CurrencyData and then round/format/display monetory amount. When handling many countries and currencies, it is better to fetch data and then use it, rather that keeping a list of countries and currencies as data or as constant in code base. This keeps codebase light. However if you are handling single currency or just a few currencies. You can keep a list of currencies data and use it directly in function in stead of fetching through an async call.
 
 **getFormattedAmount**
 
@@ -201,14 +270,25 @@ Formats the given amount according to the currency's standard decimal places and
 _Example:_
 
 ```typescript
-const formattedAmount = getFormattedAmountOnCurrency(123456.7, "USD"); // "123,456.70"
-const formattedAmount = getFormattedAmountOnCurrency(123456.7, "USD", {
-  avoidFixedDecimals: true,
-}); // "123,456.7"
-const formattedAmount = getFormattedAmountOnCurrency(123456.7, "BDT"); // "1,23,457"
-const formattedAmount = getFormattedAmountOnCurrency(123456.7, "BDT", {
-  avoidRound: true,
-}); // "1,23,456.7"
+const USDCurrencyData = await getCurrencyData("USD");
+const BDTCurrencyData = await getCurrencyData("BDT");
+
+const formattedAmount = getFormattedAmountOnCurrency(123456.7, USDCurrencyData); // "123,456.70"
+const formattedAmount = getFormattedAmountOnCurrency(
+  123456.7,
+  USDCurrencyData,
+  {
+    avoidFixedDecimals: true,
+  }
+); // "123,456.7"
+const formattedAmount = getFormattedAmountOnCurrency(123456.7, BDTCurrencyData); // "1,23,457"
+const formattedAmount = getFormattedAmountOnCurrency(
+  123456.7,
+  BDTCurrencyData,
+  {
+    avoidRound: true,
+  }
+); // "1,23,456.7"
 ```
 
 **getDisplayAmountOnCurrency**
@@ -231,16 +311,19 @@ Returns a displayable amount with currency symbol, rounded by default and uses p
 _Example:_
 
 ```typescript
-const displayAmount = getDisplayAmountOnCurrency(123.4567, "USD"); // "$ 123.46"
-const displayAmount = getDisplayAmountOnCurrency(123456.7, "USD"); // "$ 123,456.70"
-const displayAmount = getDisplayAmountOnCurrency(123456.7, "USD", {
+const USDCurrencyData = await getCurrencyData("USD");
+const BDTCurrencyData = await getCurrencyData("BDT");
+
+const displayAmount = getDisplayAmountOnCurrency(123.4567, USDCurrencyData); // "$ 123.46"
+const displayAmount = getDisplayAmountOnCurrency(123456.7, USDCurrencyData); // "$ 123,456.70"
+const displayAmount = getDisplayAmountOnCurrency(123456.7, USDCurrencyData, {
   avoidFormat: true,
 }); // "$ 123456.7"
-const displayAmount = getDisplayAmountOnCurrency(123456.7, "USD", {
+const displayAmount = getDisplayAmountOnCurrency(123456.7, USDCurrencyData, {
   separator: "",
 }); // "$123,456.70"
-const displayAmount = getDisplayAmountOnCurrency(123.4567, "BDT"); // "Tk 124"
-const displayAmount = getDisplayAmountOnCurrency(123.4567, "BDT", {
+const displayAmount = getDisplayAmountOnCurrency(123.4567, BDTCurrencyData); // "Tk 124"
+const displayAmount = getDisplayAmountOnCurrency(123.4567, BDTCurrencyData, {
   isSymbolStandard: true,
 }); // "৳ 124"
 ```

@@ -41,9 +41,7 @@ export async function getAllCurrencyDetails(): Promise<
 /*
   Fetch all currency data (array format)
 */
-export async function getAllCurrencyData(): Promise<
-  TCurrencyData[] | undefined
-> {
+export async function getAllCurrencyData(): Promise<TCurrencyData[]> {
   const currencyDetails = await getAllCurrencyDetails();
   return Object.keys(currencyDetails).map((currencyCode) => ({
     currencyCode,
