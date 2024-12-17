@@ -8,4 +8,5 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   minify: true,
+  external: ["test/**/*", "data/**/*"],
 });
