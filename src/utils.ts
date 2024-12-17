@@ -22,9 +22,11 @@ export type TCurrencyRoundOptions = {
 
 export function getRoundedAmountOnCurrency(
   amount: number,
-  currencyData: TCurrencyData,
+  currencyData?: TCurrencyData,
   options?: TCurrencyRoundOptions
 ): number {
+  if (!currencyData) return amount;
+
   const { decimals, decimalsCompact } = currencyData;
   const { isRoundMiddle, isDecimalsStandard } = options || {};
 
@@ -74,9 +76,11 @@ export type TCurrencyFormatOptions = TCurrencyRoundOptions & {
 
 export function getFormattedAmountOnCurrency(
   amount: number,
-  currencyData: TCurrencyData,
+  currencyData?: TCurrencyData,
   options?: TCurrencyFormatOptions
 ): string {
+  if (!currencyData) return amount.toString();
+
   const { decimals, decimalsCompact, digitGrouping } = currencyData;
   const { isRoundMiddle, isDecimalsStandard, avoidRound, avoidFixedDecimals } =
     options || {};
@@ -105,9 +109,11 @@ export type TCurrencyDisplayOptions = TCurrencyFormatOptions & {
 
 export function getDisplayAmountOnCurrency(
   amount: number,
-  currencyData: TCurrencyData,
+  currencyData?: TCurrencyData,
   options?: TCurrencyDisplayOptions
 ): string {
+  if (!currencyData) return amount.toString();
+
   const {
     decimals,
     decimalsCompact,

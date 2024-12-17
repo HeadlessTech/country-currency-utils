@@ -207,7 +207,7 @@ const roundedAmount = getRoundedAmount(123.4517, 2, true); // 123.45
 **getRoundedAmountOnCurrency**
 
 ```typescript
-getRoundedAmountOnCurrency(amount: number, currencyData: TCurrencyData, options?: TCurrencyRoundOptions): number
+getRoundedAmountOnCurrency(amount: number, currencyData?: TCurrencyData, options?: TCurrencyRoundOptions): number
 ```
 
 ```typescript
@@ -255,7 +255,7 @@ const formattedAmount = getFormattedAmount(123456.789, 3, 2); // "123,456.78"
 **getFormattedAmountOnCurrency**
 
 ```typescript
-getFormattedAmountOnCurrency(amount: number, currencyCode: TCurrencyCode, options?: TCurrencyFormatOptions): string
+getFormattedAmountOnCurrency(amount: number, currencyData?: TCurrencyData, options?: TCurrencyFormatOptions): string
 ```
 
 ```typescript
@@ -294,7 +294,7 @@ const formattedAmount = getFormattedAmountOnCurrency(
 **getDisplayAmountOnCurrency**
 
 ```typescript
-getDisplayAmountOnCurrency(amount: number, currencyCode: TCurrencyCode, options?: TCurrencyFormatOptions): string
+getDisplayAmountOnCurrency(amount: number, currencyData?: TCurrencyData, options?: TCurrencyFormatOptions): string
 ```
 
 ```typescript
