@@ -1,6 +1,29 @@
-# country-currency-utils
+<h1>country-currency-utils</h1>
 
-`country-currency-utils` is an npm package that provides utilities for handling country and currency data and functions to format amounts with currency codes.
+[![image](https://img.shields.io/badge/npm-2.0.0-blue)](https://www.npmjs.com/package/country-currency-utils)
+[![image](https://img.shields.io/github/forks/HeadlessTech/country-currency-utils)](https://github.com/HeadlessTech/country-currency-utils/fork)
+![image](https://img.shields.io/github/stars/HeadlessTech/country-currency-utils)
+
+The `country-currency-utils` package provides functions to format amount with currency codes as well as utilities for managing country and currency data. Tasks involving currency and nation information are made easier by this package.
+
+<h2>Table of contents</h2>
+
+- [Installation](#installation)
+- [Countries and Currencies data](#countries-and-currencies-data)
+- [Country utilities](#country-utilities)
+  - [Type references](#type-references)
+  - [API references](#api-references)
+- [Currencies utilities](#currencies-utilities)
+  - [Type references](#type-references-1)
+  - [API references](#api-references-1)
+- [Setup for the development](#setup-for-the-development)
+  - [Prerequisites](#prerequisites)
+  - [Setup and Build](#setup-and-build)
+- [Testing](#testing)
+- [License](#license)
+- [Developed By](#developed-by)
+- [Support](#support)
+- [Contribution](#contribution)
 
 ## Installation
 
@@ -15,6 +38,8 @@ or
 ```bash
 yarn add country-currency-utils
 ```
+
+---
 
 ## Countries and Currencies data
 
@@ -32,9 +57,11 @@ https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/countr
 https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/currencies.json
 ```
 
+---
+
 ## Country utilities
 
-**Type references:**
+### Type references
 
 ```typescript
 type TCountryDetails = {
@@ -49,29 +76,84 @@ type TCountryData = TCountryDetails & {
 };
 ```
 
-**Available functions:**
+### API references
 
-**getAllCountryDetails**
+- **getAllCountryDetails**
 
-Reference
+Retrieves all country details in an object format asynchronously. The `key` in object is Country Code (ISO 3166).
 
 ```typescript
 getAllCountryDetails(): Promise<Record<string, TCountryDetails>>
 ```
 
-Return all country details in Object format. The `key` in object is Country Code (ISO 3166).
+**Returns**
 
-**getAllCountryData**
+A `Promise` that resolves to an object where each key represents a country code (ISO 3166), and the corresponding value contains the country details of type `TCountryDetails`. Sample response-
 
-Reference
+```typescript
+{
+  BD: {
+    name: "Bangladesh",
+    dialCode: "+880",
+    currencyCode: "BDT",
+    flagEmoji: "🇧🇩"
+  },
+  BE: {
+    name: "Belgium",
+    dialCode: "+32",
+    currencyCode: "EUR",
+    flagEmoji: "🇧🇪"
+  },
+  ...,
+  MZ: {
+    name: "Mozambique",
+    dialCode: "+258",
+    currencyCode: "MZN",
+    flagEmoji: "🇲🇿"
+  }
+}
+```
+
+- **getAllCountryData**
+
+Asynchronously retrieves all country data in an array format. Unlike `getAllCountryDetails`, this function returns an array instead of an object with country codes as keys. Instead, Each object in the array includes the corresponding country code.
 
 ```typescript
 getAllCountryData(): Promise<TCountryData[]>
 ```
 
-Return all country data in array format.
+**Returns**
 
-**getCountryData**
+A `Promise` that resolves to an array of type `TCountryData`. Sample response-
+
+```typescript
+[
+  {
+    name: "Bangladesh",
+    dialCode: "+880",
+    currencyCode: "BDT",
+    flagEmoji: "🇧🇩",
+    countryCode: "BD"
+  },
+  {
+    name: "Belgium",
+    dialCode: "+32",
+    currencyCode: "EUR",
+    flagEmoji: "🇧🇪",
+    countryCode: "BE"
+  },
+  ...,
+  {
+    name: "Mozambique",
+    dialCode: "+258",
+    currencyCode: "MZN",
+    flagEmoji: "🇲🇿",
+    countryCode: "MZ"
+  }
+]
+```
+
+- **getCountryData**
 
 Reference
 
@@ -87,7 +169,7 @@ Return country data given a country code.
 const countryData = getCountryData("BD");
 ```
 
-**getCountriesData**
+- **getCountriesData**
 
 Reference
 
@@ -107,7 +189,7 @@ const countriesData = getCountriesData(["US", "BD"]);
 
 ## Currencies utilities
 
-**Type references**
+### Type references
 
 ```typescript
 type TCurrencyDetails = {
@@ -130,7 +212,7 @@ type TCurrencyData = TCurrencyDetails & {
 };
 ```
 
-**Available functions:**
+### API references
 
 **getAllCurrencyDetails**
 
@@ -233,7 +315,7 @@ const roundedAmount = getRoundedAmountOnCurrency(123.45, BDTCurrencyData, {
 ```
 
 **Note**
-You will notice that we are having to run a promise to get CurrencyData and then round/format/display monetory amount. When handling many countries and currencies, it is better to fetch data and then use it, rather that keeping a list of countries and currencies as data or as constant in code base. This keeps codebase light. However if you are handling single currency or just a few currencies. You can keep a list of currencies data and use it directly in function in stead of fetching through an async call.
+You will notice that we are having to run a promise to get CurrencyData and then round/format/display monetary amount. When handling many countries and currencies, it is better to fetch data and then use it, rather that keeping a list of countries and currencies as data or as constant in code base. This keeps codebase light. However if you are handling single currency or just a few currencies. You can keep a list of currencies data and use it directly in function in stead of fetching through an async call.
 
 **getFormattedAmount**
 
@@ -353,9 +435,37 @@ const displayAmount = await getDisplayAmountOnCurrencyCode(123.4567, "BDT", {
 }); // "৳ 124"
 ```
 
+## Setup for the development
+
+Follow these instructions to set up a local copy of the project for development and testing.
+
+### Prerequisites
+
+This project requires NodeJS and Yarn, both of which are simple to install. To confirm that they are available on your machine, run the following command.
+
+```bash
+node -v && yarn -v
+```
+
+### Setup and Build
+
+First clone the repository from the GitHub and run the following commands-
+
+```bash
+yarn # for installing the dependencies
+```
+
+```bash
+yarn build # for building the project
+```
+
 ## Testing
 
-All data and functions have been tested using Jest.
+All data and functions in this package have been thoroughly tested with Jest. To run tests during development, use the following command-
+
+```bash
+yarn test
+```
 
 ## License
 
@@ -363,7 +473,7 @@ This project is licensed under the MIT License
 
 ## Developed By
 
-Headless Technologies (https://headless.ltd)  
+Headless Technologies (<https://headless.ltd>)  
 A software, hardware, and AI company building solutions on tech.
 
 ## Support
