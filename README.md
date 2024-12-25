@@ -1,6 +1,8 @@
 # country-currency-utils
 
-`country-currency-utils` is an npm package that provides utilities for handling country and currency data and functions to format amounts with currency codes.
+[![npm version](https://img.shields.io/npm/v/country-currency-utils)](https://www.npmjs.com/package/country-currency-utils)
+
+`country-currency-utils` is a comprehensive npm package providing country and currency data for all countries. It offers an extensive set of utilities for handling monetary amounts efficiently, including formatting, rounding, and accessing currency symbols. This package ensures accurate monetary representation and simplifies working with detailed country and currency information.
 
 ## Installation
 
@@ -18,23 +20,26 @@ yarn add country-currency-utils
 
 ## Countries and Currencies data
 
-The country and currency data are hosted via the package Github repo through CDN.
+The package hosts country and currency data via CDN URLs:
 
-URLS from package: **`COUNTRIES_DETAILS_URL`**, **`CURRENCIES_DETAILS_URL`**
+`COUNTRIES_DETAILS_URL`, `CURRENCIES_DETAILS_URL`
 
-The URLs are
+- **Countries:** [Countries JSON](https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/countries.json)
+- **Currencies:** [Currencies JSON](https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/currencies.json)
 
 ```bash
-# countries
+# Countries
 https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/countries.json
 
-#currencies
+# Currencies
 https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/currencies.json
 ```
 
+---
+
 ## Country utilities
 
-**Type references:**
+### Type references:\*\*
 
 ```typescript
 type TCountryDetails = {
@@ -49,11 +54,11 @@ type TCountryData = TCountryDetails & {
 };
 ```
 
-**Available functions:**
+### Available functions:\*\*
 
-**getAllCountryDetails**
+#### `getAllCountryDetails`
 
-Reference
+_Reference_
 
 ```typescript
 getAllCountryDetails(): Promise<Record<string, TCountryDetails>>
@@ -61,9 +66,9 @@ getAllCountryDetails(): Promise<Record<string, TCountryDetails>>
 
 Return all country details in Object format. The `key` in object is Country Code (ISO 3166).
 
-**getAllCountryData**
+#### `getAllCountryData`
 
-Reference
+_Reference_
 
 ```typescript
 getAllCountryData(): Promise<TCountryData[]>
@@ -71,9 +76,9 @@ getAllCountryData(): Promise<TCountryData[]>
 
 Return all country data in array format.
 
-**getCountryData**
+#### `getCountryData`
 
-Reference
+_Reference_
 
 ```typescript
 getCountryData(countryCode: string): Promise<TCountryData | undefined>
@@ -81,15 +86,15 @@ getCountryData(countryCode: string): Promise<TCountryData | undefined>
 
 Return country data given a country code.
 
-**Example:**
+_Example_
 
 ```typescript
 const countryData = getCountryData("BD");
 ```
 
-**getCountriesData**
+#### `getCountriesData`
 
-Reference
+_Reference_
 
 ```typescript
 getCountriesData(countryCodes: string[]): Promise<(TCountryData | undefined)[]>
@@ -97,7 +102,7 @@ getCountriesData(countryCodes: string[]): Promise<(TCountryData | undefined)[]>
 
 Return multiple countries data given array of country codes.
 
-**Example:**
+_Example_
 
 ```typescript
 const countriesData = getCountriesData(["US", "BD"]);
@@ -107,7 +112,7 @@ const countriesData = getCountriesData(["US", "BD"]);
 
 ## Currencies utilities
 
-**Type references**
+### Type references
 
 ```typescript
 type TCurrencyDetails = {
@@ -130,11 +135,11 @@ type TCurrencyData = TCurrencyDetails & {
 };
 ```
 
-**Available functions:**
+### Available functions
 
-**getAllCurrencyDetails**
+#### `getAllCurrencyDetails`
 
-Reference
+_Reference_
 
 ```typescript
 getAllCurrencyDetails(): Promise<Record<string, TCurrencyDetails>>
@@ -142,9 +147,9 @@ getAllCurrencyDetails(): Promise<Record<string, TCurrencyDetails>>
 
 Return all currency details in Object format. The `key` in object is Currency Code (ISO 4217).
 
-**getAllCurrencyData**
+#### `getAllCurrencyData`
 
-Reference
+_Reference_
 
 ```typescript
 getAllCurrencyData(): Promise<TCurrencyData[]>
@@ -152,9 +157,9 @@ getAllCurrencyData(): Promise<TCurrencyData[]>
 
 Return all currency data in array format.
 
-**getCurrencyData**
+#### `getCurrencyData`
 
-Reference
+_Reference_
 
 ```typescript
 getCurrencyData(currencyCode: string): Promise<TCurrencyData | undefined>
@@ -162,15 +167,15 @@ getCurrencyData(currencyCode: string): Promise<TCurrencyData | undefined>
 
 Returns Currency data given a currency code
 
-**Example:**
+_Example_
 
 ```typescript
 const currencyData = getCurrencyData("BDT");
 ```
 
-**getCurrenciesData**
+#### `getCurrenciesData`
 
-Reference
+_Reference_
 
 ```typescript
 getCurrenciesData(currencyCodes: string[]): Promise<(TCurrencyData | undefined)[]>
@@ -178,7 +183,7 @@ getCurrenciesData(currencyCodes: string[]): Promise<(TCurrencyData | undefined)[
 
 Returns Currencies data given am array of currency codes
 
-**Example:**
+_Example_
 
 ```typescript
 const currenciesData = getCurrenciesData(["USD", "BDT"]);
@@ -186,10 +191,12 @@ const currenciesData = getCurrenciesData(["USD", "BDT"]);
 
 ---
 
+## Amount Formatting Utilities
+
 There are many functions and utilities that may be required when handling monetory amounts.
 Here are a list of functions:
 
-**getRoundedAmount**
+#### `getRoundedAmount`
 
 ```typescript
 getRoundedAmount(amount: number, decimals: number, isRoundMiddle?: boolean): number
@@ -204,17 +211,15 @@ const roundedAmount = getRoundedAmount(123.4517, 2); // 123.46
 const roundedAmount = getRoundedAmount(123.4517, 2, true); // 123.45
 ```
 
-**getRoundedAmountOnCurrency**
-
-```typescript
-getRoundedAmountOnCurrency(amount: number, currencyData?: TCurrencyData, options?: TCurrencyRoundOptions): number
-```
+#### `getRoundedAmountOnCurrency`
 
 ```typescript
 type TCurrencyRoundOptions = {
   isRoundMiddle?: boolean; // Default: Math.ceil, isRoundMiddle uses Math.round
   isDecimalsStandard?: boolean; // Default: compact decimals, This: standard decimals
 };
+
+getRoundedAmountOnCurrency(amount: number, currencyData?: TCurrencyData, options?: TCurrencyRoundOptions): number
 ```
 
 This uses the `getRoundedAmount` function internally to round on details of a currency code. Default behavior is to use the `decimalsContact` decimal places, but this can be overridden using `isDecimalsStandard`
@@ -235,7 +240,7 @@ const roundedAmount = getRoundedAmountOnCurrency(123.45, BDTCurrencyData, {
 **Note**
 You will notice that we are having to run a promise to get CurrencyData and then round/format/display monetory amount. When handling many countries and currencies, it is better to fetch data and then use it, rather that keeping a list of countries and currencies as data or as constant in code base. This keeps codebase light. However if you are handling single currency or just a few currencies. You can keep a list of currencies data and use it directly in function in stead of fetching through an async call.
 
-**getFormattedAmount**
+#### `getFormattedAmount`
 
 ```typescript
 getFormattedAmount(amount: number, digitGrouping: number, fixedDecimals?: number): string
@@ -252,17 +257,15 @@ const formattedAmount = getFormattedAmount(123456.7, 2, 2); // "1,23,456.70"
 const formattedAmount = getFormattedAmount(123456.789, 3, 2); // "123,456.78"
 ```
 
-**getFormattedAmountOnCurrency**
-
-```typescript
-getFormattedAmountOnCurrency(amount: number, currencyData?: TCurrencyData, options?: TCurrencyFormatOptions): string
-```
+#### `getFormattedAmountOnCurrency`
 
 ```typescript
 type TCurrencyFormatOptions = TCurrencyRoundOptions & {
   avoidRound?: boolean; // avoids rounding amount
   avoidFixedDecimals?: boolean; // default behavior is to have fixed decimals
 };
+
+getFormattedAmountOnCurrency(amount: number, currencyData?: TCurrencyData, options?: TCurrencyFormatOptions): string
 ```
 
 Formats the given amount according to the currency's standard decimal places and digit grouping and returns it as a string. The function by default rounds the number and formats on the currency definitions. The options inherits from rounding options. `avoidRound` avoids rounding the amount. `avoidFixedDecimals` avoids using fixed decimals defined from currency.
@@ -291,11 +294,7 @@ const formattedAmount = getFormattedAmountOnCurrency(
 ); // "1,23,456.7"
 ```
 
-**getDisplayAmountOnCurrency**
-
-```typescript
-getDisplayAmountOnCurrency(amount: number, currencyData?: TCurrencyData, options?: TCurrencyFormatOptions): string
-```
+#### `getDisplayAmountOnCurrency`
 
 ```typescript
 type TCurrencyDisplayOptions = TCurrencyFormatOptions & {
@@ -304,6 +303,8 @@ type TCurrencyDisplayOptions = TCurrencyFormatOptions & {
   isSymbolNative?: boolean; // Default: preferredSymbol, isSymbolNative: symbolNative
   separator?: string; // Default: space between symbol and amount, can be changed
 };
+
+getDisplayAmountOnCurrency(amount: number, currencyData?: TCurrencyData, options?: TCurrencyFormatOptions): string
 ```
 
 Returns a displayable amount with currency symbol, rounded by default and uses proper digit grouping on currency. `avoidFormat` avoid formatting. `isSymbolStandard` and `isSymbolNative` defined the symbol to use, default is to use `preferredSymbol`. `separator` can be used define separator string between symbol and amount. The function inherits options for rounding and formatting
@@ -328,7 +329,7 @@ const displayAmount = getDisplayAmountOnCurrency(123.4567, BDTCurrencyData, {
 }); // "৳ 124"
 ```
 
-**getDisplayAmountOnCurrencyCode**
+#### `getDisplayAmountOnCurrencyCode`
 
 ```typescript
 getDisplayAmountOnCurrencyCode(amount: number, currencyCode: string, options?: TCurrencyFormatOptions): Promise<string>
@@ -363,7 +364,10 @@ This project is licensed under the MIT License
 
 ## Developed By
 
-Headless Technologies (https://headless.ltd)  
+![Headless Technologies Logo](https://github.com/user-attachments/assets/c822b6be-b9bb-4199-b34b-ea2efb79e7f9)
+
+**[Headless Technologies Limited](https://headless.ltd)**
+
 A software, hardware, and AI company building solutions on tech.
 
 ## Support
