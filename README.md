@@ -39,7 +39,7 @@ https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/curren
 
 ## Country utilities
 
-### Type references:\*\*
+### Type references
 
 ```typescript
 type TCountryDetails = {
@@ -54,7 +54,7 @@ type TCountryData = TCountryDetails & {
 };
 ```
 
-### Available functions:\*\*
+### Available functions
 
 #### `getAllCountryDetails`
 
@@ -86,7 +86,7 @@ getCountryData(countryCode: string): Promise<TCountryData | undefined>
 
 Return country data given a country code.
 
-_Example_
+_Example:_
 
 ```typescript
 const countryData = getCountryData("BD");
@@ -102,7 +102,7 @@ getCountriesData(countryCodes: string[]): Promise<(TCountryData | undefined)[]>
 
 Return multiple countries data given array of country codes.
 
-_Example_
+_Example:_
 
 ```typescript
 const countriesData = getCountriesData(["US", "BD"]);
@@ -167,7 +167,7 @@ getCurrencyData(currencyCode: string): Promise<TCurrencyData | undefined>
 
 Returns Currency data given a currency code
 
-_Example_
+_Example:_
 
 ```typescript
 const currencyData = getCurrencyData("BDT");
@@ -183,7 +183,7 @@ getCurrenciesData(currencyCodes: string[]): Promise<(TCurrencyData | undefined)[
 
 Returns Currencies data given am array of currency codes
 
-_Example_
+_Example:_
 
 ```typescript
 const currenciesData = getCurrenciesData(["USD", "BDT"]);
@@ -237,7 +237,7 @@ const roundedAmount = getRoundedAmountOnCurrency(123.45, BDTCurrencyData, {
 }); // 123.45
 ```
 
-**Note**
+**Note:**
 You will notice that we are having to run a promise to get CurrencyData and then round/format/display monetory amount. When handling many countries and currencies, it is better to fetch data and then use it, rather that keeping a list of countries and currencies as data or as constant in code base. This keeps codebase light. However if you are handling single currency or just a few currencies. You can keep a list of currencies data and use it directly in function in stead of fetching through an async call.
 
 #### `getFormattedAmount`
@@ -364,7 +364,7 @@ This project is licensed under the MIT License
 
 ## Developed By
 
-![Headless Technologies Logo](https://github.com/user-attachments/assets/c822b6be-b9bb-4199-b34b-ea2efb79e7f9)
+<img src="https://github.com/user-attachments/assets/c822b6be-b9bb-4199-b34b-ea2efb79e7f9" alt="Headless Technologies Limited" width="280" height="auto">
 
 **[Headless Technologies Limited](https://headless.ltd)**
 
