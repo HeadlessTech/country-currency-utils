@@ -364,7 +364,7 @@ This project is licensed under the MIT License
 
 ## Developed By
 
-<a href="https://headless.ltd" target="_blank">
+<a href="https://headless.ltd" target="_blank" rel="noopener noreferrer">
 <img src="https://github.com/user-attachments/assets/c822b6be-b9bb-4199-b34b-ea2efb79e7f9" alt="Headless Technologies Limited" width="280" height="auto">
 </a>
 
