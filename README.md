@@ -1,30 +1,30 @@
 <h1>country-currency-utils</h1>
 
-[![image](https://img.shields.io/badge/npm-2.0.0-blue)](https://www.npmjs.com/package/country-currency-utils)
+[![image](https://img.shields.io/badge/npm-2.1.1-blue)](https://www.npmjs.com/package/country-currency-utils)
 [![image](https://img.shields.io/github/forks/HeadlessTech/country-currency-utils)](https://github.com/HeadlessTech/country-currency-utils/fork)
 ![image](https://img.shields.io/github/stars/HeadlessTech/country-currency-utils)
 
-The `country-currency-utils` package provides functions to format amount with currency codes as well as utilities for managing country and currency data. Tasks involving currency and nation information are made easier by this package.
+`country-currency-utils` is a comprehensive npm package providing country and currency data for all countries. It offers an extensive set of utilities for handling monetary amounts efficiently, including formatting, rounding, and accessing currency symbols. This package ensures accurate monetary representation and simplifies working with detailed country and currency information.
 
-- [Installation](#installation)
-- [Countries and Currencies data](#countries-and-currencies-data)
-- [Country utilities](#country-utilities)
+- [:rocket: Installation](#rocket-installation)
+- [:bookmark_tabs: Countries and Currencies data](#bookmark_tabs-countries-and-currencies-data)
+- [:triangular_flag_on_post: Country utilities](#triangular_flag_on_post-country-utilities)
   - [Type references](#type-references)
   - [API references](#api-references)
-- [Currencies utilities](#currencies-utilities)
+- [:dollar: Currencies utilities](#dollar-currencies-utilities)
   - [Type references](#type-references-1)
   - [API references](#api-references-1)
-- [Setup for the development](#setup-for-the-development)
+- [:construction: Setup for the development](#construction-setup-for-the-development)
   - [Prerequisites](#prerequisites)
   - [Setup, Test, and Build](#setup-test-and-build)
-- [License](#license)
-- [Developed By](#developed-by)
-- [Support](#support)
-- [Contribution](#contribution)
+- [:pencil: License](#pencil-license)
+- [:zap: Developed by](#zap-developed-by)
+- [:seedling: Support](#seedling-support)
+- [:fire: Contribution](#fire-contribution)
 
-## Installation
+## :rocket: Installation
 
-To install the package, run:
+To install the package, run-
 
 ```bash
 npm install country-currency-utils
@@ -38,25 +38,26 @@ yarn add country-currency-utils
 
 ---
 
-## Countries and Currencies data
+## :bookmark_tabs: Countries and Currencies data
 
-The country and currency data are hosted via the package Github repo through CDN.
+The package hosts country and currency data via CDN URLs:
 
-URLS from package: **`COUNTRIES_DETAILS_URL`**, **`CURRENCIES_DETAILS_URL`**
+`COUNTRIES_DETAILS_URL`, `CURRENCIES_DETAILS_URL`
 
-The URLs are
+- **Countries:** [Countries JSON](https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/countries.json)
+- **Currencies:** [Currencies JSON](https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/currencies.json)
 
 ```bash
-# countries
+# Countries
 https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/countries.json
 
-#currencies
+# Currencies
 https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/currencies.json
 ```
 
 ---
 
-## Country utilities
+## :triangular_flag_on_post: Country utilities
 
 | **Function Name**                                        | **Description**                                    | **Arguments**           | **Returns**                              |
 | -------------------------------------------------------- | -------------------------------------------------- | ----------------------- | ---------------------------------------- |
@@ -86,7 +87,7 @@ type TCountryData = {
 
 ### API references
 
-- <h4 id="getAllCountryDetails">getAllCountryDetails</h4>
+- <h4 id="getAllCountryDetails"><b>getAllCountryDetails</b></h4>
 
 Retrieves all country details in an object format asynchronously. The `key` in object is Country Code (ISO 3166).
 
@@ -129,7 +130,7 @@ const countriesDetails = await getAllCountryDetails();
 }
 ```
 
-- <h4 id="#getAllCountryData">getAllCountryData</h4>
+- <h4 id="#getAllCountryData"><b>getAllCountryData</b></h4>
 
 Asynchronously retrieves all country data in an array format. Unlike `getAllCountryDetails`, this function returns an array instead of an object with country codes as keys. Instead, Each object in the array includes the corresponding country code.
 
@@ -175,7 +176,7 @@ const countriesData = await getAllCountryData();
 ]
 ```
 
-- <h4 id="#getCountryData">getCountryData</h4>
+- <h4 id="#getCountryData"><b>getCountryData</b></h4>
 
 This function retrieves a particular country's data asynchronously. It accepts a string representing the country code as input and returns a `promise` that resolves with the country data as an object. If the provided country code is invalid, the Promise resolves to undefined.
 
@@ -208,7 +209,7 @@ const countryData = await getCountryData("BD");
 }
 ```
 
-- <h4 id="#getCountriesData">getCountriesData</h4>
+- <h4 id="#getCountriesData"><b>getCountriesData</b></h4>
 
 Returns multiple countries data given array of country codes asynchronously. It takes an array of country codes as input and returns a `promise` that resolves with an array of country data objects. If a country code is invalid, the corresponding position in the output array will hold undefined.
 
@@ -253,7 +254,7 @@ const countriesData = await getCountriesData(["US", "BD"]);
 
 ---
 
-## Currencies utilities
+## :dollar: Currencies utilities
 
 ### Type references
 
@@ -501,7 +502,7 @@ const displayAmount = await getDisplayAmountOnCurrencyCode(123.4567, "BDT", {
 }); // "৳ 124"
 ```
 
-## Setup for the development
+## :construction: Setup for the development
 
 Follow these instructions to set up a local copy of the project for development and testing.
 
@@ -533,19 +534,19 @@ To build the project, run the following command-
 yarn build
 ```
 
-## License
+## :pencil: License
 
 This project is licensed under the MIT License
 
-## Developed By
+## :zap: Developed by
 
 Headless Technologies (<https://headless.ltd>)  
 A software, hardware, and AI company building solutions on tech.
 
-## Support
+## :seedling: Support
 
 If you find this package useful, please consider starring the repository on GitHub to show your support!
 
-## Contribution
+## :fire: Contribution
 
 Developers are welcome to create issues and pull requests.
