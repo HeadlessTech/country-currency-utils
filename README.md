@@ -6,8 +6,6 @@
 
 The `country-currency-utils` package provides functions to format amount with currency codes as well as utilities for managing country and currency data. Tasks involving currency and nation information are made easier by this package.
 
-<h2>Table of contents</h2>
-
 - [Installation](#installation)
 - [Countries and Currencies data](#countries-and-currencies-data)
 - [Country utilities](#country-utilities)
@@ -18,8 +16,7 @@ The `country-currency-utils` package provides functions to format amount with cu
   - [API references](#api-references-1)
 - [Setup for the development](#setup-for-the-development)
   - [Prerequisites](#prerequisites)
-  - [Setup and Build](#setup-and-build)
-- [Testing](#testing)
+  - [Setup, Test, and Build](#setup-test-and-build)
 - [License](#license)
 - [Developed By](#developed-by)
 - [Support](#support)
@@ -61,6 +58,13 @@ https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/curren
 
 ## Country utilities
 
+| **Function Name**                                        | **Description**                                    | **Arguments**           | **Returns**                              |
+| -------------------------------------------------------- | -------------------------------------------------- | ----------------------- | ---------------------------------------- |
+| <a href="#getAllCountryDetails">getAllCountryDetails</a> | Retrieves all country details in an object format  | <p align="center">-</p> | Promise<Record<string, TCountryDetails>> |
+| <a href="#getAllCountryData">getAllCountryData</a>       | Retrieves all country details in an array format   | <p align="center">-</p> | Promise<TCountryData[]>                  |
+| <a href="#getCountryData">getCountryData</a>             | Retrieves a country's data by country code         | String                  | Promise<TCountryData \| undefined>       |
+| <a href="#getCountriesData">getCountriesData</a>         | Retrieves multiple country's data by country codes | String[]                | Promise<(TCountryData \| undefined)[]>   |
+
 ### Type references
 
 ```typescript
@@ -71,14 +75,18 @@ type TCountryDetails = {
   flagEmoji: string; // Country flag emoji
 };
 
-type TCountryData = TCountryDetails & {
+type TCountryData = {
+  name: string; // Country name
+  dialCode: string; // Country dial code
+  currencyCode: string; // Country currency code
+  flagEmoji: string; // Country flag emoji
   countryCode: string; // ISO 3166 country code
 };
 ```
 
 ### API references
 
-- **getAllCountryDetails**
+- <h4 id="getAllCountryDetails">getAllCountryDetails</h4>
 
 Retrieves all country details in an object format asynchronously. The `key` in object is Country Code (ISO 3166).
 
@@ -86,11 +94,18 @@ Retrieves all country details in an object format asynchronously. The `key` in o
 getAllCountryDetails(): Promise<Record<string, TCountryDetails>>
 ```
 
-**Returns**
+> **Returns**
 
-A `Promise` that resolves to an object where each key represents a country code (ISO 3166), and the corresponding value contains the country details of type `TCountryDetails`. Sample response-
+A `Promise` that resolves to an object where each key represents a country code (ISO 3166), and the corresponding value contains the country details of type `TCountryDetails`.
+
+> **Example**
 
 ```typescript
+const countriesDetails = await getAllCountryDetails();
+```
+
+```typescript
+// countriesDetails [output]
 {
   BD: {
     name: "Bangladesh",
@@ -114,7 +129,7 @@ A `Promise` that resolves to an object where each key represents a country code 
 }
 ```
 
-- **getAllCountryData**
+- <h4 id="#getAllCountryData">getAllCountryData</h4>
 
 Asynchronously retrieves all country data in an array format. Unlike `getAllCountryDetails`, this function returns an array instead of an object with country codes as keys. Instead, Each object in the array includes the corresponding country code.
 
@@ -122,11 +137,18 @@ Asynchronously retrieves all country data in an array format. Unlike `getAllCoun
 getAllCountryData(): Promise<TCountryData[]>
 ```
 
-**Returns**
+> **Returns**
 
-A `Promise` that resolves to an array of type `TCountryData`. Sample response-
+A `Promise` that resolves to an array of type `TCountryData`.
+
+> **Example**
 
 ```typescript
+const countriesData = await getAllCountryData();
+```
+
+```typescript
+// countriesData [output]
 [
   {
     name: "Bangladesh",
@@ -153,36 +175,80 @@ A `Promise` that resolves to an array of type `TCountryData`. Sample response-
 ]
 ```
 
-- **getCountryData**
+- <h4 id="#getCountryData">getCountryData</h4>
 
-Reference
+This function retrieves a particular country's data asynchronously. It accepts a string representing the country code as input and returns a `promise` that resolves with the country data as an object. If the provided country code is invalid, the Promise resolves to undefined.
 
 ```typescript
 getCountryData(countryCode: string): Promise<TCountryData | undefined>
 ```
 
-Return country data given a country code.
+> **Arguments**
 
-**Example:**
+A `string` that represent a country code.
+
+> **Returns**
+
+A `Promise` that resolves to an object of type `TCountryData` or `undefined`.
+
+> **Example**
 
 ```typescript
-const countryData = getCountryData("BD");
+const countryData = await getCountryData("BD");
 ```
 
-- **getCountriesData**
+```typescript
+// countryData [output]
+{
+  name: "Bangladesh",
+  dialCode: "+880",
+  currencyCode: "BDT",
+  flagEmoji: "🇧🇩",
+  countryCode: "BD"
+}
+```
 
-Reference
+- <h4 id="#getCountriesData">getCountriesData</h4>
+
+Returns multiple countries data given array of country codes asynchronously. It takes an array of country codes as input and returns a `promise` that resolves with an array of country data objects. If a country code is invalid, the corresponding position in the output array will hold undefined.
 
 ```typescript
 getCountriesData(countryCodes: string[]): Promise<(TCountryData | undefined)[]>
 ```
 
-Return multiple countries data given array of country codes.
+> **Arguments**
 
-**Example:**
+An array of `string` that represent a country codes.
+
+> **Returns**
+
+A `Promise` that resolves to an array of type `TCountryData` or `undefined`.
+
+> **Example**
 
 ```typescript
-const countriesData = getCountriesData(["US", "BD"]);
+const countriesData = await getCountriesData(["US", "BD"]);
+```
+
+```typescript
+// countriesData [output]
+[
+  {
+    name: "United States",
+    dialCode: "+1",
+    currencyCode: "USD",
+    flagEmoji: "🇺🇸",
+    countryCode: "US"
+  }
+  {
+    name: "Bangladesh",
+    dialCode: "+880",
+    currencyCode: "BDT",
+    flagEmoji: "🇧🇩",
+    countryCode: "BD"
+  },
+]
+
 ```
 
 ---
@@ -447,7 +513,7 @@ This project requires NodeJS and Yarn, both of which are simple to install. To c
 node -v && yarn -v
 ```
 
-### Setup and Build
+### Setup, Test, and Build
 
 First clone the repository from the GitHub and run the following commands-
 
@@ -455,16 +521,16 @@ First clone the repository from the GitHub and run the following commands-
 yarn # for installing the dependencies
 ```
 
-```bash
-yarn build # for building the project
-```
-
-## Testing
-
 All data and functions in this package have been thoroughly tested with Jest. To run tests during development, use the following command-
 
 ```bash
 yarn test
+```
+
+To build the project, run the following command-
+
+```bash
+yarn build
 ```
 
 ## License
