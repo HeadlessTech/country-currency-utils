@@ -89,7 +89,7 @@ Return country data given a country code.
 _Example:_
 
 ```typescript
-const countryData = getCountryData("BD");
+const countryData = await getCountryData("BD");
 ```
 
 #### `getCountriesData`
@@ -105,7 +105,7 @@ Return multiple countries data given array of country codes.
 _Example:_
 
 ```typescript
-const countriesData = getCountriesData(["US", "BD"]);
+const countriesData = await getCountriesData(["US", "BD"]);
 ```
 
 ---
@@ -170,7 +170,7 @@ Returns Currency data given a currency code
 _Example:_
 
 ```typescript
-const currencyData = getCurrencyData("BDT");
+const currencyData = await getCurrencyData("BDT");
 ```
 
 #### `getCurrenciesData`
@@ -186,7 +186,7 @@ Returns Currencies data given am array of currency codes
 _Example:_
 
 ```typescript
-const currenciesData = getCurrenciesData(["USD", "BDT"]);
+const currenciesData = await getCurrenciesData(["USD", "BDT"]);
 ```
 
 ---
