@@ -1,3 +1,7 @@
+<div align="center">
+<img src="https://github.com/user-attachments/assets/c862ed40-f028-46ed-9170-919766b4ce5f" alt="Country Currency Utils" />
+</div>
+
 <h1>country-currency-utils</h1>
 
 [![npm version](https://img.shields.io/npm/v/country-currency-utils)](https://www.npmjs.com/package/country-currency-utils)
