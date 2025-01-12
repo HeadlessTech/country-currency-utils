@@ -1,8 +1,8 @@
 import { getCurrencyData, TCurrencyData } from "./currencies";
 
 export type TRoundingMethod = "ceil" | "round";
-export type TDecimalsType = "standard" | "compact";
-export type TDecimalsView = "fit" | "fix";
+export type TDecimalsOption = "standard" | "compact";
+export type TDecimalsPreview = "fit" | "fix";
 
 /* ======== Amount rounding ========= */
 
@@ -21,7 +21,7 @@ export function getFixedAmount(
 
 export type TCurrencyRoundOptions = {
   roundingMethod?: TRoundingMethod; // Default behavior is Math.ceil
-  decimalsType?: TDecimalsType; // Default behavior is to use standard decimals, isDecimalsCompact uses compact decimals
+  roundingDecimals?: TDecimalsOption; // Default behavior is to use standard decimals, isDecimalsCompact uses compact decimals
 };
 
 export function getFixedAmountOnCurrency(
@@ -32,9 +32,10 @@ export function getFixedAmountOnCurrency(
   if (!currencyData) return amount;
 
   const { decimals, decimalsCompact } = currencyData;
-  const { roundingMethod, decimalsType } = options || {};
+  const { roundingMethod, roundingDecimals } = options || {};
 
-  const decimalsFinal = decimalsType === "compact" ? decimalsCompact : decimals;
+  const decimalsFinal =
+    roundingDecimals === "compact" ? decimalsCompact : decimals;
 
   return getFixedAmount(amount, decimalsFinal, roundingMethod);
 }
@@ -75,7 +76,7 @@ export function getFormattedAmount(
 
 export type TCurrencyFormatOptions = TCurrencyRoundOptions & {
   avoidRound?: boolean; // avoids rounding amount
-  decimalsView?: TDecimalsView; // default behavior is to have fitted decimals
+  previewDecimals?: TDecimalsOption; // default behavior is decimals compact
 };
 
 export function getFormattedAmountOnCurrency(
@@ -86,19 +87,20 @@ export function getFormattedAmountOnCurrency(
   if (!currencyData) return amount.toString();
 
   const { decimals, decimalsCompact, digitGrouping } = currencyData;
-  const { roundingMethod, decimalsType, avoidRound, decimalsView } =
+  const { roundingMethod, roundingDecimals, avoidRound, previewDecimals } =
     options || {};
 
-  const decimalsFinal = decimalsType === "compact" ? decimalsCompact : decimals;
+  const roundToDecimals =
+    roundingDecimals === "compact" ? decimalsCompact : decimals;
 
   amount = avoidRound
     ? amount
-    : getFixedAmount(amount, decimalsFinal, roundingMethod);
+    : getFixedAmount(amount, roundToDecimals, roundingMethod);
 
   return getFormattedAmount(
     amount,
     digitGrouping,
-    decimalsView === "fit" ? undefined : decimalsFinal
+    previewDecimals === "standard" ? decimals : decimalsCompact
   );
 }
 
@@ -129,15 +131,16 @@ export function getDisplayAmountOnCurrency(
   const {
     avoidRound,
     roundingMethod,
-    decimalsType,
+    roundingDecimals,
     avoidFormat,
-    decimalsView,
+    previewDecimals,
     isSymbolNative,
     isSymbolStandard,
     separator,
   } = options || {};
 
-  const decimalsFinal = decimalsType === "compact" ? decimalsCompact : decimals;
+  const decimalsFinal =
+    roundingDecimals === "compact" ? decimalsCompact : decimals;
 
   amount = avoidRound
     ? amount
@@ -148,7 +151,7 @@ export function getDisplayAmountOnCurrency(
     : getFormattedAmount(
         amount,
         digitGrouping,
-        decimalsView === "fit" ? undefined : decimalsFinal
+        previewDecimals === "standard" ? decimals : decimalsCompact
       );
 
   return (

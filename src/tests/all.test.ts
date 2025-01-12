@@ -73,24 +73,29 @@ test("Test amount rounding on currency", async () => {
   expect(
     getFixedAmountOnCurrency(1.123, USDCurrencyDetails, {
       roundingMethod: "round",
-      decimalsType: "compact",
+      roundingDecimals: "compact",
     })
   ).toBe(1.12);
 
   // BDT check
   expect(getFixedAmountOnCurrency(1234, BDTCurrencyDetails)).toBe(1234);
-  expect(getFixedAmountOnCurrency(1.123, BDTCurrencyDetails)).toBe(2);
+  expect(getFixedAmountOnCurrency(1.123, BDTCurrencyDetails)).toBe(1.13);
   expect(
     getFixedAmountOnCurrency(1.123, BDTCurrencyDetails, {
       roundingMethod: "round",
-    })
-  ).toBe(1);
-  expect(
-    getFixedAmountOnCurrency(1.123, BDTCurrencyDetails, {
-      roundingMethod: "round",
-      decimalsType: "compact",
     })
   ).toBe(1.12);
+  expect(
+    getFixedAmountOnCurrency(1.123, BDTCurrencyDetails, {
+      roundingDecimals: "compact",
+    })
+  ).toBe(2);
+  expect(
+    getFixedAmountOnCurrency(1.123, BDTCurrencyDetails, {
+      roundingMethod: "round",
+      roundingDecimals: "compact",
+    })
+  ).toBe(1);
 });
 
 /*
@@ -138,54 +143,54 @@ test("Test amount formatting on currency", async () => {
   if (!USDCurrencyDetails || !BDTCurrencyDetails) return;
 
   // USD check
+  expect(getFormattedAmountOnCurrency(1.2, USDCurrencyDetails)).toBe("1.20");
+  expect(getFormattedAmountOnCurrency(1.23, USDCurrencyDetails)).toBe("1.23");
+  expect(getFormattedAmountOnCurrency(1.234, USDCurrencyDetails)).toBe("1.24");
+  expect(
+    getFormattedAmountOnCurrency(1.234, USDCurrencyDetails, {
+      avoidRound: true,
+    })
+  ).toBe("1.23");
+  expect(
+    getFormattedAmountOnCurrency(1.234, USDCurrencyDetails, {
+      roundingMethod: "round",
+    })
+  ).toBe("1.23");
+
   expect(getFormattedAmountOnCurrency(1234, USDCurrencyDetails)).toBe(
     "1,234.00"
   );
-  expect(getFormattedAmountOnCurrency(1234567, USDCurrencyDetails)).toBe(
-    "1,234,567.00"
-  );
-  expect(getFormattedAmountOnCurrency(1234567, USDCurrencyDetails)).toBe(
-    "1,234,567.00"
-  );
   expect(
-    getFormattedAmountOnCurrency(1234567, USDCurrencyDetails, {
-      avoidFixedDecimals: true,
+    getFormattedAmountOnCurrency(1234, USDCurrencyDetails, { avoidRound: true })
+  ).toBe("1,234.00");
+  expect(
+    getFormattedAmountOnCurrency(1234, USDCurrencyDetails, {
+      previewDecimals: "compact",
     })
-  ).toBe("1,234,567");
+  ).toBe("1,234.00");
+
+  expect(getFormattedAmountOnCurrency(1234567, USDCurrencyDetails)).toBe(
+    "1,234,567.00"
+  );
+  expect(getFormattedAmountOnCurrency(1234567, USDCurrencyDetails)).toBe(
+    "1,234,567.00"
+  );
 
   expect(getFormattedAmountOnCurrency(1.123, USDCurrencyDetails)).toBe("1.13");
   expect(
     getFormattedAmountOnCurrency(1.123, USDCurrencyDetails, {
-      isRoundMiddle: true,
+      roundingMethod: "round",
     })
   ).toBe("1.12");
-  expect(
-    getFormattedAmountOnCurrency(1.123, USDCurrencyDetails, {
-      isRoundMiddle: true,
-      isDecimalsStandard: true,
-    })
-  ).toBe("1.12");
-  expect(
-    getFormattedAmountOnCurrency(12345.123, USDCurrencyDetails, {
-      isRoundMiddle: true,
-      isDecimalsStandard: true,
-      avoidFixedDecimals: true,
-    })
-  ).toBe("12,345.12");
-  expect(
-    getFormattedAmountOnCurrency(12345, USDCurrencyDetails, {
-      isRoundMiddle: true,
-      isDecimalsStandard: true,
-      avoidFixedDecimals: true,
-    })
-  ).toBe("12,345");
-  expect(
-    getFormattedAmountOnCurrency(12345.2, USDCurrencyDetails, {
-      isRoundMiddle: true,
-      isDecimalsStandard: true,
-      avoidFixedDecimals: true,
-    })
-  ).toBe("12,345.2");
+  expect(getFormattedAmountOnCurrency(12345.123, USDCurrencyDetails, {})).toBe(
+    "12,345.13"
+  );
+  expect(getFormattedAmountOnCurrency(12345, USDCurrencyDetails)).toBe(
+    "12,345.00"
+  );
+  expect(getFormattedAmountOnCurrency(12345.2, USDCurrencyDetails)).toBe(
+    "12,345.20"
+  );
 
   // BDT check
   expect(getFormattedAmountOnCurrency(1234, BDTCurrencyDetails)).toBe("1,234");
@@ -194,33 +199,26 @@ test("Test amount formatting on currency", async () => {
   );
   expect(
     getFormattedAmountOnCurrency(1234567, BDTCurrencyDetails, {
-      isDecimalsStandard: true,
+      previewDecimals: "standard",
     })
   ).toBe("12,34,567.00");
-  expect(
-    getFormattedAmountOnCurrency(1234567, BDTCurrencyDetails, {
-      isDecimalsStandard: true,
-      avoidFixedDecimals: true,
-    })
-  ).toBe("12,34,567");
-  expect(
-    getFormattedAmountOnCurrency(123.1, BDTCurrencyDetails, {
-      isDecimalsStandard: true,
-      avoidFixedDecimals: true,
-    })
-  ).toBe("123.1");
-  expect(getFormattedAmountOnCurrency(1.123, BDTCurrencyDetails)).toBe("2");
+  expect(getFormattedAmountOnCurrency(1234567, BDTCurrencyDetails)).toBe(
+    "12,34,567"
+  );
+
+  expect(getFormattedAmountOnCurrency(123.1, BDTCurrencyDetails)).toBe("123.1");
+  expect(getFormattedAmountOnCurrency(1.123, BDTCurrencyDetails)).toBe("1.13");
   expect(
     getFormattedAmountOnCurrency(1.123, BDTCurrencyDetails, {
-      isRoundMiddle: true,
+      roundingDecimals: "compact",
+    })
+  ).toBe("2");
+  expect(
+    getFormattedAmountOnCurrency(1.123, BDTCurrencyDetails, {
+      roundingDecimals: "compact",
+      roundingMethod: "round",
     })
   ).toBe("1");
-  expect(
-    getFormattedAmountOnCurrency(1.123, BDTCurrencyDetails, {
-      isRoundMiddle: true,
-      isDecimalsStandard: true,
-    })
-  ).toBe("1.12");
 });
 
 /*
@@ -253,36 +251,41 @@ test("Test amount display on currency", async () => {
   expect(getDisplayAmountOnCurrency(1234.1, USDCurrencyDetails)).toBe(
     "$ 1,234.10"
   );
-  expect(
-    getDisplayAmountOnCurrency(1234.1, USDCurrencyDetails, {
-      avoidFixedDecimals: true,
-    })
-  ).toBe("$ 1,234.1");
+  expect(getDisplayAmountOnCurrency(1234.1, USDCurrencyDetails, {})).toBe(
+    "$ 1,234.10"
+  );
   expect(
     getDisplayAmountOnCurrency(1234.1, USDCurrencyDetails, {
       avoidFormat: true,
-      avoidFixedDecimals: true,
     })
   ).toBe("$ 1234.1");
 
   // BDT
-  expect(getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails)).toBe("Tk 2");
+  expect(getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails)).toBe("Tk 1.13");
   expect(
     getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails, {
-      isDecimalsStandard: true,
-    })
-  ).toBe("Tk 1.13");
-  expect(
-    getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails, {
-      isSymbolNative: true,
+      roundingDecimals: "compact",
     })
   ).toBe("Tk 2");
   expect(
     getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails, {
+      roundingDecimals: "compact",
+      previewDecimals: "standard",
+    })
+  ).toBe("Tk 2.00");
+  expect(getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails, {})).toBe(
+    "Tk 1.13"
+  );
+  expect(
+    getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails, {
+      isSymbolNative: true,
+    })
+  ).toBe("Tk 1.13");
+  expect(
+    getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails, {
       isSymbolStandard: true,
     })
-  ).toBe("৳ 2");
-
+  ).toBe("৳ 1.13");
   expect(
     getDisplayAmountOnCurrency(1123, BDTCurrencyDetails, {
       isSymbolStandard: true,
@@ -322,35 +325,32 @@ test("Test amount display on currency code", async () => {
   expect(await getDisplayAmountOnCurrencyCode(1234.1, "USD")).toBe(
     "$ 1,234.10"
   );
-  expect(
-    await getDisplayAmountOnCurrencyCode(1234.1, "USD", {
-      avoidFixedDecimals: true,
-    })
-  ).toBe("$ 1,234.1");
+  expect(await getDisplayAmountOnCurrencyCode(1234.1, "USD")).toBe(
+    "$ 1,234.10"
+  );
   expect(
     await getDisplayAmountOnCurrencyCode(1234.1, "USD", {
       avoidFormat: true,
-      avoidFixedDecimals: true,
     })
   ).toBe("$ 1234.1");
 
   // BDT
-  expect(await getDisplayAmountOnCurrencyCode(1.123, "BDT")).toBe("Tk 2");
+  expect(await getDisplayAmountOnCurrencyCode(1.123, "BDT")).toBe("Tk 1.13");
   expect(
     await getDisplayAmountOnCurrencyCode(1.123, "BDT", {
-      isDecimalsStandard: true,
-    })
-  ).toBe("Tk 1.13");
-  expect(
-    await getDisplayAmountOnCurrencyCode(1.123, "BDT", {
-      isSymbolNative: true,
+      roundingDecimals: "compact",
     })
   ).toBe("Tk 2");
   expect(
     await getDisplayAmountOnCurrencyCode(1.123, "BDT", {
+      isSymbolNative: true,
+    })
+  ).toBe("Tk 1.13");
+  expect(
+    await getDisplayAmountOnCurrencyCode(1.123, "BDT", {
       isSymbolStandard: true,
     })
-  ).toBe("৳ 2");
+  ).toBe("৳ 1.13");
 
   expect(
     await getDisplayAmountOnCurrencyCode(1123, "BDT", {
