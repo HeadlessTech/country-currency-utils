@@ -2,7 +2,6 @@ import { getCurrencyData, TCurrencyData } from "./currencies";
 
 export type TRoundingMethod = "ceil" | "round";
 export type TDecimalsOption = "standard" | "compact";
-export type TDecimalsPreview = "fit" | "fix";
 
 /* ======== Amount rounding ========= */
 

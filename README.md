@@ -202,27 +202,30 @@ Here are a list of functions:
 getFixedAmount(amount: number, decimals: number, isRoundMiddle?: boolean): number
 ```
 
-The default behavior is to `ceil` the amount to the specified decimal places. This is because we want to maximize the monetory amount. However, use the `isRoundMiddle` param to use actual `rounding`
+The default behavior is to `ceil` the amount to the specified decimal places. This is because we want to maximize the monetory amount. However, use the `roundingMethod` param to use actual `"ceil" | "round"` method to round the amount.
 
 _Example:_
 
 ```typescript
 const fixedAmount = getFixedAmount(123.4517, 2); // 123.46
-const fixedAmount = getFixedAmount(123.4517, 2, true); // 123.45
+const fixedAmount = getFixedAmount(123.4517, 2, "round"); // 123.45
 ```
 
 #### `getFixedAmountOnCurrency`
 
 ```typescript
+type TRoundingMethod = "ceil" | "round";
+type TDecimalsOption = "standard" | "compact";
+
 type TCurrencyRoundOptions = {
-  isRoundMiddle?: boolean; // Default: Math.ceil, isRoundMiddle uses Math.round
-  isDecimalsStandard?: boolean; // Default: compact decimals, This: standard decimals
+  roundingMethod?: TRoundingMethod; // Default behavior is Math.ceil
+  roundingDecimals?: TDecimalsOption; // Default behavior is to use standard decimals, isDecimalsCompact uses compact decimals
 };
 
 getFixedAmountOnCurrency(amount: number, currencyData?: TCurrencyData, options?: TCurrencyRoundOptions): number
 ```
 
-This uses the `getFixedAmount` function internally to round on details of a currency code. Default behavior is to use the `decimalsContact` decimal places, but this can be overridden using `isDecimalsStandard`
+This uses the `getFixedAmount` function internally to ceil/round on details of a currency code. Default behavior is to use the `decimals` (standard) decimal places, but this can be overridden using `decimalsCompact`. `decimalsCompact` is usually a more compact number of decimal places which may be used in previews and in UI.
 
 _Example:_
 
@@ -231,10 +234,10 @@ const USDCurrencyData = await getCurrencyData("USD");
 const BDTCurrencyData = await getCurrencyData("BDT");
 
 const roundedAmount = getFixedAmountOnCurrency(123.4567, USDCurrencyData); // 123.46
-const roundedAmount = getFixedAmountOnCurrency(123.45, BDTCurrencyData); // 124
+const roundedAmount = getFixedAmountOnCurrency(123.45, BDTCurrencyData); // 123.45
 const roundedAmount = getFixedAmountOnCurrency(123.45, BDTCurrencyData, {
-  isDecimalsStandard: true,
-}); // 123.45
+  roundingDecimals: "compact",
+}); // 124
 ```
 
 **Note:**
@@ -260,15 +263,15 @@ const formattedAmount = getFormattedAmount(123456.789, 3, 2); // "123,456.78"
 #### `getFormattedAmountOnCurrency`
 
 ```typescript
-type TCurrencyFormatOptions = TCurrencyRoundOptions & {
+export type TCurrencyFormatOptions = TCurrencyRoundOptions & {
   avoidRound?: boolean; // avoids rounding amount
-  avoidFixedDecimals?: boolean; // default behavior is to have fixed decimals
+  previewDecimals?: TDecimalsOption; // default behavior is decimals compact
 };
 
 getFormattedAmountOnCurrency(amount: number, currencyData?: TCurrencyData, options?: TCurrencyFormatOptions): string
 ```
 
-Formats the given amount according to the currency's standard decimal places and digit grouping and returns it as a string. The function by default rounds the number and formats on the currency definitions. The options inherits from rounding options. `avoidRound` avoids rounding the amount. `avoidFixedDecimals` avoids using fixed decimals defined from currency.
+Formats the given amount according to the currency's standard decimal places and digit grouping and returns it as a string. The function by default ceils the number and formats on the currency definitions. The options inherits from rounding options. `avoidRound` avoids rounding the amount. `previewDecimals` tells how many decimal places should at least show up.
 
 _Example:_
 
@@ -278,20 +281,26 @@ const BDTCurrencyData = await getCurrencyData("BDT");
 
 const formattedAmount = getFormattedAmountOnCurrency(123456.7, USDCurrencyData); // "123,456.70"
 const formattedAmount = getFormattedAmountOnCurrency(
-  123456.7,
+  123456.711,
   USDCurrencyData,
   {
-    avoidFixedDecimals: true,
+    avoidRound: true,
   }
-); // "123,456.7"
-const formattedAmount = getFormattedAmountOnCurrency(123456.7, BDTCurrencyData); // "1,23,457"
+); // "123,456.711"
+
+const formattedAmount = getFormattedAmountOnCurrency(123456.7, BDTCurrencyData); // "1,23,456.7"
 const formattedAmount = getFormattedAmountOnCurrency(
   123456.7,
   BDTCurrencyData,
   {
-    avoidRound: true,
+    roundingDecimals: "compact",
   }
-); // "1,23,456.7"
+); // "1,23,457"
+const formattedAmount = getFormattedAmountOnCurrency(1, BDTCurrencyData); // "1"
+const formattedAmount = getFormattedAmountOnCurrency(1.2, BDTCurrencyData); // "1.2"
+const formattedAmount = getFormattedAmountOnCurrency(1.2, BDTCurrencyData, {
+  previewDecimals: "standard",
+}); // "1.20"
 ```
 
 #### `getDisplayAmountOnCurrency`
@@ -323,10 +332,10 @@ const displayAmount = getDisplayAmountOnCurrency(123456.7, USDCurrencyData, {
 const displayAmount = getDisplayAmountOnCurrency(123456.7, USDCurrencyData, {
   separator: "",
 }); // "$123,456.70"
-const displayAmount = getDisplayAmountOnCurrency(123.4567, BDTCurrencyData); // "Tk 124"
-const displayAmount = getDisplayAmountOnCurrency(123.4567, BDTCurrencyData, {
+const displayAmount = getDisplayAmountOnCurrency(123.4567, BDTCurrencyData); // "Tk 123.46"
+const displayAmount = getDisplayAmountOnCurrency(123, BDTCurrencyData, {
   isSymbolStandard: true,
-}); // "৳ 124"
+}); // "৳ 123"
 ```
 
 #### `getDisplayAmountOnCurrencyCode`
@@ -348,10 +357,10 @@ const displayAmount = await getDisplayAmountOnCurrencyCode(123456.7, "USD", {
 const displayAmount = await getDisplayAmountOnCurrencyCode(123456.7, "USD", {
   separator: "",
 }); // "$123,456.70"
-const displayAmount = await getDisplayAmountOnCurrencyCode(123.4567, "BDT"); // "Tk 124"
-const displayAmount = await getDisplayAmountOnCurrencyCode(123.4567, "BDT", {
+const displayAmount = await getDisplayAmountOnCurrencyCode(123.4567, "BDT"); // "Tk 123.46"
+const displayAmount = await getDisplayAmountOnCurrencyCode(123, "BDT", {
   isSymbolStandard: true,
-}); // "৳ 124"
+}); // "৳ 123"
 ```
 
 ## Testing
