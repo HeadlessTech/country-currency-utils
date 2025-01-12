@@ -1,26 +1,30 @@
 import { getCurrencyData, TCurrencyData } from "./currencies";
 
+export type TRoundingMethod = "ceil" | "round";
+export type TDecimalsType = "standard" | "compact";
+export type TDecimalsView = "fit" | "fix";
+
 /* ======== Amount rounding ========= */
 
-export function getRoundedAmount(
+export function getFixedAmount(
   amount: number,
   decimals: number,
-  isRoundMiddle = false // Rounds with rounding instead of ceil
+  roundingMethod: TRoundingMethod = "ceil" // Rounds with rounding instead of ceil
 ) {
   const factor = Math.pow(10, decimals);
   const multipliedAmount = amount * factor;
 
-  return isRoundMiddle
+  return roundingMethod === "round"
     ? Math.round(multipliedAmount) / factor
     : Math.ceil(multipliedAmount) / factor;
 }
 
 export type TCurrencyRoundOptions = {
-  isRoundMiddle?: boolean; // Default behavior is Math.ceil, isRoundMiddle rounds with Math.round
-  isDecimalsStandard?: boolean; // Default behavior is to use compact decimals, isDecimalsStandard uses standard decimals
+  roundingMethod?: TRoundingMethod; // Default behavior is Math.ceil
+  decimalsType?: TDecimalsType; // Default behavior is to use standard decimals, isDecimalsCompact uses compact decimals
 };
 
-export function getRoundedAmountOnCurrency(
+export function getFixedAmountOnCurrency(
   amount: number,
   currencyData?: TCurrencyData,
   options?: TCurrencyRoundOptions
@@ -28,11 +32,11 @@ export function getRoundedAmountOnCurrency(
   if (!currencyData) return amount;
 
   const { decimals, decimalsCompact } = currencyData;
-  const { isRoundMiddle, isDecimalsStandard } = options || {};
+  const { roundingMethod, decimalsType } = options || {};
 
-  const decimalsFinal = isDecimalsStandard ? decimals : decimalsCompact;
+  const decimalsFinal = decimalsType === "compact" ? decimalsCompact : decimals;
 
-  return getRoundedAmount(amount, decimalsFinal, isRoundMiddle);
+  return getFixedAmount(amount, decimalsFinal, roundingMethod);
 }
 
 /* ======== Amount formatting ========= */
@@ -71,7 +75,7 @@ export function getFormattedAmount(
 
 export type TCurrencyFormatOptions = TCurrencyRoundOptions & {
   avoidRound?: boolean; // avoids rounding amount
-  avoidFixedDecimals?: boolean; // default behavior is to have fixed decimals
+  decimalsView?: TDecimalsView; // default behavior is to have fitted decimals
 };
 
 export function getFormattedAmountOnCurrency(
@@ -82,19 +86,19 @@ export function getFormattedAmountOnCurrency(
   if (!currencyData) return amount.toString();
 
   const { decimals, decimalsCompact, digitGrouping } = currencyData;
-  const { isRoundMiddle, isDecimalsStandard, avoidRound, avoidFixedDecimals } =
+  const { roundingMethod, decimalsType, avoidRound, decimalsView } =
     options || {};
 
-  const decimalsFinal = isDecimalsStandard ? decimals : decimalsCompact;
+  const decimalsFinal = decimalsType === "compact" ? decimalsCompact : decimals;
 
   amount = avoidRound
     ? amount
-    : getRoundedAmount(amount, decimalsFinal, isRoundMiddle);
+    : getFixedAmount(amount, decimalsFinal, roundingMethod);
 
   return getFormattedAmount(
     amount,
     digitGrouping,
-    avoidFixedDecimals ? undefined : decimalsFinal
+    decimalsView === "fit" ? undefined : decimalsFinal
   );
 }
 
@@ -124,27 +128,27 @@ export function getDisplayAmountOnCurrency(
   } = currencyData;
   const {
     avoidRound,
-    isRoundMiddle,
-    isDecimalsStandard,
+    roundingMethod,
+    decimalsType,
     avoidFormat,
-    avoidFixedDecimals,
+    decimalsView,
     isSymbolNative,
     isSymbolStandard,
     separator,
   } = options || {};
 
-  const decimalsFinal = isDecimalsStandard ? decimals : decimalsCompact;
+  const decimalsFinal = decimalsType === "compact" ? decimalsCompact : decimals;
 
   amount = avoidRound
     ? amount
-    : getRoundedAmount(amount, decimalsFinal, isRoundMiddle);
+    : getFixedAmount(amount, decimalsFinal, roundingMethod);
 
   const formattedAmount = avoidFormat
     ? amount
     : getFormattedAmount(
         amount,
         digitGrouping,
-        avoidFixedDecimals ? undefined : decimalsFinal
+        decimalsView === "fit" ? undefined : decimalsFinal
       );
 
   return (

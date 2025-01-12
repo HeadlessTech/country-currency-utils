@@ -18,8 +18,8 @@ export {
 } from "./currencies";
 export {
   TCurrencyRoundOptions,
-  getRoundedAmount,
-  getRoundedAmountOnCurrency,
+  getFixedAmount,
+  getFixedAmountOnCurrency,
   TCurrencyFormatOptions,
   getFormattedAmount,
   getFormattedAmountOnCurrency,

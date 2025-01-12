@@ -196,10 +196,10 @@ const currenciesData = await getCurrenciesData(["USD", "BDT"]);
 There are many functions and utilities that may be required when handling monetory amounts.
 Here are a list of functions:
 
-#### `getRoundedAmount`
+#### `getFixedAmount`
 
 ```typescript
-getRoundedAmount(amount: number, decimals: number, isRoundMiddle?: boolean): number
+getFixedAmount(amount: number, decimals: number, isRoundMiddle?: boolean): number
 ```
 
 The default behavior is to `ceil` the amount to the specified decimal places. This is because we want to maximize the monetory amount. However, use the `isRoundMiddle` param to use actual `rounding`
@@ -207,11 +207,11 @@ The default behavior is to `ceil` the amount to the specified decimal places. Th
 _Example:_
 
 ```typescript
-const roundedAmount = getRoundedAmount(123.4517, 2); // 123.46
-const roundedAmount = getRoundedAmount(123.4517, 2, true); // 123.45
+const fixedAmount = getFixedAmount(123.4517, 2); // 123.46
+const fixedAmount = getFixedAmount(123.4517, 2, true); // 123.45
 ```
 
-#### `getRoundedAmountOnCurrency`
+#### `getFixedAmountOnCurrency`
 
 ```typescript
 type TCurrencyRoundOptions = {
@@ -219,10 +219,10 @@ type TCurrencyRoundOptions = {
   isDecimalsStandard?: boolean; // Default: compact decimals, This: standard decimals
 };
 
-getRoundedAmountOnCurrency(amount: number, currencyData?: TCurrencyData, options?: TCurrencyRoundOptions): number
+getFixedAmountOnCurrency(amount: number, currencyData?: TCurrencyData, options?: TCurrencyRoundOptions): number
 ```
 
-This uses the `getRoundedAmount` function internally to round on details of a currency code. Default behavior is to use the `decimalsContact` decimal places, but this can be overridden using `isDecimalsStandard`
+This uses the `getFixedAmount` function internally to round on details of a currency code. Default behavior is to use the `decimalsContact` decimal places, but this can be overridden using `isDecimalsStandard`
 
 _Example:_
 
@@ -230,9 +230,9 @@ _Example:_
 const USDCurrencyData = await getCurrencyData("USD");
 const BDTCurrencyData = await getCurrencyData("BDT");
 
-const roundedAmount = getRoundedAmountOnCurrency(123.4567, USDCurrencyData); // 123.46
-const roundedAmount = getRoundedAmountOnCurrency(123.45, BDTCurrencyData); // 124
-const roundedAmount = getRoundedAmountOnCurrency(123.45, BDTCurrencyData, {
+const roundedAmount = getFixedAmountOnCurrency(123.4567, USDCurrencyData); // 123.46
+const roundedAmount = getFixedAmountOnCurrency(123.45, BDTCurrencyData); // 124
+const roundedAmount = getFixedAmountOnCurrency(123.45, BDTCurrencyData, {
   isDecimalsStandard: true,
 }); // 123.45
 ```
