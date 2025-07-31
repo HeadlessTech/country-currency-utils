@@ -49,6 +49,11 @@ test("Test amount rounding", () => {
   expect(getFixedAmount(1.15, 1, "round")).toBe(1.2);
   expect(getFixedAmount(1.12, 0, "round")).toBe(1);
   expect(getFixedAmount(1.56, 0, "round")).toBe(2);
+
+  // negative values
+  expect(getFixedAmount(-1234, 2)).toBe(-1234);
+  expect(getFixedAmount(-1234.1, 1)).toBe(-1234.1);
+  expect(getFixedAmount(-1.125, 2)).toBe(-1.12);
 });
 
 /*
@@ -76,6 +81,13 @@ test("Test amount rounding on currency", async () => {
       roundingDecimals: "compact",
     })
   ).toBe(1.12);
+  expect(getFixedAmountOnCurrency(-1.123, USDCurrencyDetails)).toBe(-1.12);
+  expect(
+    getFixedAmountOnCurrency(-1.123, USDCurrencyDetails, {
+      roundingMethod: "round",
+      roundingDecimals: "compact",
+    })
+  ).toBe(-1.12);
 
   // BDT check
   expect(getFixedAmountOnCurrency(1234, BDTCurrencyDetails)).toBe(1234);
@@ -96,19 +108,32 @@ test("Test amount rounding on currency", async () => {
       roundingDecimals: "compact",
     })
   ).toBe(1);
+  expect(getFixedAmountOnCurrency(-1.123, BDTCurrencyDetails)).toBe(-1.12);
+  expect(
+    getFixedAmountOnCurrency(-1.123, BDTCurrencyDetails, {
+      roundingDecimals: "compact",
+    })
+  ).toBe(-1);
 });
 
 /*
   Formatting amount test
 */
 test("Test amount formatting", () => {
+  expect(getFormattedAmount(123, 2, 0)).toBe("123");
   expect(getFormattedAmount(1234, 2, 0)).toBe("1,234");
   expect(getFormattedAmount(12345, 2, 0)).toBe("12,345");
   expect(getFormattedAmount(123456, 2, 0)).toBe("1,23,456");
   expect(getFormattedAmount(1234567, 2, 0)).toBe("12,34,567");
   expect(getFormattedAmount(123456789, 2, 0)).toBe("12,34,56,789");
   expect(getFormattedAmount(12345678912, 2, 0)).toBe("12,34,56,78,912");
+  expect(getFormattedAmount(-12, 2, 0)).toBe("-12");
+  expect(getFormattedAmount(-123, 2, 0)).toBe("-123");
+  expect(getFormattedAmount(-1234, 2, 0)).toBe("-1,234");
+  expect(getFormattedAmount(-12345, 2, 0)).toBe("-12,345");
+  expect(getFormattedAmount(-123456, 2, 0)).toBe("-1,23,456");
 
+  expect(getFormattedAmount(123, 2, 2)).toBe("123.00");
   expect(getFormattedAmount(1234, 2, 2)).toBe("1,234.00");
   expect(getFormattedAmount(12345.1, 2, 2)).toBe("12,345.10");
   expect(getFormattedAmount(123456.12, 2, 2)).toBe("1,23,456.12");
@@ -116,17 +141,39 @@ test("Test amount formatting", () => {
   expect(getFormattedAmount(123456.1299, 2, 2)).toBe("1,23,456.12");
   expect(getFormattedAmount(123456.1299123, 2, 3)).toBe("1,23,456.129");
   expect(getFormattedAmount(123456.1, 2, 5)).toBe("1,23,456.10000");
+  expect(getFormattedAmount(-123, 2, 2)).toBe("-123.00");
+  expect(getFormattedAmount(-1234, 2, 2)).toBe("-1,234.00");
+  expect(getFormattedAmount(-12345.1, 2, 2)).toBe("-12,345.10");
+  expect(getFormattedAmount(-123456.12, 2, 2)).toBe("-1,23,456.12");
+  expect(getFormattedAmount(-123456.1234, 2, 2)).toBe("-1,23,456.12");
+  expect(getFormattedAmount(-123456.1299, 2, 2)).toBe("-1,23,456.12");
+  expect(getFormattedAmount(-123456.1299123, 2, 3)).toBe("-1,23,456.129");
+  expect(getFormattedAmount(-123456.1, 2, 5)).toBe("-1,23,456.10000");
 
+  expect(getFormattedAmount(0, 3, 0)).toBe("0");
+  expect(getFormattedAmount(123, 3, 0)).toBe("123");
   expect(getFormattedAmount(1234, 3, 0)).toBe("1,234");
   expect(getFormattedAmount(12345, 3, 0)).toBe("12,345");
   expect(getFormattedAmount(123456, 3, 0)).toBe("123,456");
   expect(getFormattedAmount(1234567, 3, 0)).toBe("1,234,567");
   expect(getFormattedAmount(123456789, 3, 0)).toBe("123,456,789");
   expect(getFormattedAmount(12345678912, 3, 0)).toBe("12,345,678,912");
+  expect(getFormattedAmount(-123, 3, 0)).toBe("-123");
+  expect(getFormattedAmount(-1234, 3, 0)).toBe("-1,234");
+  expect(getFormattedAmount(-12345, 3, 0)).toBe("-12,345");
+  expect(getFormattedAmount(-123456, 3, 0)).toBe("-123,456");
+  expect(getFormattedAmount(-1234567, 3, 0)).toBe("-1,234,567");
+  expect(getFormattedAmount(-123456789, 3, 0)).toBe("-123,456,789");
+  expect(getFormattedAmount(-12345678912, 3, 0)).toBe("-12,345,678,912");
 
+  expect(getFormattedAmount(123, 3, 2)).toBe("123.00");
   expect(getFormattedAmount(1234, 3, 2)).toBe("1,234.00");
   expect(getFormattedAmount(12345.1, 3, 2)).toBe("12,345.10");
   expect(getFormattedAmount(123456.12, 3, 2)).toBe("123,456.12");
+  expect(getFormattedAmount(-123, 3, 2)).toBe("-123.00");
+  expect(getFormattedAmount(-1234, 3, 2)).toBe("-1,234.00");
+  expect(getFormattedAmount(-12345.1, 3, 2)).toBe("-12,345.10");
+  expect(getFormattedAmount(-123456.12, 3, 2)).toBe("-123,456.12");
 });
 
 /*
@@ -156,6 +203,11 @@ test("Test amount formatting on currency", async () => {
       roundingMethod: "round",
     })
   ).toBe("1.23");
+  expect(getFormattedAmountOnCurrency(-1.2, USDCurrencyDetails)).toBe("-1.20");
+  expect(getFormattedAmountOnCurrency(-1.23, USDCurrencyDetails)).toBe("-1.23");
+  expect(getFormattedAmountOnCurrency(-1.234, USDCurrencyDetails)).toBe(
+    "-1.23"
+  );
 
   expect(getFormattedAmountOnCurrency(1234, USDCurrencyDetails)).toBe(
     "1,234.00"
@@ -175,6 +227,19 @@ test("Test amount formatting on currency", async () => {
   expect(getFormattedAmountOnCurrency(1234567, USDCurrencyDetails)).toBe(
     "1,234,567.00"
   );
+  expect(getFormattedAmountOnCurrency(-1234, USDCurrencyDetails)).toBe(
+    "-1,234.00"
+  );
+  expect(
+    getFormattedAmountOnCurrency(-1234, USDCurrencyDetails, {
+      avoidRound: true,
+    })
+  ).toBe("-1,234.00");
+  expect(
+    getFormattedAmountOnCurrency(-1234, USDCurrencyDetails, {
+      previewDecimals: "compact",
+    })
+  ).toBe("-1,234.00");
 
   expect(getFormattedAmountOnCurrency(1.123, USDCurrencyDetails)).toBe("1.13");
   expect(
@@ -191,6 +256,12 @@ test("Test amount formatting on currency", async () => {
   expect(getFormattedAmountOnCurrency(12345.2, USDCurrencyDetails)).toBe(
     "12,345.20"
   );
+  expect(getFormattedAmountOnCurrency(-12345, USDCurrencyDetails)).toBe(
+    "-12,345.00"
+  );
+  expect(getFormattedAmountOnCurrency(-12345.2, USDCurrencyDetails)).toBe(
+    "-12,345.20"
+  );
 
   // BDT check
   expect(getFormattedAmountOnCurrency(1234, BDTCurrencyDetails)).toBe("1,234");
@@ -204,6 +275,12 @@ test("Test amount formatting on currency", async () => {
   ).toBe("12,34,567.00");
   expect(getFormattedAmountOnCurrency(1234567, BDTCurrencyDetails)).toBe(
     "12,34,567"
+  );
+  expect(getFormattedAmountOnCurrency(-1234, BDTCurrencyDetails)).toBe(
+    "-1,234"
+  );
+  expect(getFormattedAmountOnCurrency(-1234567, BDTCurrencyDetails)).toBe(
+    "-12,34,567"
   );
 
   expect(getFormattedAmountOnCurrency(123.1, BDTCurrencyDetails)).toBe("123.1");
@@ -219,6 +296,12 @@ test("Test amount formatting on currency", async () => {
       roundingMethod: "round",
     })
   ).toBe("1");
+  expect(
+    getFormattedAmountOnCurrency(-1.123, BDTCurrencyDetails, {
+      roundingDecimals: "compact",
+      roundingMethod: "round",
+    })
+  ).toBe("-1");
 });
 
 /*
@@ -259,6 +342,16 @@ test("Test amount display on currency", async () => {
       avoidFormat: true,
     })
   ).toBe("$ 1234.1");
+  // negatives
+  expect(getDisplayAmountOnCurrency(-1.123, USDCurrencyDetails)).toBe(
+    "- $ 1.12"
+  );
+  expect(
+    getDisplayAmountOnCurrency(-1234.1234, USDCurrencyDetails, {
+      avoidFormat: true,
+      avoidRound: true,
+    })
+  ).toBe("- $ 1234.1234");
 
   // BDT
   expect(getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails)).toBe("Tk 1.13");
@@ -294,12 +387,48 @@ test("Test amount display on currency", async () => {
   expect(
     getDisplayAmountOnCurrency(1123, BDTCurrencyDetails, { separator: "" })
   ).toBe("Tk1,123");
+  // negative
+  expect(getDisplayAmountOnCurrency(-1.123, BDTCurrencyDetails)).toBe(
+    "- Tk 1.12"
+  );
   expect(
-    getDisplayAmountOnCurrency(1123, BDTCurrencyDetails, {
+    getDisplayAmountOnCurrency(-1.123, BDTCurrencyDetails, {
+      roundingDecimals: "compact",
+    })
+  ).toBe("- Tk 1");
+  expect(
+    getDisplayAmountOnCurrency(-1.123, BDTCurrencyDetails, {
+      roundingDecimals: "compact",
+      previewDecimals: "standard",
+    })
+  ).toBe("- Tk 1.00");
+  expect(getDisplayAmountOnCurrency(-1.123, BDTCurrencyDetails, {})).toBe(
+    "- Tk 1.12"
+  );
+  expect(
+    getDisplayAmountOnCurrency(-1.123, BDTCurrencyDetails, {
+      isSymbolNative: true,
+    })
+  ).toBe("- Tk 1.12");
+  expect(
+    getDisplayAmountOnCurrency(-1.123, BDTCurrencyDetails, {
+      isSymbolStandard: true,
+    })
+  ).toBe("- ৳ 1.12");
+  expect(
+    getDisplayAmountOnCurrency(-1123, BDTCurrencyDetails, {
+      isSymbolStandard: true,
+    })
+  ).toBe("- ৳ 1,123");
+  expect(
+    getDisplayAmountOnCurrency(-1123, BDTCurrencyDetails, { separator: "" })
+  ).toBe("- Tk1,123");
+  expect(
+    getDisplayAmountOnCurrency(-1123, BDTCurrencyDetails, {
       separator: "-",
       avoidFormat: true,
     })
-  ).toBe("Tk-1123");
+  ).toBe("- Tk-1123");
 });
 
 /*

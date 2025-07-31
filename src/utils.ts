@@ -8,14 +8,14 @@ export type TDecimalsOption = "standard" | "compact";
 export function getFixedAmount(
   amount: number,
   decimals: number,
-  roundingMethod: TRoundingMethod = "ceil" // Rounds with rounding instead of ceil
-) {
+  roundingMethod: TRoundingMethod = "ceil"
+): number {
   const factor = Math.pow(10, decimals);
-  const multipliedAmount = amount * factor;
-
-  return roundingMethod === "round"
-    ? Math.round(multipliedAmount) / factor
-    : Math.ceil(multipliedAmount) / factor;
+  if (roundingMethod === "ceil") {
+    return Math.ceil(amount * factor) / factor;
+  } else {
+    return Math.round(amount * factor) / factor;
+  }
 }
 
 export type TCurrencyRoundOptions = {
@@ -46,7 +46,11 @@ export function getFormattedAmount(
   digitGrouping: 2 | 3, // Digit grouping - 2 or 3, for formatting
   fixedDecimals?: number // Adds 0s decimal padding or truncate extra decimal points
 ) {
-  let amountStr = amount.toString();
+  // Handle negative numbers by using absolute value and tracking the sign
+  const isNegative = amount < 0;
+  const absAmount = Math.abs(amount);
+
+  let amountStr = absAmount.toString();
   let [integerPart, decimalPart] = amountStr.split(".");
 
   if (digitGrouping === 2) {
@@ -70,7 +74,8 @@ export function getFormattedAmount(
     }
   }
 
-  return decimalPart ? integerPart + "." + decimalPart : integerPart;
+  const result = decimalPart ? integerPart + "." + decimalPart : integerPart;
+  return isNegative ? "-" + result : result;
 }
 
 export type TCurrencyFormatOptions = TCurrencyRoundOptions & {
@@ -145,23 +150,28 @@ export function getDisplayAmountOnCurrency(
     ? amount
     : getFixedAmount(amount, decimalsFinal, roundingMethod);
 
+  const isNegative = amount < 0;
+  const absAmount = Math.abs(amount);
+
   const formattedAmount = avoidFormat
-    ? amount
+    ? absAmount.toString()
     : getFormattedAmount(
-        amount,
+        absAmount,
         digitGrouping,
         previewDecimals === "standard" ? decimals : decimalsCompact
       );
 
-  return (
-    (isSymbolStandard
-      ? symbol
-      : isSymbolNative
-      ? symbolNative
-      : symbolPreferred) +
-    (separator !== undefined ? separator : " ") +
-    formattedAmount
-  );
+  const currencySymbol = isSymbolStandard
+    ? symbol
+    : isSymbolNative
+    ? symbolNative
+    : symbolPreferred;
+
+  const separatorStr = separator !== undefined ? separator : " ";
+
+  return isNegative
+    ? `- ${currencySymbol}${separatorStr}${formattedAmount}`
+    : `${currencySymbol}${separatorStr}${formattedAmount}`;
 }
 
 export async function getDisplayAmountOnCurrencyCode(
