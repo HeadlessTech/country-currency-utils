@@ -15,9 +15,9 @@ import {
   Check all currencies listed under country
   exists in currencies map
 */
-test("country to currency match", async () => {
-  const allCountriesDetails = await getAllCountryDetails();
-  const allCurrenciesDetails = await getAllCurrencyDetails();
+test("country to currency match", () => {
+  const allCountriesDetails = getAllCountryDetails();
+  const allCurrenciesDetails = getAllCurrencyDetails();
 
   const leftOutCountryCodes: string[] = [];
 
@@ -59,9 +59,9 @@ test("Test amount rounding", () => {
 /*
   Rounding amount on currency test
 */
-test("Test amount rounding on currency", async () => {
-  const USDCurrencyDetails = await getCurrencyData("USD");
-  const BDTCurrencyDetails = await getCurrencyData("BDT");
+test("Test amount rounding on currency", () => {
+  const USDCurrencyDetails = getCurrencyData("USD");
+  const BDTCurrencyDetails = getCurrencyData("BDT");
 
   expect(USDCurrencyDetails).toBeDefined();
   expect(BDTCurrencyDetails).toBeDefined();
@@ -179,8 +179,8 @@ test("Test amount formatting", () => {
 /*
   Formatting amount on currency test
 */
-test("Test amount formatting on currency", async () => {
-  const [USDCurrencyDetails, BDTCurrencyDetails] = await getCurrenciesData([
+test("Test amount formatting on currency", () => {
+  const [USDCurrencyDetails, BDTCurrencyDetails] = getCurrenciesData([
     "USD",
     "BDT",
   ]);
@@ -307,9 +307,9 @@ test("Test amount formatting on currency", async () => {
 /*
   Display amount on currency
 */
-test("Test amount display on currency", async () => {
-  const USDCurrencyDetails = await getCurrencyData("USD");
-  const BDTCurrencyDetails = await getCurrencyData("BDT");
+test("Test amount display on currency", () => {
+  const USDCurrencyDetails = getCurrencyData("USD");
+  const BDTCurrencyDetails = getCurrencyData("BDT");
 
   expect(USDCurrencyDetails).toBeDefined();
   expect(BDTCurrencyDetails).toBeDefined();
@@ -434,63 +434,63 @@ test("Test amount display on currency", async () => {
 /*
   Display amount on currency code
 */
-test("Test amount display on currency code", async () => {
+test("Test amount display on currency code", () => {
   // USD
-  expect(await getDisplayAmountOnCurrencyCode(1.123, "USD")).toBe("$ 1.13");
-  expect(await getDisplayAmountOnCurrencyCode(1234.12, "USD")).toBe(
+  expect(getDisplayAmountOnCurrencyCode(1.123, "USD")).toBe("$ 1.13");
+  expect(getDisplayAmountOnCurrencyCode(1234.12, "USD")).toBe(
     "$ 1,234.12"
   );
   expect(
-    await getDisplayAmountOnCurrencyCode(1234.12, "USD", {
+    getDisplayAmountOnCurrencyCode(1234.12, "USD", {
       avoidFormat: true,
     })
   ).toBe("$ 1234.12");
   expect(
-    await getDisplayAmountOnCurrencyCode(1234.1234, "USD", {
+    getDisplayAmountOnCurrencyCode(1234.1234, "USD", {
       avoidFormat: true,
       avoidRound: true,
     })
   ).toBe("$ 1234.1234");
-  expect(await getDisplayAmountOnCurrencyCode(1234.1, "USD")).toBe(
+  expect(getDisplayAmountOnCurrencyCode(1234.1, "USD")).toBe(
     "$ 1,234.10"
   );
-  expect(await getDisplayAmountOnCurrencyCode(1234.1, "USD")).toBe(
+  expect(getDisplayAmountOnCurrencyCode(1234.1, "USD")).toBe(
     "$ 1,234.10"
   );
   expect(
-    await getDisplayAmountOnCurrencyCode(1234.1, "USD", {
+    getDisplayAmountOnCurrencyCode(1234.1, "USD", {
       avoidFormat: true,
     })
   ).toBe("$ 1234.1");
 
   // BDT
-  expect(await getDisplayAmountOnCurrencyCode(1.123, "BDT")).toBe("Tk 1.13");
+  expect(getDisplayAmountOnCurrencyCode(1.123, "BDT")).toBe("Tk 1.13");
   expect(
-    await getDisplayAmountOnCurrencyCode(1.123, "BDT", {
+    getDisplayAmountOnCurrencyCode(1.123, "BDT", {
       roundingDecimals: "compact",
     })
   ).toBe("Tk 2");
   expect(
-    await getDisplayAmountOnCurrencyCode(1.123, "BDT", {
+    getDisplayAmountOnCurrencyCode(1.123, "BDT", {
       isSymbolNative: true,
     })
   ).toBe("Tk 1.13");
   expect(
-    await getDisplayAmountOnCurrencyCode(1.123, "BDT", {
+    getDisplayAmountOnCurrencyCode(1.123, "BDT", {
       isSymbolStandard: true,
     })
   ).toBe("৳ 1.13");
 
   expect(
-    await getDisplayAmountOnCurrencyCode(1123, "BDT", {
+    getDisplayAmountOnCurrencyCode(1123, "BDT", {
       isSymbolStandard: true,
     })
   ).toBe("৳ 1,123");
   expect(
-    await getDisplayAmountOnCurrencyCode(1123, "BDT", { separator: "" })
+    getDisplayAmountOnCurrencyCode(1123, "BDT", { separator: "" })
   ).toBe("Tk1,123");
   expect(
-    await getDisplayAmountOnCurrencyCode(1123, "BDT", {
+    getDisplayAmountOnCurrencyCode(1123, "BDT", {
       separator: "-",
       avoidFormat: true,
     })
