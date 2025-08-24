@@ -1,3 +1,5 @@
+import currenciesData from "../data/currencies.json";
+
 // Currencies data in json format
 // Hosted through this repo
 // check data folder for JSON file
@@ -31,18 +33,15 @@ export type TCurrencyData = TCurrencyDetails & {
 /*
   Fetch all currency details (object format)
 */
-export async function getAllCurrencyDetails(): Promise<
-  Record<string, TCurrencyDetails>
-> {
-  const response = await fetch(CURRENCIES_DETAILS_URL);
-  return response.json();
+export function getAllCurrencyDetails(): Record<string, TCurrencyDetails> {
+  return currenciesData as Record<string, TCurrencyDetails>;
 }
 
 /*
   Fetch all currency data (array format)
 */
-export async function getAllCurrencyData(): Promise<TCurrencyData[]> {
-  const currencyDetails = await getAllCurrencyDetails();
+export function getAllCurrencyData(): TCurrencyData[] {
+  const currencyDetails = getAllCurrencyDetails();
   return Object.keys(currencyDetails).map((currencyCode) => ({
     currencyCode,
     ...currencyDetails[currencyCode],
@@ -52,10 +51,10 @@ export async function getAllCurrencyData(): Promise<TCurrencyData[]> {
 /*
   Fetch currency data on a single currency code
 */
-export async function getCurrencyData(
+export function getCurrencyData(
   currencyCode: string
-): Promise<TCurrencyData | undefined> {
-  const allCurrencyDetails = await getAllCurrencyDetails();
+): TCurrencyData | undefined {
+  const allCurrencyDetails = getAllCurrencyDetails();
   const currencyDetails = allCurrencyDetails[currencyCode];
 
   if (!currencyDetails) return;
@@ -69,10 +68,10 @@ export async function getCurrencyData(
 /*
   Fetch currencies on multiple currency codes
 */
-export async function getCurrenciesData(
+export function getCurrenciesData(
   currencyCodes: string[]
-): Promise<(TCurrencyData | undefined)[]> {
-  const allCurrencyDetails = await getAllCurrencyDetails();
+): (TCurrencyData | undefined)[] {
+  const allCurrencyDetails = getAllCurrencyDetails();
 
   return currencyCodes.map((currencyCode) => {
     const currencyDetails = allCurrencyDetails[currencyCode];

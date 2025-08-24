@@ -174,11 +174,11 @@ export function getDisplayAmountOnCurrency(
     : `${currencySymbol}${separatorStr}${formattedAmount}`;
 }
 
-export async function getDisplayAmountOnCurrencyCode(
+export function getDisplayAmountOnCurrencyCode(
   amount: number,
   currencyCode: string,
   options?: TCurrencyDisplayOptions
-): Promise<string> {
-  const currencyData = await getCurrencyData(currencyCode);
+): string {
+  const currencyData = getCurrencyData(currencyCode);
   return getDisplayAmountOnCurrency(amount, currencyData, options);
 }

@@ -1,3 +1,5 @@
+import countriesData from "../data/countries.json";
+
 // Country data in json format
 // Hosted through this repo
 // check data folder for JSON file
@@ -19,18 +21,15 @@ export type TCountryData = TCountryDetails & {
 /*
   Fetch all country details (object format)
 */
-export async function getAllCountryDetails(): Promise<
-  Record<string, TCountryDetails>
-> {
-  const response = await fetch(COUNTRIES_DETAILS_URL);
-  return response.json();
+export function getAllCountryDetails(): Record<string, TCountryDetails> {
+  return countriesData as Record<string, TCountryDetails>;
 }
 
 /*
   Fetch all country data (array format)
 */
-export async function getAllCountryData(): Promise<TCountryData[]> {
-  const countryDetails = await getAllCountryDetails();
+export function getAllCountryData(): TCountryData[] {
+  const countryDetails = getAllCountryDetails();
   return Object.keys(countryDetails).map((countryCode) => ({
     countryCode,
     ...countryDetails[countryCode],
@@ -40,10 +39,8 @@ export async function getAllCountryData(): Promise<TCountryData[]> {
 /*
   Fetch country data on a single country code
 */
-export async function getCountryData(
-  countryCode: string
-): Promise<TCountryData | undefined> {
-  const allCountryDetails = await getAllCountryDetails();
+export function getCountryData(countryCode: string): TCountryData | undefined {
+  const allCountryDetails = getAllCountryDetails();
   const countryDetails = allCountryDetails[countryCode];
 
   if (!countryDetails) return;
@@ -57,10 +54,10 @@ export async function getCountryData(
 /*
   Fetch countries on multiple country codes
 */
-export async function getCountriesData(
+export function getCountriesData(
   countryCodes: string[]
-): Promise<(TCountryData | undefined)[]> {
-  const allCountryDetails = await getAllCountryDetails();
+): (TCountryData | undefined)[] {
+  const allCountryDetails = getAllCountryDetails();
 
   return countryCodes.map((countryCode) => {
     const countryDetails = allCountryDetails[countryCode];
