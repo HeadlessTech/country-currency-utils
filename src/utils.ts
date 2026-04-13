@@ -12,9 +12,9 @@ export function getFixedAmount(
 ): number {
   const factor = Math.pow(10, decimals);
   if (roundingMethod === "ceil") {
-    return Math.ceil(amount * factor) / factor;
+    return Math.ceil(amount * factor - 1e-9) / factor;
   } else {
-    return Math.round(amount * factor) / factor;
+    return Math.round(amount * factor + 1e-9) / factor;
   }
 }
 
@@ -172,6 +172,24 @@ export function getDisplayAmountOnCurrency(
   return isNegative
     ? `- ${currencySymbol}${separatorStr}${formattedAmount}`
     : `${currencySymbol}${separatorStr}${formattedAmount}`;
+}
+
+export function getFixedAmountOnCurrencyCode(
+  amount: number,
+  currencyCode: string,
+  options?: TCurrencyRoundOptions
+): number {
+  const currencyData = getCurrencyData(currencyCode);
+  return getFixedAmountOnCurrency(amount, currencyData, options);
+}
+
+export function getFormattedAmountOnCurrencyCode(
+  amount: number,
+  currencyCode: string,
+  options?: TCurrencyFormatOptions
+): string {
+  const currencyData = getCurrencyData(currencyCode);
+  return getFormattedAmountOnCurrency(amount, currencyData, options);
 }
 
 export function getDisplayAmountOnCurrencyCode(
