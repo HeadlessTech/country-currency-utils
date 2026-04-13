@@ -5,7 +5,6 @@ export {
   getAllCountryData,
   getCountryData,
   getCountriesData,
-  COUNTRIES_DETAILS_URL,
 } from "./countries";
 export {
   TCurrencyData,
@@ -14,7 +13,6 @@ export {
   getAllCurrencyData,
   getCurrencyData,
   getCurrenciesData,
-  CURRENCIES_DETAILS_URL,
 } from "./currencies";
 export {
   TCurrencyRoundOptions,

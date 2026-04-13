@@ -1,10 +1,4 @@
-import currenciesData from "../data/currencies.json";
-
-// Currencies data in json format
-// Hosted through this repo
-// check data folder for JSON file
-export const CURRENCIES_DETAILS_URL =
-  "https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/currencies.json";
+import currenciesData from "./data/currencies.json";
 
 /*
   Currency details

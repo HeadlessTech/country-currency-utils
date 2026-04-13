@@ -1,10 +1,4 @@
-import countriesData from "../data/countries.json";
-
-// Country data in json format
-// Hosted through this repo
-// check data folder for JSON file
-export const COUNTRIES_DETAILS_URL =
-  "https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/countries.json";
+import countriesData from "./data/countries.json";
 
 export type TCountryDetails = {
   name: string; // Country name
