@@ -202,7 +202,7 @@ Here are a list of functions:
 #### `getFixedAmount`
 
 ```typescript
-getFixedAmount(amount: number, decimals: number, isRoundMiddle?: boolean): number
+getFixedAmount(amount: number, decimals: number, roundingMethod?: "ceil" | "round"): number
 ```
 
 The default behavior is to `ceil` the amount to the specified decimal places. This is because we want to maximize the monetory amount. However, use the `roundingMethod` param to use actual `"ceil" | "round"` method to round the amount.
@@ -243,10 +243,27 @@ const roundedAmount = getFixedAmountOnCurrency(123.45, BDTCurrencyData, {
 }); // 124
 ```
 
+#### `getFixedAmountOnCurrencyCode`
+
+```typescript
+getFixedAmountOnCurrencyCode(amount: number, currencyCode: string, options?: TCurrencyRoundOptions): number
+```
+
+Convenience wrapper around `getFixedAmountOnCurrency` that accepts a currency code string instead of a currency data object.
+
+_Example:_
+
+```typescript
+const roundedAmount = getFixedAmountOnCurrencyCode(123.4567, "USD"); // 123.46
+const roundedAmount = getFixedAmountOnCurrencyCode(123.45, "BDT", {
+  roundingDecimals: "compact",
+}); // 124
+```
+
 #### `getFormattedAmount`
 
 ```typescript
-getFormattedAmount(amount: number, digitGrouping: number, fixedDecimals?: number): string
+getFormattedAmount(amount: number, digitGrouping: 2 | 3, fixedDecimals?: number): string
 ```
 
 Returns a string with comma separated amount. `digitGrouping` maybe 2 or 3. `fixedDecimals` pads the decimal places with 0s or truncates (does not round) extra decimal places.
@@ -286,7 +303,7 @@ const formattedAmount = getFormattedAmountOnCurrency(
   {
     avoidRound: true,
   }
-); // "123,456.711"
+); // "123,456.71" (rounding skipped, but formatting still truncates to decimalsCompact)
 
 const formattedAmount = getFormattedAmountOnCurrency(123456.7, BDTCurrencyData); // "1,23,456.7"
 const formattedAmount = getFormattedAmountOnCurrency(
@@ -303,6 +320,24 @@ const formattedAmount = getFormattedAmountOnCurrency(1.2, BDTCurrencyData, {
 }); // "1.20"
 ```
 
+#### `getFormattedAmountOnCurrencyCode`
+
+```typescript
+getFormattedAmountOnCurrencyCode(amount: number, currencyCode: string, options?: TCurrencyFormatOptions): string
+```
+
+Convenience wrapper around `getFormattedAmountOnCurrency` that accepts a currency code string instead of a currency data object.
+
+_Example:_
+
+```typescript
+const formattedAmount = getFormattedAmountOnCurrencyCode(123456.7, "USD"); // "123,456.70"
+const formattedAmount = getFormattedAmountOnCurrencyCode(123456.7, "BDT"); // "1,23,456.7"
+const formattedAmount = getFormattedAmountOnCurrencyCode(123456.7, "BDT", {
+  roundingDecimals: "compact",
+}); // "1,23,457"
+```
+
 #### `getDisplayAmountOnCurrency`
 
 ```typescript
@@ -313,7 +348,7 @@ type TCurrencyDisplayOptions = TCurrencyFormatOptions & {
   separator?: string; // Default: space between symbol and amount, can be changed
 };
 
-getDisplayAmountOnCurrency(amount: number, currencyData?: TCurrencyData, options?: TCurrencyFormatOptions): string
+getDisplayAmountOnCurrency(amount: number, currencyData?: TCurrencyData, options?: TCurrencyDisplayOptions): string
 ```
 
 Returns a displayable amount with currency symbol, rounded by default and uses proper digit grouping on currency. `avoidFormat` avoid formatting. `isSymbolStandard` and `isSymbolNative` defined the symbol to use, default is to use `preferredSymbol`. `separator` can be used define separator string between symbol and amount. The function inherits options for rounding and formatting
@@ -341,7 +376,7 @@ const displayAmount = getDisplayAmountOnCurrency(123, BDTCurrencyData, {
 #### `getDisplayAmountOnCurrencyCode`
 
 ```typescript
-getDisplayAmountOnCurrencyCode(amount: number, currencyCode: string, options?: TCurrencyFormatOptions): string
+getDisplayAmountOnCurrencyCode(amount: number, currencyCode: string, options?: TCurrencyDisplayOptions): string
 ```
 
 Returns a displayable amount with currency symbol, using the `getDisplayAmountOnCurrency` function and looks up currency details on currency code
