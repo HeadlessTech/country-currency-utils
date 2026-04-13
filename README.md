@@ -18,27 +18,6 @@ or
 yarn add country-currency-utils
 ```
 
-## Countries and Currencies data
-
-The package bundles country and currency data locally:
-
-- `data/countries.json`
-- `data/currencies.json`
-
-For convenience, the same data is also available via CDN:
-
-- **Countries:** [Countries JSON](https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/countries.json)
-- **Currencies:** [Currencies JSON](https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/currencies.json)
-
-```bash
-# Countries
-https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/countries.json
-
-# Currencies
-https://cdn.jsdelivr.net/gh/headlesstech/country-currency-utils@main/data/currencies.json
-```
-
----
 
 ## Country utilities
 
