@@ -95,10 +95,15 @@ test("Test amount rounding", () => {
   expect(getFixedAmount(1234, 2)).toBe(1234);
   expect(getFixedAmount(1234.1, 2)).toBe(1234.1);
   expect(getFixedAmount(1.125, 2)).toBe(1.13);
-  expect(getFixedAmount(1.123, 2)).toBe(1.13);
-  expect(getFixedAmount(1.126, 2)).toBe(1.13);
-  expect(getFixedAmount(1.126, 1)).toBe(1.2);
-  expect(getFixedAmount(1.126, 0)).toBe(2);
+  expect(getFixedAmount(1.123, 2, "ceil")).toBe(1.13);
+  expect(getFixedAmount(1.126, 2, "ceil")).toBe(1.13);
+  expect(getFixedAmount(1.126, 1, "ceil")).toBe(1.2);
+  expect(getFixedAmount(1.126, 0, "ceil")).toBe(2);
+
+  // default rounding method is now "round"
+  expect(getFixedAmount(1.123, 2)).toBe(1.12);
+  expect(getFixedAmount(1.126, 1)).toBe(1.1);
+  expect(getFixedAmount(1.126, 0)).toBe(1);
 
   // floating point midpoint cases (x.xx5) — previously rounded wrong direction
   expect(getFixedAmount(1.005, 2, "round")).toBe(1.01);
@@ -125,9 +130,9 @@ test("Test amount rounding", () => {
   expect(getFixedAmount(1.0045, 3, "round")).toBe(1.005);
 
   // negative values — ceil
-  expect(getFixedAmount(-1234, 2)).toBe(-1234);
-  expect(getFixedAmount(-1234.1, 1)).toBe(-1234.1);
-  expect(getFixedAmount(-1.125, 2)).toBe(-1.12);
+  expect(getFixedAmount(-1234, 2, "ceil")).toBe(-1234);
+  expect(getFixedAmount(-1234.1, 1, "ceil")).toBe(-1234.1);
+  expect(getFixedAmount(-1.125, 2, "ceil")).toBe(-1.12);
 
   // negative values — round (Math.round rounds toward +infinity, so asymmetric)
   expect(getFixedAmount(-1.005, 2, "round")).toBe(-1); // rounds toward +inf: -1.005 → -1.00
@@ -148,7 +153,12 @@ test("Test amount rounding on currency", () => {
 
   // USD check
   expect(getFixedAmountOnCurrency(1234, USDCurrencyDetails)).toBe(1234);
-  expect(getFixedAmountOnCurrency(1.123, USDCurrencyDetails)).toBe(1.13);
+  expect(
+    getFixedAmountOnCurrency(1.123, USDCurrencyDetails, {
+      roundingMethod: "ceil",
+    }),
+  ).toBe(1.13);
+  expect(getFixedAmountOnCurrency(1.123, USDCurrencyDetails)).toBe(1.12);
   expect(
     getFixedAmountOnCurrency(1.123, USDCurrencyDetails, {
       roundingMethod: "round",
@@ -170,7 +180,12 @@ test("Test amount rounding on currency", () => {
 
   // BDT check
   expect(getFixedAmountOnCurrency(1234, BDTCurrencyDetails)).toBe(1234);
-  expect(getFixedAmountOnCurrency(1.123, BDTCurrencyDetails)).toBe(1.13);
+  expect(
+    getFixedAmountOnCurrency(1.123, BDTCurrencyDetails, {
+      roundingMethod: "ceil",
+    }),
+  ).toBe(1.13);
+  expect(getFixedAmountOnCurrency(1.123, BDTCurrencyDetails)).toBe(1.12);
   expect(
     getFixedAmountOnCurrency(1.123, BDTCurrencyDetails, {
       roundingMethod: "round",
@@ -179,6 +194,7 @@ test("Test amount rounding on currency", () => {
   expect(
     getFixedAmountOnCurrency(1.123, BDTCurrencyDetails, {
       roundingDecimals: "compact",
+      roundingMethod: "ceil",
     }),
   ).toBe(2);
   expect(
@@ -277,7 +293,12 @@ test("Test amount formatting on currency", () => {
   // USD check
   expect(getFormattedAmountOnCurrency(1.2, USDCurrencyDetails)).toBe("1.20");
   expect(getFormattedAmountOnCurrency(1.23, USDCurrencyDetails)).toBe("1.23");
-  expect(getFormattedAmountOnCurrency(1.234, USDCurrencyDetails)).toBe("1.24");
+  expect(
+    getFormattedAmountOnCurrency(1.234, USDCurrencyDetails, {
+      roundingMethod: "ceil",
+    }),
+  ).toBe("1.24");
+  expect(getFormattedAmountOnCurrency(1.234, USDCurrencyDetails)).toBe("1.23");
   expect(
     getFormattedAmountOnCurrency(1.234, USDCurrencyDetails, {
       avoidRound: true,
@@ -340,15 +361,22 @@ test("Test amount formatting on currency", () => {
     }),
   ).toBe("-1,234.00");
 
-  expect(getFormattedAmountOnCurrency(1.123, USDCurrencyDetails)).toBe("1.13");
+  expect(
+    getFormattedAmountOnCurrency(1.123, USDCurrencyDetails, {
+      roundingMethod: "ceil",
+    }),
+  ).toBe("1.13");
+  expect(getFormattedAmountOnCurrency(1.123, USDCurrencyDetails)).toBe("1.12");
   expect(
     getFormattedAmountOnCurrency(1.123, USDCurrencyDetails, {
       roundingMethod: "round",
     }),
   ).toBe("1.12");
-  expect(getFormattedAmountOnCurrency(12345.123, USDCurrencyDetails, {})).toBe(
-    "12,345.13",
-  );
+  expect(
+    getFormattedAmountOnCurrency(12345.123, USDCurrencyDetails, {
+      roundingMethod: "ceil",
+    }),
+  ).toBe("12,345.13");
   expect(getFormattedAmountOnCurrency(12345, USDCurrencyDetails)).toBe(
     "12,345.00",
   );
@@ -383,10 +411,16 @@ test("Test amount formatting on currency", () => {
   );
 
   expect(getFormattedAmountOnCurrency(123.1, BDTCurrencyDetails)).toBe("123.1");
-  expect(getFormattedAmountOnCurrency(1.123, BDTCurrencyDetails)).toBe("1.13");
+  expect(
+    getFormattedAmountOnCurrency(1.123, BDTCurrencyDetails, {
+      roundingMethod: "ceil",
+    }),
+  ).toBe("1.13");
+  expect(getFormattedAmountOnCurrency(1.123, BDTCurrencyDetails)).toBe("1.12");
   expect(
     getFormattedAmountOnCurrency(1.123, BDTCurrencyDetails, {
       roundingDecimals: "compact",
+      roundingMethod: "ceil",
     }),
   ).toBe("2");
   expect(
@@ -415,7 +449,12 @@ test("Test amount display on currency", () => {
   if (!USDCurrencyDetails || !BDTCurrencyDetails) return;
 
   // USD
-  expect(getDisplayAmountOnCurrency(1.123, USDCurrencyDetails)).toBe("$ 1.13");
+  expect(
+    getDisplayAmountOnCurrency(1.123, USDCurrencyDetails, {
+      roundingMethod: "ceil",
+    }),
+  ).toBe("$ 1.13");
+  expect(getDisplayAmountOnCurrency(1.123, USDCurrencyDetails)).toBe("$ 1.12");
   expect(getDisplayAmountOnCurrency(1234.12, USDCurrencyDetails)).toBe(
     "$ 1,234.12",
   );
@@ -453,29 +492,40 @@ test("Test amount display on currency", () => {
   ).toBe("- $ 1234.1234");
 
   // BDT
-  expect(getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails)).toBe("Tk 1.13");
+  expect(
+    getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails, {
+      roundingMethod: "ceil",
+    }),
+  ).toBe("Tk 1.13");
+  expect(getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails)).toBe("Tk 1.12");
   expect(
     getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails, {
       roundingDecimals: "compact",
+      roundingMethod: "ceil",
     }),
   ).toBe("Tk 2");
   expect(
     getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails, {
       roundingDecimals: "compact",
       previewDecimals: "standard",
+      roundingMethod: "ceil",
     }),
   ).toBe("Tk 2.00");
-  expect(getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails, {})).toBe(
-    "Tk 1.13",
-  );
+  expect(
+    getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails, {
+      roundingMethod: "ceil",
+    }),
+  ).toBe("Tk 1.13");
   expect(
     getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails, {
       isSymbolNative: true,
+      roundingMethod: "ceil",
     }),
   ).toBe("Tk 1.13");
   expect(
     getDisplayAmountOnCurrency(1.123, BDTCurrencyDetails, {
       isSymbolStandard: true,
+      roundingMethod: "ceil",
     }),
   ).toBe("৳ 1.13");
   expect(
@@ -545,7 +595,10 @@ test("Fallback when currencyData is undefined", () => {
 test("Test amount rounding on currency code", () => {
   // USD check
   expect(getFixedAmountOnCurrencyCode(1234, "USD")).toBe(1234);
-  expect(getFixedAmountOnCurrencyCode(1.123, "USD")).toBe(1.13);
+  expect(
+    getFixedAmountOnCurrencyCode(1.123, "USD", { roundingMethod: "ceil" }),
+  ).toBe(1.13);
+  expect(getFixedAmountOnCurrencyCode(1.123, "USD")).toBe(1.12);
   expect(
     getFixedAmountOnCurrencyCode(1.123, "USD", { roundingMethod: "round" }),
   ).toBe(1.12);
@@ -565,13 +618,17 @@ test("Test amount rounding on currency code", () => {
 
   // BDT check
   expect(getFixedAmountOnCurrencyCode(1234, "BDT")).toBe(1234);
-  expect(getFixedAmountOnCurrencyCode(1.123, "BDT")).toBe(1.13);
+  expect(
+    getFixedAmountOnCurrencyCode(1.123, "BDT", { roundingMethod: "ceil" }),
+  ).toBe(1.13);
+  expect(getFixedAmountOnCurrencyCode(1.123, "BDT")).toBe(1.12);
   expect(
     getFixedAmountOnCurrencyCode(1.123, "BDT", { roundingMethod: "round" }),
   ).toBe(1.12);
   expect(
     getFixedAmountOnCurrencyCode(1.123, "BDT", {
       roundingDecimals: "compact",
+      roundingMethod: "ceil",
     }),
   ).toBe(2);
   expect(
@@ -597,12 +654,15 @@ test("Test amount rounding on currency code", () => {
 test("Test amount formatting on currency code", () => {
   // USD
   expect(getFormattedAmountOnCurrencyCode(1.2, "USD")).toBe("1.20");
-  expect(getFormattedAmountOnCurrencyCode(1.234, "USD")).toBe("1.24");
   expect(
-    getFormattedAmountOnCurrencyCode(1.234, "USD", { roundingMethod: "round" })
+    getFormattedAmountOnCurrencyCode(1.234, "USD", { roundingMethod: "ceil" }),
+  ).toBe("1.24");
+  expect(getFormattedAmountOnCurrencyCode(1.234, "USD")).toBe("1.23");
+  expect(
+    getFormattedAmountOnCurrencyCode(1.234, "USD", { roundingMethod: "round" }),
   ).toBe("1.23");
   expect(
-    getFormattedAmountOnCurrencyCode(1.234, "USD", { avoidRound: true })
+    getFormattedAmountOnCurrencyCode(1.234, "USD", { avoidRound: true }),
   ).toBe("1.23");
   expect(getFormattedAmountOnCurrencyCode(1234567, "USD")).toBe("1,234,567.00");
   expect(getFormattedAmountOnCurrencyCode(-1234, "USD")).toBe("-1,234.00");
@@ -612,18 +672,19 @@ test("Test amount formatting on currency code", () => {
   expect(
     getFormattedAmountOnCurrencyCode(1234567, "BDT", {
       previewDecimals: "standard",
-    })
+    }),
   ).toBe("12,34,567.00");
   expect(
     getFormattedAmountOnCurrencyCode(1.123, "BDT", {
       roundingDecimals: "compact",
-    })
+      roundingMethod: "ceil",
+    }),
   ).toBe("2");
   expect(
     getFormattedAmountOnCurrencyCode(1.123, "BDT", {
       roundingDecimals: "compact",
       roundingMethod: "round",
-    })
+    }),
   ).toBe("1");
   expect(getFormattedAmountOnCurrencyCode(-1234567, "BDT")).toBe("-12,34,567");
 
@@ -636,7 +697,10 @@ test("Test amount formatting on currency code", () => {
 */
 test("Test amount display on currency code", () => {
   // USD
-  expect(getDisplayAmountOnCurrencyCode(1.123, "USD")).toBe("$ 1.13");
+  expect(
+    getDisplayAmountOnCurrencyCode(1.123, "USD", { roundingMethod: "ceil" }),
+  ).toBe("$ 1.13");
+  expect(getDisplayAmountOnCurrencyCode(1.123, "USD")).toBe("$ 1.12");
   expect(getDisplayAmountOnCurrencyCode(1234.12, "USD")).toBe("$ 1,234.12");
   expect(
     getDisplayAmountOnCurrencyCode(1234.12, "USD", {
@@ -658,20 +722,26 @@ test("Test amount display on currency code", () => {
   ).toBe("$ 1234.1");
 
   // BDT
-  expect(getDisplayAmountOnCurrencyCode(1.123, "BDT")).toBe("Tk 1.13");
+  expect(
+    getDisplayAmountOnCurrencyCode(1.123, "BDT", { roundingMethod: "ceil" }),
+  ).toBe("Tk 1.13");
+  expect(getDisplayAmountOnCurrencyCode(1.123, "BDT")).toBe("Tk 1.12");
   expect(
     getDisplayAmountOnCurrencyCode(1.123, "BDT", {
       roundingDecimals: "compact",
+      roundingMethod: "ceil",
     }),
   ).toBe("Tk 2");
   expect(
     getDisplayAmountOnCurrencyCode(1.123, "BDT", {
       isSymbolNative: true,
+      roundingMethod: "ceil",
     }),
   ).toBe("Tk 1.13");
   expect(
     getDisplayAmountOnCurrencyCode(1.123, "BDT", {
       isSymbolStandard: true,
+      roundingMethod: "ceil",
     }),
   ).toBe("৳ 1.13");
 

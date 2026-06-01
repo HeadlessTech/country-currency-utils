@@ -8,7 +8,7 @@ export type TDecimalsOption = "standard" | "compact";
 export function getFixedAmount(
   amount: number,
   decimals: number,
-  roundingMethod: TRoundingMethod = "ceil"
+  roundingMethod: TRoundingMethod = "round"
 ): number {
   const factor = Math.pow(10, decimals);
   if (roundingMethod === "ceil") {
@@ -19,7 +19,7 @@ export function getFixedAmount(
 }
 
 export type TCurrencyRoundOptions = {
-  roundingMethod?: TRoundingMethod; // Default behavior is Math.ceil
+  roundingMethod?: TRoundingMethod; // Default behavior is Math.round, "ceil" uses Math.ceil
   roundingDecimals?: TDecimalsOption; // Default behavior is to use standard decimals, isDecimalsCompact uses compact decimals
 };
 

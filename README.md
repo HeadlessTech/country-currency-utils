@@ -184,13 +184,13 @@ Here are a list of functions:
 getFixedAmount(amount: number, decimals: number, roundingMethod?: "ceil" | "round"): number
 ```
 
-The default behavior is to `ceil` the amount to the specified decimal places. This is because we want to maximize the monetory amount. However, use the `roundingMethod` param to use actual `"ceil" | "round"` method to round the amount.
+The default behavior is to `round` the amount to the specified decimal places. Use the `roundingMethod` param to switch to `"ceil"` (e.g. when you want to maximize the monetory amount) or explicitly request `"round"`.
 
 _Example:_
 
 ```typescript
-const fixedAmount = getFixedAmount(123.4517, 2); // 123.46
-const fixedAmount = getFixedAmount(123.4517, 2, "round"); // 123.45
+const fixedAmount = getFixedAmount(123.4517, 2); // 123.45
+const fixedAmount = getFixedAmount(123.4517, 2, "ceil"); // 123.46
 ```
 
 #### `getFixedAmountOnCurrency`
@@ -200,7 +200,7 @@ type TRoundingMethod = "ceil" | "round";
 type TDecimalsOption = "standard" | "compact";
 
 type TCurrencyRoundOptions = {
-  roundingMethod?: TRoundingMethod; // Default behavior is Math.ceil
+  roundingMethod?: TRoundingMethod; // Default behavior is Math.round, "ceil" uses Math.ceil
   roundingDecimals?: TDecimalsOption; // Default behavior is to use standard decimals, isDecimalsCompact uses compact decimals
 };
 
@@ -219,6 +219,10 @@ const roundedAmount = getFixedAmountOnCurrency(123.4567, USDCurrencyData); // 12
 const roundedAmount = getFixedAmountOnCurrency(123.45, BDTCurrencyData); // 123.45
 const roundedAmount = getFixedAmountOnCurrency(123.45, BDTCurrencyData, {
   roundingDecimals: "compact",
+}); // 123
+const roundedAmount = getFixedAmountOnCurrency(123.45, BDTCurrencyData, {
+  roundingDecimals: "compact",
+  roundingMethod: "ceil",
 }); // 124
 ```
 
@@ -236,6 +240,10 @@ _Example:_
 const roundedAmount = getFixedAmountOnCurrencyCode(123.4567, "USD"); // 123.46
 const roundedAmount = getFixedAmountOnCurrencyCode(123.45, "BDT", {
   roundingDecimals: "compact",
+}); // 123
+const roundedAmount = getFixedAmountOnCurrencyCode(123.45, "BDT", {
+  roundingDecimals: "compact",
+  roundingMethod: "ceil",
 }); // 124
 ```
 
@@ -267,7 +275,7 @@ export type TCurrencyFormatOptions = TCurrencyRoundOptions & {
 getFormattedAmountOnCurrency(amount: number, currencyData?: TCurrencyData, options?: TCurrencyFormatOptions): string
 ```
 
-Formats the given amount according to the currency's standard decimal places and digit grouping and returns it as a string. The function by default ceils the number and formats on the currency definitions. The options inherits from rounding options. `avoidRound` avoids rounding the amount. `previewDecimals` tells how many decimal places should at least show up.
+Formats the given amount according to the currency's standard decimal places and digit grouping and returns it as a string. The function by default rounds the number and formats on the currency definitions. The options inherits from rounding options. `avoidRound` avoids rounding the amount. `previewDecimals` tells how many decimal places should at least show up.
 
 _Example:_
 
